@@ -16,13 +16,6 @@ ICON = {
  'train':'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/></svg>',
 }
 
-SERVICE_THUMBS = {
- 'box':'<span class="nav-thumb nav-thumb--container" aria-hidden="true"><img src="assets/images/services/service-container-ai.webp" alt=""></span>',
- 'truck':'<span class="nav-thumb nav-thumb--trailer" aria-hidden="true"><img src="assets/images/services/service-trailer-ai.webp" alt=""></span>',
- 'crane':'<span class="nav-thumb nav-thumb--crane" aria-hidden="true"><img src="assets/images/services/service-crane-ai.webp" alt=""></span>',
- 'train':'<span class="nav-thumb nav-thumb--rail" aria-hidden="true"><img src="assets/images/services/service-rail-ai.webp" alt=""></span>',
-}
-
 NAV = [
  ('О компании','o-kompanii.html',None),
  ('Услуги','kontejnernyie-perevozki.html',[
@@ -48,7 +41,7 @@ def nav_html(active):
             out.append(f'<a href="{href}" class="{("active" if sub_active else "").strip()}">{label} {ICON["chev"]}</a>')
             out.append('<div class="sub">')
             for sl,sh,si in sub:
-                out.append(f'<a href="{sh}">{SERVICE_THUMBS.get(si, ICON[si])}{sl}</a>')
+                out.append(f'<a href="{sh}">{ICON[si]}{sl}</a>')
             out.append('</div></div>')
         else:
             out.append(f'<a href="{href}"{cls}>{label}</a>')
@@ -205,10 +198,96 @@ write('o-kompanii.html','О компании — МБМ-Транс',
       about_body)
 
 # ---------------- SERVICE PAGE BUILDER ----------------
-def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual='photo'):
+TRAILER_CATALOG = [
+  {'name':'Трал низкорамный Nooteboom','cap':'145 т','work':'13 м','extend':'—','width':'2,84 м','height':'1,15 м','cap_n':145,'len_n':13,'width_n':2.84},
+  {'name':'Трал низкорамный Nooteboom','cap':'120 т','work':'8 м','extend':'4,25 м','width':'2,84 м','height':'0,5 м','cap_n':120,'len_n':12.25,'width_n':2.84},
+  {'name':'Трал низкорамный Nooteboom','cap':'90 т','work':'8 м','extend':'4,25 м','width':'2,84 м','height':'0,5 м','cap_n':90,'len_n':12.25,'width_n':2.84},
+  {'name':'Трал низкорамный Nooteboom','cap':'85 т','work':'11 м','extend':'8 м','width':'2,55–3 м','height':'0,9 м','cap_n':85,'len_n':19,'width_n':3},
+  {'name':'Трал низкорамный Nooteboom','cap':'80 т','work':'8,5 м','extend':'5,75 м','width':'3 м','height':'—','cap_n':80,'len_n':14.25,'width_n':3},
+  {'name':'Трал низкорамный Nooteboom','cap':'65 т','work':'9 м','extend':'6,25 м','width':'2,75 м','height':'0,49 м','cap_n':65,'len_n':15.25,'width_n':2.75},
+  {'name':'Трал низкорамный Росспецприцеп','cap':'65 т','work':'10 м','extend':'3 м','width':'2,55–3,14 м','height':'0,9 м','cap_n':65,'len_n':13,'width_n':3.14},
+  {'name':'Трал низкорамный TCP 5.SOU-2N','cap':'63 т','work':'8,81 м','extend':'6,3 м','width':'2,55–3 м','height':'0,9 м','cap_n':63,'len_n':15.11,'width_n':3},
+  {'name':'Трал низкорамный Nooteboom','cap':'55 т','work':'9 м','extend':'6,25 м','width':'2,75 м','height':'0,48 м','cap_n':55,'len_n':15.25,'width_n':2.75},
+  {'name':'Трал низкорамный Faymonville','cap':'52 т','work':'9,2 + 6,6 м','extend':'—','width':'2,74–3,2 м','height':'0,86 м','cap_n':52,'len_n':15.8,'width_n':3.2},
+  {'name':'Трал низкорамный Stokota','cap':'52 т','work':'9,2 + 6,6 м','extend':'—','width':'2,74–3,2 м','height':'0,86 м','cap_n':52,'len_n':15.8,'width_n':3.2},
+  {'name':'Трал низкорамный Trailermaster','cap':'50 т','work':'7,5 м','extend':'—','width':'2,5–3 м','height':'0,6 м','cap_n':50,'len_n':7.5,'width_n':3},
+  {'name':'Трал низкорамный Broshuis','cap':'46,5 т','work':'13,5 м','extend':'22,5 м','width':'2,54 м','height':'1,44 м','cap_n':46.5,'len_n':36,'width_n':2.54},
+  {'name':'Трал низкорамный King','cap':'45 т','work':'7,3 м','extend':'—','width':'2,5–3 м','height':'0,5 м','cap_n':45,'len_n':7.3,'width_n':3},
+  {'name':'Трал Роспецприцеп','cap':'45 т','work':'6,88 м','extend':'—','width':'2,54 м','height':'0,65 м','cap_n':45,'len_n':6.88,'width_n':2.54},
+  {'name':'Трал низкорамный Goldhofer','cap':'40 т','work':'8,6 м','extend':'5 м','width':'2,7 м','height':'0,5 м','cap_n':40,'len_n':13.6,'width_n':2.7},
+  {'name':'Трал низкорамный Andover','cap':'40 т','work':'6 м','extend':'—','width':'2,5–2,9 м','height':'0,65 м','cap_n':40,'len_n':6,'width_n':2.9},
+  {'name':'Трал низкорамный TCP 3.SOU','cap':'38 т','work':'8,81 м','extend':'6,3 м','width':'2,55–3 м','height':'0,9 м','cap_n':38,'len_n':15.11,'width_n':3},
+  {'name':'Трал низкорамный Jumbo','cap':'25 т','work':'9,5 м','extend':'—','width':'2,5 м','height':'0,95 м','cap_n':25,'len_n':9.5,'width_n':2.5},
+  {'name':'Специальная площадка Kogel','cap':'25 т','work':'13,6 м','extend':'—','width':'по запросу','height':'1,3 м','cap_n':25,'len_n':13.6,'width_n':99},
+]
+
+def oversized_extra():
+    cards = []
+    for item in TRAILER_CATALOG:
+        rows = ''.join(
+          f'<span>{label}</span><b>{value}</b>'
+          for label, value in [
+            ('Грузоподъёмность', item['cap']),
+            ('Рабочая площадка', item['work']),
+            ('Раздвижение', item['extend']),
+            ('Ширина', item['width']),
+            ('Высота площадки', item['height']),
+          ]
+        )
+        cards.append(f'''<article class="trailer-card" data-cap="{item['cap_n']}" data-length="{item['len_n']}" data-width="{item['width_n']}">
+          <h4>{item['name']}</h4>
+          <div class="trailer-specs">{rows}</div>
+        </article>''')
+    return f'''
+      <section class="oversize-box">
+        <div class="eyebrow">Параметры негабарита</div>
+        <h2>Когда груз считается негабаритным</h2>
+        <p>Ориентируемся на базовые пороги: если превышен хотя бы один параметр, перевозка требует отдельной подготовки маршрута, разрешений и сопровождения.</p>
+        <div class="limit-grid">
+          <div class="limit-card"><b>2,5 м</b><span>ширина более</span></div>
+          <div class="limit-card"><b>13,5 м</b><span>длина более</span></div>
+          <div class="limit-card"><b>4 м</b><span>высота более</span></div>
+          <div class="limit-card"><b>25 т</b><span>масса более</span></div>
+        </div>
+      </section>
+      <section class="oversize-box">
+        <div class="eyebrow">Подбор трала</div>
+        <h2>Предварительный расчёт по параметрам груза</h2>
+        <p>Введите массу и габариты — каталог ниже покажет подходящие варианты по грузоподъёмности, длине и ширине площадки. Финальную схему крепления и маршрут всё равно проверяет менеджер.</p>
+        <form class="trailer-picker" id="trailerPicker">
+          <label><span>Масса, т</span><input type="number" min="0" step="0.1" name="weight" placeholder="например, 52"></label>
+          <label><span>Длина, м</span><input type="number" min="0" step="0.1" name="length" placeholder="например, 12"></label>
+          <label><span>Ширина, м</span><input type="number" min="0" step="0.1" name="width" placeholder="например, 3"></label>
+          <label><span>Высота, м</span><input type="number" min="0" step="0.1" name="height" placeholder="например, 4.2"></label>
+          <div class="picker-actions">
+            <button class="btn btn-orange" type="submit">Подобрать {ICON['arrow']}</button>
+            <button class="btn btn-ghost" type="button" data-reset-picker>Сбросить</button>
+          </div>
+        </form>
+        <div class="fit-note" id="trailerResult">Показаны все варианты из каталога. Укажите параметры, чтобы сузить список.</div>
+        <div class="quote-checklist">
+          <h3>Что нужно для точного расчёта стоимости</h3>
+          <ul>
+            <li>полная масса и габариты груза;</li>
+            <li>маршрут следования и точка доставки;</li>
+            <li>дата готовности груза к перевозке;</li>
+            <li>условия погрузки и разгрузки;</li>
+            <li>требования к сопровождению и разрешениям.</li>
+          </ul>
+        </div>
+        <h3>Каталог тралов</h3>
+        <div class="trailer-grid" id="trailerCatalog">{''.join(cards)}</div>
+      </section>'''
+
+def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual='photo', extra=''):
     crumb=[('Услуги','kontejnernyie-perevozki.html'),(title,fn)]
     plist=''.join(f'<p>{p}</p>' for p in paras)
     blist='<ul>'+''.join(f'<li>{b}</li>' for b in bullets)+'</ul>' if bullets else ''
+    visual_html=f'''<figure class="service-visual service-visual--{visual}">
+        <img src="{img}" alt="{title}">
+      </figure>
+      ''' if img else ''
+    extra_html=f'\n      {extra.strip()}' if extra else ''
     pcards=''
     for nm,role,mail,initials in persons:
         mlink = '<a href="mailto:%s">%s</a>' % (mail,mail) if mail else ''
@@ -217,10 +296,7 @@ def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual
     body=f'''<section class="block">
   <div class="wrap content-grid">
     <article class="article prose reveal">
-      <figure class="service-visual service-visual--{visual}">
-        <img src="{img}" alt="{title}">
-      </figure>
-      <p>{intro}</p>
+      {visual_html}<p>{intro}</p>{extra_html}
       <h2>{h2}</h2>
       {plist}
       {blist}
@@ -239,7 +315,7 @@ def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual
 
 service('kontejnernyie-perevozki.html','Контейнерные перевозки',
   'Автоперевозка всех типов морских контейнеров по России. Более 30 собственных контейнерных площадок.',
-  'assets/images/fp_slider/slider2_.webp',
+  '',
   'С 2005 года в список услуг компании «МБМ-Транс» включены контейнерные перевозки. Мы следим за тенденциями рынка и предлагаем клиентам только лучшие условия для сотрудничества.',
   'Особенности контейнерных перевозок',
   ['Контейнерные грузоперевозки позволяют решать ряд задач, связанных со снижением транспортных расходов и повышением рентабельности коммерческой деятельности. Мы используем автомобильный транспорт, что позволяет доставлять большие объёмы грузов в любую точку России — в том числе туда, где нет железнодорожного сообщения.'],
@@ -249,32 +325,32 @@ service('kontejnernyie-perevozki.html','Контейнерные перевоз�
 
 service('perevozka-negabaritnyix-gruzov.html','Перевозка негабаритных грузов',
   'Транспортировка крупногабаритных и тяжеловесных грузов массой до 365 тонн с полным сопровождением.',
-  'assets/images/fp_slider/slider1_.webp',
+  '',
   'Перевозка негабаритных грузов — ключевая специализация компании «МБМ-Транс». Мы располагаем собственным парком тягачей и низкорамных тралов, а также штатом опытных специалистов по проектной логистике.',
   'Что мы берём на себя',
   ['Груз считается негабаритным, если его ширина более 2,5 м, длина более 13,5 м, высота более 4 м, либо масса превышает 25 тонн. Перевозка таких грузов требует особой подготовки, разрешений и сопровождения.'],
   ['Разработка маршрута и схемы размещения груза','Оформление разрешений на перевозку негабарита','Автомобили сопровождения и взаимодействие с ГИБДД','Тягачи VOLVO, SCANIA, MERCEDES-BENZ и тралы до 365 тонн','Страхование груза на всю стоимость перевозки'],
-  [])
+  [],
+  'photo',
+  oversized_extra())
 
 service('texnika-v-arendu.html','Техника в аренду',
   'Специализированная техника для погрузки, разгрузки и транспортировки тяжёлых грузов.',
-  'assets/images/services/service-crane-ai.webp',
+  '',
   'Компания «МБМ-Транс» предоставляет в аренду специализированную технику для проведения погрузочно-разгрузочных работ и транспортировки тяжёлых и негабаритных грузов.',
   'Доступная техника',
   ['Мы подберём технику под задачу любой сложности — от разовой погрузки до полного сопровождения проекта. Опытные операторы и техническое обслуживание включены.'],
   ['Автокраны грузоподъёмностью до 100 тонн','Низкорамные тралы и платформы','Тягачи для перевозки спецтехники','Сопровождение и услуги такелажа'],
-  [],
-  'cutout')
+  [])
 
 service('zhd-perevozki.html','Ж/Д перевозки',
   'Перевозка грузов железнодорожным транспортом на универсальных и специальных платформах.',
-  'assets/images/services/service-rail-ai.webp',
+  '',
   'Для перевозок грузов железнодорожным транспортом компания «МБМ-Транс» оперирует универсальными платформами и организует мультимодальные схемы доставки.',
   'Преимущества Ж/Д перевозок',
   ['Железнодорожный транспорт оптимален для перевозки крупных партий грузов на дальние расстояния. Мы организуем доставку «от двери до двери», сочетая Ж/Д и автомобильное плечо.'],
   ['Универсальные и специальные платформы','Перевозка на дальние расстояния по выгодным тарифам','Мультимодальные схемы (Ж/Д + авто)','Полное экспедиторское сопровождение'],
-  [],
-  'cutout')
+  [])
 
 # ---------------- ПРОЕКТЫ (все 28, hi-res webp) ----------------
 import json

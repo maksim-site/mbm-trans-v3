@@ -117,4 +117,55 @@
     lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
     addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
   }
+
+  /* ---- trailer picker (oversized cargo page) ---- */
+  var picker = document.getElementById('trailerPicker');
+  var trailerCatalog = document.getElementById('trailerCatalog');
+  var trailerResult = document.getElementById('trailerResult');
+  if (picker && trailerCatalog) {
+    var trailerCards = [].slice.call(trailerCatalog.querySelectorAll('.trailer-card'));
+    var toNumber = function (value) {
+      value = String(value || '').replace(',', '.').trim();
+      return value ? parseFloat(value) : 0;
+    };
+    var setAll = function () {
+      trailerCards.forEach(function (card) {
+        card.classList.remove('is-hidden', 'is-match');
+      });
+      if (trailerResult) trailerResult.textContent = 'Показаны все варианты из каталога. Укажите параметры, чтобы сузить список.';
+    };
+    picker.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var data = new FormData(picker);
+      var weight = toNumber(data.get('weight'));
+      var length = toNumber(data.get('length'));
+      var width = toNumber(data.get('width'));
+      var height = toNumber(data.get('height'));
+      var active = weight || length || width || height;
+      var shown = 0;
+      if (!active) {
+        setAll();
+        return;
+      }
+      trailerCards.forEach(function (card) {
+        var cap = parseFloat(card.dataset.cap || '0');
+        var maxLength = parseFloat(card.dataset.length || '0');
+        var maxWidth = parseFloat(card.dataset.width || '0');
+        var match = (!weight || cap >= weight) && (!length || maxLength >= length) && (!width || maxWidth >= width);
+        card.classList.toggle('is-hidden', !match);
+        card.classList.toggle('is-match', match);
+        if (match) shown += 1;
+      });
+      if (trailerResult) {
+        trailerResult.textContent = shown
+          ? 'Найдено вариантов: ' + shown + '. Высота груза учитывается при проверке маршрута и разрешений.'
+          : 'По введённым параметрам нет точного совпадения в каталоге. Оставьте заявку — проверим модульную схему и маршрут вручную.';
+      }
+    });
+    var reset = picker.querySelector('[data-reset-picker]');
+    if (reset) reset.addEventListener('click', function () {
+      picker.reset();
+      setAll();
+    });
+  }
 })();

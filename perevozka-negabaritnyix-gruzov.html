@@ -38,10 +38,10 @@
       <div class="has-sub">
       <a href="kontejnernyie-perevozki.html" class="active">Услуги <svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
       <div class="sub">
-      <a href="kontejnernyie-perevozki.html"><span class="nav-thumb nav-thumb--container" aria-hidden="true"><img src="assets/images/services/service-container-ai.webp" alt=""></span>Контейнерные перевозки</a>
-      <a href="perevozka-negabaritnyix-gruzov.html"><span class="nav-thumb nav-thumb--trailer" aria-hidden="true"><img src="assets/images/services/service-trailer-ai.webp" alt=""></span>Перевозка негабаритных грузов</a>
-      <a href="texnika-v-arendu.html"><span class="nav-thumb nav-thumb--crane" aria-hidden="true"><img src="assets/images/services/service-crane-ai.webp" alt=""></span>Техника в аренду</a>
-      <a href="zhd-perevozki.html"><span class="nav-thumb nav-thumb--rail" aria-hidden="true"><img src="assets/images/services/service-rail-ai.webp" alt=""></span>Ж/Д перевозки</a>
+      <a href="kontejnernyie-perevozki.html"><svg class="icon" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>Контейнерные перевозки</a>
+      <a href="perevozka-negabaritnyix-gruzov.html"><svg class="icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>Перевозка негабаритных грузов</a>
+      <a href="texnika-v-arendu.html"><svg class="icon" viewBox="0 0 24 24"><path d="M2 22V12a2 2 0 0 1 2-2h2"/><path d="m6 10 4-7 6 3-3 6"/><path d="M14 14h6v6a2 2 0 0 1-2 2H6"/><circle cx="6" cy="18" r="2"/></svg>Техника в аренду</a>
+      <a href="zhd-perevozki.html"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/></svg>Ж/Д перевозки</a>
       </div></div>
       <a href="nashi-proektyi.html">Наши проекты</a>
       <a href="nashi-klientyi.html">Клиенты</a>
@@ -65,10 +65,106 @@
 <section class="block">
   <div class="wrap content-grid">
     <article class="article prose reveal">
-      <figure class="service-visual service-visual--photo">
-        <img src="assets/images/fp_slider/slider1_.webp" alt="Перевозка негабаритных грузов">
-      </figure>
       <p>Перевозка негабаритных грузов — ключевая специализация компании «МБМ-Транс». Мы располагаем собственным парком тягачей и низкорамных тралов, а также штатом опытных специалистов по проектной логистике.</p>
+      <section class="oversize-box">
+        <div class="eyebrow">Параметры негабарита</div>
+        <h2>Когда груз считается негабаритным</h2>
+        <p>Ориентируемся на базовые пороги: если превышен хотя бы один параметр, перевозка требует отдельной подготовки маршрута, разрешений и сопровождения.</p>
+        <div class="limit-grid">
+          <div class="limit-card"><b>2,5 м</b><span>ширина более</span></div>
+          <div class="limit-card"><b>13,5 м</b><span>длина более</span></div>
+          <div class="limit-card"><b>4 м</b><span>высота более</span></div>
+          <div class="limit-card"><b>25 т</b><span>масса более</span></div>
+        </div>
+      </section>
+      <section class="oversize-box">
+        <div class="eyebrow">Подбор трала</div>
+        <h2>Предварительный расчёт по параметрам груза</h2>
+        <p>Введите массу и габариты — каталог ниже покажет подходящие варианты по грузоподъёмности, длине и ширине площадки. Финальную схему крепления и маршрут всё равно проверяет менеджер.</p>
+        <form class="trailer-picker" id="trailerPicker">
+          <label><span>Масса, т</span><input type="number" min="0" step="0.1" name="weight" placeholder="например, 52"></label>
+          <label><span>Длина, м</span><input type="number" min="0" step="0.1" name="length" placeholder="например, 12"></label>
+          <label><span>Ширина, м</span><input type="number" min="0" step="0.1" name="width" placeholder="например, 3"></label>
+          <label><span>Высота, м</span><input type="number" min="0" step="0.1" name="height" placeholder="например, 4.2"></label>
+          <div class="picker-actions">
+            <button class="btn btn-orange" type="submit">Подобрать <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+            <button class="btn btn-ghost" type="button" data-reset-picker>Сбросить</button>
+          </div>
+        </form>
+        <div class="fit-note" id="trailerResult">Показаны все варианты из каталога. Укажите параметры, чтобы сузить список.</div>
+        <div class="quote-checklist">
+          <h3>Что нужно для точного расчёта стоимости</h3>
+          <ul>
+            <li>полная масса и габариты груза;</li>
+            <li>маршрут следования и точка доставки;</li>
+            <li>дата готовности груза к перевозке;</li>
+            <li>условия погрузки и разгрузки;</li>
+            <li>требования к сопровождению и разрешениям.</li>
+          </ul>
+        </div>
+        <h3>Каталог тралов</h3>
+        <div class="trailer-grid" id="trailerCatalog"><article class="trailer-card" data-cap="145" data-length="13" data-width="2.84">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>145 т</b><span>Рабочая площадка</span><b>13 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,84 м</b><span>Высота площадки</span><b>1,15 м</b></div>
+        </article><article class="trailer-card" data-cap="120" data-length="12.25" data-width="2.84">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>120 т</b><span>Рабочая площадка</span><b>8 м</b><span>Раздвижение</span><b>4,25 м</b><span>Ширина</span><b>2,84 м</b><span>Высота площадки</span><b>0,5 м</b></div>
+        </article><article class="trailer-card" data-cap="90" data-length="12.25" data-width="2.84">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>90 т</b><span>Рабочая площадка</span><b>8 м</b><span>Раздвижение</span><b>4,25 м</b><span>Ширина</span><b>2,84 м</b><span>Высота площадки</span><b>0,5 м</b></div>
+        </article><article class="trailer-card" data-cap="85" data-length="19" data-width="3">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>85 т</b><span>Рабочая площадка</span><b>11 м</b><span>Раздвижение</span><b>8 м</b><span>Ширина</span><b>2,55–3 м</b><span>Высота площадки</span><b>0,9 м</b></div>
+        </article><article class="trailer-card" data-cap="80" data-length="14.25" data-width="3">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>80 т</b><span>Рабочая площадка</span><b>8,5 м</b><span>Раздвижение</span><b>5,75 м</b><span>Ширина</span><b>3 м</b><span>Высота площадки</span><b>—</b></div>
+        </article><article class="trailer-card" data-cap="65" data-length="15.25" data-width="2.75">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>65 т</b><span>Рабочая площадка</span><b>9 м</b><span>Раздвижение</span><b>6,25 м</b><span>Ширина</span><b>2,75 м</b><span>Высота площадки</span><b>0,49 м</b></div>
+        </article><article class="trailer-card" data-cap="65" data-length="13" data-width="3.14">
+          <h4>Трал низкорамный Росспецприцеп</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>65 т</b><span>Рабочая площадка</span><b>10 м</b><span>Раздвижение</span><b>3 м</b><span>Ширина</span><b>2,55–3,14 м</b><span>Высота площадки</span><b>0,9 м</b></div>
+        </article><article class="trailer-card" data-cap="63" data-length="15.11" data-width="3">
+          <h4>Трал низкорамный TCP 5.SOU-2N</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>63 т</b><span>Рабочая площадка</span><b>8,81 м</b><span>Раздвижение</span><b>6,3 м</b><span>Ширина</span><b>2,55–3 м</b><span>Высота площадки</span><b>0,9 м</b></div>
+        </article><article class="trailer-card" data-cap="55" data-length="15.25" data-width="2.75">
+          <h4>Трал низкорамный Nooteboom</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>55 т</b><span>Рабочая площадка</span><b>9 м</b><span>Раздвижение</span><b>6,25 м</b><span>Ширина</span><b>2,75 м</b><span>Высота площадки</span><b>0,48 м</b></div>
+        </article><article class="trailer-card" data-cap="52" data-length="15.8" data-width="3.2">
+          <h4>Трал низкорамный Faymonville</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>52 т</b><span>Рабочая площадка</span><b>9,2 + 6,6 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,74–3,2 м</b><span>Высота площадки</span><b>0,86 м</b></div>
+        </article><article class="trailer-card" data-cap="52" data-length="15.8" data-width="3.2">
+          <h4>Трал низкорамный Stokota</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>52 т</b><span>Рабочая площадка</span><b>9,2 + 6,6 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,74–3,2 м</b><span>Высота площадки</span><b>0,86 м</b></div>
+        </article><article class="trailer-card" data-cap="50" data-length="7.5" data-width="3">
+          <h4>Трал низкорамный Trailermaster</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>50 т</b><span>Рабочая площадка</span><b>7,5 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,5–3 м</b><span>Высота площадки</span><b>0,6 м</b></div>
+        </article><article class="trailer-card" data-cap="46.5" data-length="36" data-width="2.54">
+          <h4>Трал низкорамный Broshuis</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>46,5 т</b><span>Рабочая площадка</span><b>13,5 м</b><span>Раздвижение</span><b>22,5 м</b><span>Ширина</span><b>2,54 м</b><span>Высота площадки</span><b>1,44 м</b></div>
+        </article><article class="trailer-card" data-cap="45" data-length="7.3" data-width="3">
+          <h4>Трал низкорамный King</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>45 т</b><span>Рабочая площадка</span><b>7,3 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,5–3 м</b><span>Высота площадки</span><b>0,5 м</b></div>
+        </article><article class="trailer-card" data-cap="45" data-length="6.88" data-width="2.54">
+          <h4>Трал Роспецприцеп</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>45 т</b><span>Рабочая площадка</span><b>6,88 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,54 м</b><span>Высота площадки</span><b>0,65 м</b></div>
+        </article><article class="trailer-card" data-cap="40" data-length="13.6" data-width="2.7">
+          <h4>Трал низкорамный Goldhofer</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>40 т</b><span>Рабочая площадка</span><b>8,6 м</b><span>Раздвижение</span><b>5 м</b><span>Ширина</span><b>2,7 м</b><span>Высота площадки</span><b>0,5 м</b></div>
+        </article><article class="trailer-card" data-cap="40" data-length="6" data-width="2.9">
+          <h4>Трал низкорамный Andover</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>40 т</b><span>Рабочая площадка</span><b>6 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,5–2,9 м</b><span>Высота площадки</span><b>0,65 м</b></div>
+        </article><article class="trailer-card" data-cap="38" data-length="15.11" data-width="3">
+          <h4>Трал низкорамный TCP 3.SOU</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>38 т</b><span>Рабочая площадка</span><b>8,81 м</b><span>Раздвижение</span><b>6,3 м</b><span>Ширина</span><b>2,55–3 м</b><span>Высота площадки</span><b>0,9 м</b></div>
+        </article><article class="trailer-card" data-cap="25" data-length="9.5" data-width="2.5">
+          <h4>Трал низкорамный Jumbo</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>25 т</b><span>Рабочая площадка</span><b>9,5 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>2,5 м</b><span>Высота площадки</span><b>0,95 м</b></div>
+        </article><article class="trailer-card" data-cap="25" data-length="13.6" data-width="99">
+          <h4>Специальная площадка Kogel</h4>
+          <div class="trailer-specs"><span>Грузоподъёмность</span><b>25 т</b><span>Рабочая площадка</span><b>13,6 м</b><span>Раздвижение</span><b>—</b><span>Ширина</span><b>по запросу</b><span>Высота площадки</span><b>1,3 м</b></div>
+        </article></div>
+      </section>
       <h2>Что мы берём на себя</h2>
       <p>Груз считается негабаритным, если его ширина более 2,5 м, длина более 13,5 м, высота более 4 м, либо масса превышает 25 тонн. Перевозка таких грузов требует особой подготовки, разрешений и сопровождения.</p>
       <ul><li>Разработка маршрута и схемы размещения груза</li><li>Оформление разрешений на перевозку негабарита</li><li>Автомобили сопровождения и взаимодействие с ГИБДД</li><li>Тягачи VOLVO, SCANIA, MERCEDES-BENZ и тралы до 365 тонн</li><li>Страхование груза на всю стоимость перевозки</li></ul>
