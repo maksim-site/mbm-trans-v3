@@ -87,7 +87,7 @@ def head(title, desc, active):
     {nav_html(active)}
     <div class="h-right">
       <div class="h-phone"><a href="tel:+78124016564">{ICON['phone']}+7 (812) 401-65-64</a><span>Звоните, мы на связи</span></div>
-      <a href="kontaktyi.html" class="btn btn-orange">Заявка</a>
+      <a href="kontaktyi.html" class="btn btn-orange">Заказать звонок</a>
       <button class="burger" id="burger" aria-label="Открыть меню"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
     </div>
   </div>
@@ -111,8 +111,8 @@ def page_hero(title, subtitle, crumb):
 CTA = '''<hr class="hazard">
 <div class="cta">
   <div class="wrap">
-    <div><h2>Нужно перевезти негабаритный груз?</h2><p>Оставьте заявку — рассчитаем стоимость и сроки в течение рабочего дня.</p></div>
-    <a href="kontaktyi.html" class="btn btn-orange">Оставить заявку %s</a>
+    <div><h2>Нужно перевезти негабаритный груз?</h2><p>Оставьте данные — рассчитаем стоимость и сроки в течение рабочего дня.</p></div>
+    <a href="kontaktyi.html" class="btn btn-orange">Рассчитать перевозку %s</a>
   </div>
 </div>''' % ICON['arrow']
 
@@ -165,7 +165,7 @@ about_body = f'''<section class="block">
       <h2>Полный цикл услуг</h2>
       <p>Компания специализируется на перевозке негабаритных и тяжеловесных грузов по России, Казахстану, Беларуси и Узбекистану, а также осуществляет доставку грузов из Китая, оперируя собственным автопарком новейших автомобилей:</p>
       <ul>
-        <li>25 автопоездов для перевозки негабаритных грузов массой <strong>до 365 тонн</strong></li>
+        <li>40 автопоездов для перевозки негабаритных грузов</li>
         <li>Тягачи марок <strong>VOLVO, SCANIA, MERCEDES-BENZ</strong></li>
         <li>Полуприцепы <strong>NOOTEBOOM, GOLDHOFER, FAYMONVILLE</strong></li>
         <li>Более 30 собственных контейнерных площадок</li>
@@ -178,14 +178,14 @@ about_body = f'''<section class="block">
       <div class="side-card accent reveal">
         <h4>Рассчитать перевозку</h4>
         <p>Опишите груз и маршрут — менеджер свяжется с вами в течение рабочего дня.</p>
-        <a href="kontaktyi.html" class="btn btn-orange">Оставить заявку {ICON['arrow']}</a>
+        <a href="kontaktyi.html" class="btn btn-orange">Получить расчёт {ICON['arrow']}</a>
       </div>
     </aside>
   </div>
 </section>
 <hr class="hazard">
 <div class="stats"><div class="wrap">
-  <div class="stat reveal"><div class="ic">{ICON['truck']}</div><div class="num">25</div><div class="lbl">автопоездов в автопарке</div></div>
+  <div class="stat reveal"><div class="ic">{ICON['truck']}</div><div class="num">40</div><div class="lbl">автопоездов в автопарке</div></div>
   <div class="stat reveal"><div class="ic">{ICON['box']}</div><div class="num">365<span class="u">т</span></div><div class="lbl">максимальный вес груза</div></div>
   <div class="stat reveal"><div class="ic">{ICON['doc']}</div><div class="num">30<span class="u">+</span></div><div class="lbl">контейнерных площадок</div></div>
   <div class="stat reveal"><div class="ic">{ICON['shield']}</div><div class="num">20</div><div class="lbl">лет на рынке</div></div>
@@ -293,22 +293,19 @@ def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual
         mlink = '<a href="mailto:%s">%s</a>' % (mail,mail) if mail else ''
         pcards+=f'<div class="person"><span class="av">{initials}</span><span><b>{nm}</b><small>{role}</small>{mlink}</span></div>'
     side_persons=f'<div class="side-card reveal"><h4>Отдел</h4>{pcards}</div>' if persons else ''
+    grid_class='content-grid' if side_persons else 'content-grid content-grid--wide'
+    aside_html=f'''
+    <aside class="sidebar">
+      {side_persons}
+    </aside>''' if side_persons else ''
     body=f'''<section class="block service-content">
-  <div class="wrap content-grid">
+  <div class="wrap {grid_class}">
     <article class="article prose service-main">
       {visual_html}<p>{intro}</p>{extra_html}
       <h2>{h2}</h2>
       {plist}
       {blist}
-    </article>
-    <aside class="sidebar">
-      {side_persons}
-      <div class="side-card accent reveal">
-        <h4>Нужен расчёт?</h4>
-        <p>Оставьте заявку — рассчитаем стоимость и сроки.</p>
-        <a href="kontaktyi.html" class="btn btn-orange">Оставить заявку {ICON['arrow']}</a>
-      </div>
-    </aside>
+    </article>{aside_html}
   </div>
 </section>'''
     write(fn,f'{title} — МБМ-Транс',subtitle,fn,page_hero(title,subtitle,crumb),body)
@@ -320,8 +317,7 @@ service('kontejnernyie-perevozki.html','Контейнерные перевоз�
   'Особенности контейнерных перевозок',
   ['Контейнерные грузоперевозки позволяют решать ряд задач, связанных со снижением транспортных расходов и повышением рентабельности коммерческой деятельности. Мы используем автомобильный транспорт, что позволяет доставлять большие объёмы грузов в любую точку России — в том числе туда, где нет железнодорожного сообщения.'],
   ['Низкая себестоимость услуги — унифицированные размеры контейнеров упрощают погрузку и крепление','Груз защищён от дождя, ветра и хищений','Доставка непосредственно «до дверей» получателя','Универсальность — большинство грузов может перевозиться в контейнерах'],
-  [('Пятаков Антон','Начальник отдела контейнерных перевозок','ap@mbm-trans.ru','ПА'),
-   ('Завьялов Алексей','Менеджер отдела контейнерных перевозок','zas@mbm-trans.ru','ЗА')])
+  [])
 
 service('perevozka-negabaritnyix-gruzov.html','Перевозка негабаритных грузов',
   'Транспортировка крупногабаритных и тяжеловесных грузов массой до 365 тонн с полным сопровождением.',
@@ -430,16 +426,18 @@ contacts_body=f'''<section class="block">
         <div class="row"><span class="ic">{ICON['mail']}</span><div><div class="lbl">E-mail</div><div class="val"><a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a></div></div></div>
         <div class="row"><span class="ic">{ICON['clock']}</span><div><div class="lbl">Режим работы</div><div class="val">Пн–Пт 9:00–18:00 · сопровождение 24/7</div></div></div>
       </div>
-      <form class="form reveal" onsubmit="return false">
+      <form class="form reveal" data-lead-form action="telegram-lead.php" method="post">
         <h3>Оставить заявку</h3>
         <div class="fd">Заполните форму — менеджер свяжется с вами и рассчитает стоимость перевозки.</div>
         <div class="grid2">
-          <div class="field"><label for="f-name">Контактное лицо</label><input id="f-name" type="text" placeholder="Ваше имя" required></div>
-          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
+          <div class="field"><label for="f-name">Контактное лицо</label><input id="f-name" name="name" type="text" placeholder="Ваше имя" required></div>
+          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
         </div>
-        <div class="field"><label for="f-email">E-mail</label><input id="f-email" type="email" placeholder="you@company.ru"></div>
-        <div class="field"><label for="f-msg">Сообщение</label><textarea id="f-msg" placeholder="Опишите ваш груз и маршрут"></textarea></div>
+        <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" placeholder="you@company.ru"></div>
+        <div class="field"><label for="f-msg">Сообщение</label><textarea id="f-msg" name="message" placeholder="Опишите ваш груз и маршрут"></textarea></div>
+        <input type="hidden" name="page" value="Контакты">
         <button class="btn btn-orange" type="submit">Отправить заявку {ICON['arrow']}</button>
+        <div class="form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
     <div class="maps">

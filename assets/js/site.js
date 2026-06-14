@@ -92,7 +92,7 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: .05, rootMargin: '0px 0px 180px 0px' });
+    }, { threshold: .15 });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
@@ -117,6 +117,33 @@
     lb.addEventListener('click', function (e) { if (e.target === lb) closeLb(); });
     addEventListener('keydown', function (e) { if (e.key === 'Escape') closeLb(); });
   }
+
+  /* ---- lead forms ---- */
+  [].forEach.call(document.querySelectorAll('[data-lead-form]'), function (form) {
+    var status = form.querySelector('.form-status');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('[type="submit"]');
+      if (status) status.textContent = 'Отправляем...';
+      if (btn) btn.disabled = true;
+      fetch(form.getAttribute('action'), {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function (res) {
+        if (!res.ok) throw new Error('send failed');
+        return res.json();
+      }).then(function (data) {
+        if (!data.ok) throw new Error(data.error || 'send failed');
+        form.reset();
+        if (status) status.textContent = 'Заявка отправлена. Мы свяжемся с вами.';
+      }).catch(function () {
+        if (status) status.textContent = 'Не удалось отправить форму. Позвоните нам: +7 (812) 401-65-64.';
+      }).finally(function () {
+        if (btn) btn.disabled = false;
+      });
+    });
+  });
 
   /* ---- trailer picker (oversized cargo page) ---- */
   var picker = document.getElementById('trailerPicker');
