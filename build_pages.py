@@ -363,7 +363,7 @@ def category(t):
 cards=''
 for base,title in pmap:
     tag=category(title)
-    cards+=f'''<a class="proj reveal" href="#"><img src="assets/images/projects/{base}.webp" loading="lazy" alt="{title}"><div class="cap"><span class="tag">{tag}</span><b>{title}</b></div></a>'''
+    cards+=f'''<article class="proj reveal"><img src="assets/images/projects/{base}.webp" loading="lazy" alt="{title}"><div class="cap"><span class="tag">{tag}</span><b>{title}</b></div></article>'''
 # новые hi-res фото (обобщённые подписи)
 new_photos=[
  ('g01','Спецтехника','Модульный трал в составе автопоезда'),
@@ -385,7 +385,7 @@ new_photos=[
  ('g17','Металлоконструкции','Перевозка крупногабаритной конструкции'),
 ]
 for g,tag,title in new_photos:
-    cards+=f'''<a class="proj reveal" href="#"><img src="assets/images/work/gallery/{g}.webp" loading="lazy" alt="{title}"><div class="cap"><span class="tag">{tag}</span><b>{title}</b></div></a>'''
+    cards+=f'''<article class="proj reveal"><img src="assets/images/work/gallery/{g}.webp" loading="lazy" alt="{title}"><div class="cap"><span class="tag">{tag}</span><b>{title}</b></div></article>'''
 proj_body=f'''<section class="block"><div class="wrap"><div class="gallery">{cards}</div></div></section>'''
 write('nashi-proektyi.html','Наши проекты — МБМ-Транс',
       'Реализованные проекты МБМ-Транс: перевозка самолётов, трамваев, оборудования для АЭС и другой техники.',

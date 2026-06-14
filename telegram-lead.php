@@ -12,6 +12,15 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 $token = getenv('MBM_TELEGRAM_BOT_TOKEN') ?: '';
 $chatId = getenv('MBM_TELEGRAM_CHAT_ID') ?: '';
 
+$configPath = __DIR__ . '/telegram-config.php';
+if (($token === '' || $chatId === '') && is_file($configPath)) {
+    $config = require $configPath;
+    if (is_array($config)) {
+        $token = $token !== '' ? $token : (string)($config['bot_token'] ?? '');
+        $chatId = $chatId !== '' ? $chatId : (string)($config['chat_id'] ?? '');
+    }
+}
+
 if ($token === '' || $chatId === '') {
     http_response_code(500);
     echo json_encode(['ok' => false, 'error' => 'telegram_not_configured'], JSON_UNESCAPED_UNICODE);
@@ -75,6 +84,13 @@ if (function_exists('curl_init')) {
 if ($httpCode < 200 || $httpCode >= 300 || $response === false) {
     http_response_code(502);
     echo json_encode(['ok' => false, 'error' => 'telegram_send_failed'], JSON_UNESCAPED_UNICODE);
+    exit;
+}
+
+$decoded = json_decode((string)$response, true);
+if (!is_array($decoded) || !($decoded['ok'] ?? false)) {
+    http_response_code(502);
+    echo json_encode(['ok' => false, 'error' => 'telegram_api_rejected'], JSON_UNESCAPED_UNICODE);
     exit;
 }
 

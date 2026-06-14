@@ -16,6 +16,11 @@
 - `MBM_TELEGRAM_BOT_TOKEN`
 - `MBM_TELEGRAM_CHAT_ID`
 
+Если переменные окружения на хостинге недоступны, скопируйте
+`telegram-config.example.php` в `telegram-config.php`, заполните `bot_token` и
+`chat_id`, затем загрузите этот файл рядом с `telegram-lead.php`. Файл
+`telegram-config.php` добавлен в `.gitignore` и не должен попадать в GitHub.
+
 На GitHub Pages PHP не выполняется, поэтому отправка заявок заработает после переноса на
 сервер с PHP/MODX или после подключения отдельного backend-endpoint.
 
