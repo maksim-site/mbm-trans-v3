@@ -131,6 +131,7 @@ nav.main>a:hover,nav.main .has-sub:hover>a{color:var(--blue);background:var(--bl
 
 /* SECTION SHELL */
 section.block{padding:5.5rem 0}
+section.service-content{padding-top:2.6rem}
 .tint{background:var(--blue-tint)}
 .head-row{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;margin-bottom:3rem;flex-wrap:wrap}
 .head-row .left{max-width:64ch}
@@ -271,6 +272,7 @@ footer{background:var(--navy);color:#9db6cc;padding:4rem 0 0}
 /* reveal */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s ease-out,transform .7s ease-out}
 .reveal.in{opacity:1;transform:none}
+.service-main{opacity:1;transform:none}
 
 /* RESPONSIVE */
 @media(max-width:1080px){
@@ -298,6 +300,7 @@ footer{background:var(--navy);color:#9db6cc;padding:4rem 0 0}
   .proj.big{grid-column:span 2;grid-row:auto;aspect-ratio:16/10}
   .foot-grid{grid-template-columns:1fr 1fr}
   section.block{padding:4rem 0}
+  section.service-content{padding-top:2rem}
   nav.main.open{display:flex;position:fixed;inset:0 0 0 auto;width:min(84vw,330px);background:#fff;flex-direction:column;align-items:stretch;padding:4.5rem 1rem 2rem;gap:.15rem;z-index:var(--z-menu);overflow-y:auto;overscroll-behavior:contain;-webkit-overflow-scrolling:touch;box-shadow:var(--shadow)}
   nav.main.open>a,nav.main.open .has-sub>a{font-size:1.05rem;padding:.85rem 1rem;border-bottom:1px solid var(--line)}
   /* submenu = accordion, collapsed by default, toggled via .sub-open */
@@ -320,6 +323,7 @@ footer{background:var(--navy);color:#9db6cc;padding:4rem 0 0}
   .cta .wrap{flex-direction:column;align-items:flex-start}
   .map-card{grid-template-columns:1fr;padding:1.25rem}
   .map-pin{width:52px;height:52px}
+  section.service-content{padding-top:1.4rem}
   .limit-grid,.trailer-picker,.trailer-grid{grid-template-columns:1fr}
   .oversize-box{padding:1.2rem}
   .picker-actions .btn{width:100%;justify-content:center}
@@ -431,6 +435,7 @@ footer{background:var(--navy);color:#9db6cc;padding:4rem 0 0}
 }
 @media(max-width:560px){
   .gallery,.client-page-grid{grid-template-columns:1fr}
+  .page-hero .wrap{padding:2.2rem 0 2.4rem}
 }
 
 nav.main a.active{color:var(--blue);background:var(--blue-50)}

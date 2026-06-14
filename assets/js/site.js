@@ -92,7 +92,7 @@
           io.unobserve(e.target);
         }
       });
-    }, { threshold: .15 });
+    }, { threshold: .05, rootMargin: '0px 0px 180px 0px' });
     document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
   } else {
     document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });

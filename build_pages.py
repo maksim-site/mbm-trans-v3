@@ -293,9 +293,9 @@ def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual
         mlink = '<a href="mailto:%s">%s</a>' % (mail,mail) if mail else ''
         pcards+=f'<div class="person"><span class="av">{initials}</span><span><b>{nm}</b><small>{role}</small>{mlink}</span></div>'
     side_persons=f'<div class="side-card reveal"><h4>Отдел</h4>{pcards}</div>' if persons else ''
-    body=f'''<section class="block">
+    body=f'''<section class="block service-content">
   <div class="wrap content-grid">
-    <article class="article prose reveal">
+    <article class="article prose service-main">
       {visual_html}<p>{intro}</p>{extra_html}
       <h2>{h2}</h2>
       {plist}
