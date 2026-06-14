@@ -16,6 +16,13 @@ ICON = {
  'train':'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/></svg>',
 }
 
+SERVICE_THUMBS = {
+ 'box':'<span class="nav-thumb nav-thumb--container" aria-hidden="true"><img src="assets/images/services/service-container-ai.webp" alt=""></span>',
+ 'truck':'<span class="nav-thumb nav-thumb--trailer" aria-hidden="true"><img src="assets/images/services/service-trailer-ai.webp" alt=""></span>',
+ 'crane':'<span class="nav-thumb nav-thumb--crane" aria-hidden="true"><img src="assets/images/services/service-crane-ai.webp" alt=""></span>',
+ 'train':'<span class="nav-thumb nav-thumb--rail" aria-hidden="true"><img src="assets/images/services/service-rail-ai.webp" alt=""></span>',
+}
+
 NAV = [
  ('О компании','o-kompanii.html',None),
  ('Услуги','kontejnernyie-perevozki.html',[
@@ -41,7 +48,7 @@ def nav_html(active):
             out.append(f'<a href="{href}" class="{("active" if sub_active else "").strip()}">{label} {ICON["chev"]}</a>')
             out.append('<div class="sub">')
             for sl,sh,si in sub:
-                out.append(f'<a href="{sh}">{ICON[si]}{sl}</a>')
+                out.append(f'<a href="{sh}">{SERVICE_THUMBS.get(si, ICON[si])}{sl}</a>')
             out.append('</div></div>')
         else:
             out.append(f'<a href="{href}"{cls}>{label}</a>')
@@ -76,7 +83,7 @@ def head(title, desc, active):
 <div class="topbar">
   <div class="wrap">
     <span class="l">{ICON['pin']} Транспортно-экспедиторская компания · Санкт-Петербург</span>
-    <div class="r"><a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a><a href="#" aria-label="Английская версия">EN</a></div>
+    <div class="r"><a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a></div>
   </div>
 </div>
 <header class="header" id="header">
@@ -175,9 +182,6 @@ about_body = f'''<section class="block">
       <p>Основные партнёры компании — крупнейшие российские предприятия: производители чёрных металлов, судостроительные, судоремонтные и машиностроительные предприятия, такие как ОАО «Северсталь», ФГУП «ПО «Севмаш», ООО «ОМЗ-Спецсталь» и другие.</p>
     </article>
     <aside class="sidebar">
-      <div class="side-card reveal">
-        <div class="person"><span class="av">МЮ</span><span><b>Мочалюк Юрий Борисович</b><small>Генеральный директор</small></span></div>
-      </div>
       <div class="side-card accent reveal">
         <h4>Рассчитать перевозку</h4>
         <p>Опишите груз и маршрут — менеджер свяжется с вами в течение рабочего дня.</p>
@@ -201,7 +205,7 @@ write('o-kompanii.html','О компании — МБМ-Транс',
       about_body)
 
 # ---------------- SERVICE PAGE BUILDER ----------------
-def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons):
+def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons, visual='photo'):
     crumb=[('Услуги','kontejnernyie-perevozki.html'),(title,fn)]
     plist=''.join(f'<p>{p}</p>' for p in paras)
     blist='<ul>'+''.join(f'<li>{b}</li>' for b in bullets)+'</ul>' if bullets else ''
@@ -213,7 +217,9 @@ def service(fn, title, subtitle, img, intro, h2, paras, bullets, persons):
     body=f'''<section class="block">
   <div class="wrap content-grid">
     <article class="article prose reveal">
-      <img src="{img}" alt="{title}" style="width:100%;border-radius:var(--r);box-shadow:var(--shadow);margin-bottom:1.8rem">
+      <figure class="service-visual service-visual--{visual}">
+        <img src="{img}" alt="{title}">
+      </figure>
       <p>{intro}</p>
       <h2>{h2}</h2>
       {plist}
@@ -252,21 +258,23 @@ service('perevozka-negabaritnyix-gruzov.html','Перевозка негабар
 
 service('texnika-v-arendu.html','Техника в аренду',
   'Специализированная техника для погрузки, разгрузки и транспортировки тяжёлых грузов.',
-  'assets/images/crane.webp',
+  'assets/images/services/service-crane-ai.webp',
   'Компания «МБМ-Транс» предоставляет в аренду специализированную технику для проведения погрузочно-разгрузочных работ и транспортировки тяжёлых и негабаритных грузов.',
   'Доступная техника',
   ['Мы подберём технику под задачу любой сложности — от разовой погрузки до полного сопровождения проекта. Опытные операторы и техническое обслуживание включены.'],
   ['Автокраны грузоподъёмностью до 100 тонн','Низкорамные тралы и платформы','Тягачи для перевозки спецтехники','Сопровождение и услуги такелажа'],
-  [])
+  [],
+  'cutout')
 
 service('zhd-perevozki.html','Ж/Д перевозки',
   'Перевозка грузов железнодорожным транспортом на универсальных и специальных платформах.',
-  'assets/images/train.webp',
+  'assets/images/services/service-rail-ai.webp',
   'Для перевозок грузов железнодорожным транспортом компания «МБМ-Транс» оперирует универсальными платформами и организует мультимодальные схемы доставки.',
   'Преимущества Ж/Д перевозок',
   ['Железнодорожный транспорт оптимален для перевозки крупных партий грузов на дальние расстояния. Мы организуем доставку «от двери до двери», сочетая Ж/Д и автомобильное плечо.'],
   ['Универсальные и специальные платформы','Перевозка на дальние расстояния по выгодным тарифам','Мультимодальные схемы (Ж/Д + авто)','Полное экспедиторское сопровождение'],
-  [])
+  [],
+  'cutout')
 
 # ---------------- ПРОЕКТЫ (все 28, hi-res webp) ----------------
 import json
@@ -284,6 +292,28 @@ cards=''
 for base,title in pmap:
     tag=category(title)
     cards+=f'''<a class="proj reveal" href="#"><img src="assets/images/projects/{base}.webp" loading="lazy" alt="{title}"><div class="cap"><span class="tag">{tag}</span><b>{title}</b></div></a>'''
+# новые hi-res фото (обобщённые подписи)
+new_photos=[
+ ('g01','Спецтехника','Модульный трал в составе автопоезда'),
+ ('g02','Негабарит','Перевозка негабаритного груза'),
+ ('g03','Энергетика','Транспортировка корпуса промышленного аппарата'),
+ ('g04','Оборудование','Перевозка промышленного оборудования'),
+ ('g05','Тяжеловес','Тяжеловесная перевозка на низкорамном трале'),
+ ('g06','Оборудование','Перевозка ёмкостного оборудования'),
+ ('g07','Негабарит','Негабаритная перевозка по трассе'),
+ ('g08','Проектная логистика','Проектная перевозка негабарита'),
+ ('g09','Энергетика','Перевозка обечайки аппарата'),
+ ('g10','Спецтехника','Погрузка тяжеловесного груза'),
+ ('g11','Металлоконструкции','Перевозка мостовой конструкции'),
+ ('g12','Спецтехника','Модульные оси для тяжеловесных грузов'),
+ ('g13','Негабарит','Перевозка негабаритного груза'),
+ ('g14','Металлоконструкции','Транспортировка металлоконструкции'),
+ ('g15','Оборудование','Перевозка ёмкостей'),
+ ('g16','Тяжеловес','Перевозка негабарита, ночной рейс'),
+ ('g17','Металлоконструкции','Перевозка крупногабаритной конструкции'),
+]
+for g,tag,title in new_photos:
+    cards+=f'''<a class="proj reveal" href="#"><img src="assets/images/work/gallery/{g}.webp" loading="lazy" alt="{title}"><div class="cap"><span class="tag">{tag}</span><b>{title}</b></div></a>'''
 proj_body=f'''<section class="block"><div class="wrap"><div class="gallery">{cards}</div></div></section>'''
 write('nashi-proektyi.html','Наши проекты — МБМ-Транс',
       'Реализованные проекты МБМ-Транс: перевозка самолётов, трамваев, оборудования для АЭС и другой техники.',
@@ -337,8 +367,22 @@ contacts_body=f'''<section class="block">
       </form>
     </div>
     <div class="maps">
-      <div class="map"><span class="tab">{ICON['pin']}Офис</span><iframe loading="lazy" title="Офис" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16001.552784463627!2d30.262006!3d59.912326!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469630be44f83dff%3A0x8c077b2fd2bd61ad!2sul.+Mezhevoy+kanal%2C+3%D0%BA2%2C+Sankt-Peterburg%2C+Russia%2C+198035!5e0!3m2!1sen!2s!4v1417777839462"></iframe></div>
-      <div class="map"><span class="tab">{ICON['pin']}База</span><iframe loading="lazy" title="База" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d16091.96295086256!2d30.068682!3d59.724583!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x469617d23744dca9%3A0xb7c01e57da5b5d7b!2sKingiseppskoye+sh.%2C+47%2C+Krasnoye+Selo%2C+g.+Sankt-Peterburg%2C+Russia%2C+198320!5e0!3m2!1sen!2s!4v1417777919444"></iframe></div>
+      <div class="map-card">
+        <div class="map-pin">{ICON['pin']}</div>
+        <div class="map-copy">
+          <span class="eyebrow">Офис на карте</span>
+          <h3>Санкт-Петербург, Межевой канал, д. 3, корпус 2</h3>
+          <p>8 этаж · откроется в удобном картографическом сервисе</p>
+        </div>
+        <div class="map-actions">
+          <a class="btn btn-orange" href="https://yandex.ru/maps/?text=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%2C%20%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%2C%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">Открыть в Яндекс Картах {ICON['arrow']}</a>
+          <div class="map-links" aria-label="Выбор карты">
+            <a href="https://maps.apple.com/?q=%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202%2C%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&ll=59.912326,30.262006" target="_blank" rel="noopener">Apple Maps</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=59.912326%2C30.262006" target="_blank" rel="noopener">Google Maps</a>
+            <a href="https://2gis.ru/spb/search/%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">2GIS</a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>'''

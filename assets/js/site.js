@@ -100,7 +100,11 @@
 
   /* ---- client logo marquee ---- */
   var track = document.getElementById('track');
-  if (track && !reduce) track.innerHTML += track.innerHTML;
+  if (track && !track.querySelector('.logo-set')) {
+    var logos = track.innerHTML;
+    track.innerHTML = '<div class="logo-set">' + logos + '</div><div class="logo-set" aria-hidden="true">' + logos + '</div>';
+    if (reduce) track.style.animation = 'none';
+  }
 
   /* ---- certificate lightbox ---- */
   var lb = document.getElementById('lightbox');
