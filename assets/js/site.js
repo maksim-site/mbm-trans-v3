@@ -119,11 +119,101 @@
   }
 
   /* ---- lead forms ---- */
+  var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
+  var phoneDigits = function (value) {
+    var digits = String(value || '').replace(/\D/g, '');
+    if (digits.charAt(0) === '8') digits = '7' + digits.slice(1);
+    if (digits && digits.charAt(0) !== '7') digits = '7' + digits;
+    return digits.slice(0, 11);
+  };
+  var formatPhone = function (value) {
+    var digits = phoneDigits(value);
+    if (!digits) return '';
+    var local = digits.charAt(0) === '7' ? digits.slice(1) : digits;
+    var formatted = '+7';
+    if (local.length > 0) formatted += ' (' + local.slice(0, 3);
+    if (local.length >= 3) formatted += ')';
+    if (local.length > 3) formatted += ' ' + local.slice(3, 6);
+    if (local.length > 6) formatted += '-' + local.slice(6, 8);
+    if (local.length > 8) formatted += '-' + local.slice(8, 10);
+    return formatted;
+  };
+  var resetFieldError = function (field) {
+    if (!field) return;
+    field.classList.remove('is-invalid');
+    field.setCustomValidity('');
+  };
+  var setFieldError = function (field, message) {
+    if (!field) return;
+    field.classList.add('is-invalid');
+    field.setCustomValidity(message);
+  };
+
   [].forEach.call(document.querySelectorAll('[data-lead-form]'), function (form) {
     var status = form.querySelector('.form-status');
+    var phoneField = form.querySelector('[name="phone"]');
+    var emailField = form.querySelector('[name="email"]');
+    var startedAtField = form.querySelector('[name="lead_started_at"]');
+
+    if (startedAtField) startedAtField.value = String(Date.now());
+
+    if (phoneField) {
+      phoneField.addEventListener('input', function (e) {
+        var deleting = e && e.inputType && e.inputType.indexOf('delete') === 0;
+        var digits = phoneDigits(phoneField.value);
+        // при удалении: если после форматирования строка кончается на разделитель
+        // (скобка/пробел/дефис) — убираем ещё и цифру перед ним, чтобы они стирались вместе
+        if (deleting && /\D$/.test(formatPhone(digits))) {
+          digits = digits.slice(0, -1);
+        }
+        var phone = formatPhone(digits);
+        if (phoneField.value !== phone) phoneField.value = phone;
+        resetFieldError(phoneField);
+      });
+      phoneField.addEventListener('focus', function () {
+        if (!phoneField.value) phoneField.value = '+7 ';
+      });
+      phoneField.addEventListener('blur', function () {
+        if (phoneDigits(phoneField.value).length <= 1) phoneField.value = '';
+      });
+    }
+
+    if (emailField) {
+      emailField.addEventListener('input', function () {
+        resetFieldError(emailField);
+      });
+    }
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var btn = form.querySelector('[type="submit"]');
+
+      if (phoneField) {
+        phoneField.value = formatPhone(phoneField.value);
+        resetFieldError(phoneField);
+        if (phoneDigits(phoneField.value).length !== 11) {
+          setFieldError(phoneField, 'Введите телефон в формате +7 (999) 123-45-67.');
+        }
+      }
+
+      if (emailField) {
+        emailField.value = emailField.value.trim();
+        resetFieldError(emailField);
+        if (emailField.value && !emailPattern.test(emailField.value)) {
+          setFieldError(emailField, 'Введите корректный e-mail.');
+        }
+      }
+
+      if (!form.checkValidity()) {
+        if (status) {
+          status.className = 'form-status error';
+          status.textContent = 'Проверьте выделенные поля.';
+        }
+        form.reportValidity();
+        return;
+      }
+
+      if (status) status.className = 'form-status';
       if (status) status.textContent = 'Отправляем...';
       if (btn) btn.disabled = true;
       fetch(form.getAttribute('action'), {
@@ -136,9 +226,16 @@
       }).then(function (data) {
         if (!data.ok) throw new Error(data.error || 'send failed');
         form.reset();
-        if (status) status.textContent = 'Заявка отправлена. Мы свяжемся с вами.';
+        if (startedAtField) startedAtField.value = String(Date.now());
+        if (status) {
+          status.className = 'form-status success';
+          status.textContent = 'Заявка отправлена. Мы свяжемся с вами.';
+        }
       }).catch(function () {
-        if (status) status.textContent = 'Не удалось отправить форму. Позвоните нам: +7 (812) 401-65-64.';
+        if (status) {
+          status.className = 'form-status error';
+          status.textContent = 'Не удалось отправить форму. Позвоните нам: +7 (812) 401-65-64.';
+        }
       }).finally(function () {
         if (btn) btn.disabled = false;
       });
