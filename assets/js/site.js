@@ -158,20 +158,22 @@
     if (startedAtField) startedAtField.value = String(Date.now());
 
     if (phoneField) {
+      var prevDigits = phoneDigits(phoneField.value);
       phoneField.addEventListener('input', function (e) {
         var deleting = e && e.inputType && e.inputType.indexOf('delete') === 0;
         var digits = phoneDigits(phoneField.value);
-        // при удалении: если после форматирования строка кончается на разделитель
-        // (скобка/пробел/дефис) — убираем ещё и цифру перед ним, чтобы они стирались вместе
-        if (deleting && /\D$/.test(formatPhone(digits))) {
+        // если при удалении количество цифр не изменилось — значит стёрли разделитель
+        // (скобку/пробел/дефис), а не цифру → убираем заодно цифру перед ним
+        if (deleting && digits.length === prevDigits.length && digits.length > 1) {
           digits = digits.slice(0, -1);
         }
         var phone = formatPhone(digits);
         if (phoneField.value !== phone) phoneField.value = phone;
+        prevDigits = digits;
         resetFieldError(phoneField);
       });
       phoneField.addEventListener('focus', function () {
-        if (!phoneField.value) phoneField.value = '+7 ';
+        if (!phoneField.value) { phoneField.value = '+7 '; prevDigits = phoneDigits(phoneField.value); }
       });
       phoneField.addEventListener('blur', function () {
         if (phoneDigits(phoneField.value).length <= 1) phoneField.value = '';
