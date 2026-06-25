@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>МБМ-Транс — перевозка негабаритных и тяжеловесных грузов | Санкт-Петербург</title>
+<meta name="description" content="ООО «МБМ-Транс» — транспортно-экспедиторская компания. Перевозка негабаритных и тяжеловесных грузов до 365 т собственным автопарком по России, Казахстану, Беларуси, Узбекистану и из Китая. 20 лет на рынке.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="shortcut icon" href="assets/favicon.ico?v=20260615w1" type="image/x-icon">
+<link rel="icon" href="assets/favicon.ico?v=20260615w1" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260615w1">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20260615w1">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="МБМ-Транс">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="МБМ-Транс — перевозка негабаритных и тяжеловесных грузов">
+<meta property="og:description" content="Транспортно-экспедиторская компания. Перевозка негабаритных и тяжеловесных грузов до 365 т по России, Казахстану, Беларуси, Узбекистану и из Китая. 20 лет на рынке.">
+<meta property="og:image" content="https://mbm-trans.ru/assets/og-cover.jpg">
+<meta property="og:url" content="https://mbm-trans.ru/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="stylesheet" href="assets/css/redesign.release1.css">
+</head>
+<body>
+
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="wrap">
+    <span class="l"><svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg> Транспортно-экспедиторская компания · Санкт-Петербург</span>
+    <div class="r">
+      <a href="/cdn-cgi/l/email-protection#8fe6e1e9e0cfe2ede2a2fbfdeee1fca1fdfa"><span class="__cf_email__" data-cfemail="6c05020a032c010e0141181e0d021f421e19">[email&#160;protected]</span></a>
+
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="header" id="header">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label="МБМ-Транс — на главную">
+      <img class="logo-img" src="assets/css/imgs/logo_h.jpg" srcset="assets/css/imgs/logo_h.jpg 1x, assets/css/imgs/logo_h@2x.jpg 2x" width="233" height="88" alt="МБМ-Транс">
+    </a>
+    <nav class="main" id="nav">
+      <a href="o-kompanii.html">О компании</a>
+      <div class="has-sub">
+        <a href="kontejnernyie-perevozki.html">Услуги <svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg></a>
+        <div class="sub">
+          <a href="kontejnernyie-perevozki.html"><svg class="icon" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>Контейнерные перевозки</a>
+          <a href="perevozka-negabaritnyix-gruzov.html"><svg class="icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>Перевозка негабаритных грузов</a>
+          <a href="texnika-v-arendu.html"><svg class="icon" viewBox="0 0 24 24"><circle cx="7.5" cy="14.5" r="3.5"/><path d="M10 12 20 2"/><path d="m15 7 2 2"/><path d="m13 9 2 2"/><path d="M4.9 17.1 3 19l2 2 1.9-1.9"/></svg>Техника в аренду</a>
+          <a href="zhd-perevozki.html"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/></svg>Ж/Д перевозки</a>
+        </div>
+      </div>
+      <a href="nashi-proektyi.html">Наши проекты</a>
+      <a href="nashi-klientyi.html">Клиенты</a>
+      <a href="kontaktyi.html">Контакты</a>
+    </nav>
+    <div class="h-right">
+      <div class="h-phone"><a href="tel:+78124016564"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg>+7 (812) 401-65-64</a><span>Звоните, мы на связи</span></div>
+      <a href="#contacts" class="btn btn-orange">Заказать звонок</a>
+      <button class="burger" id="burger" aria-label="Открыть меню"><svg class="icon" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"/></svg></button>
+    </div>
+  </div>
+</header>
+<div class="overlay" id="overlay"></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="slides" id="slides">
+    <div class="slide active" style="background-image:url('assets/images/fp_slider/slider3_.webp')"></div>
+    <div class="slide" style="background-image:url('assets/images/fp_slider/slider1_.webp')"></div>
+    <div class="slide" style="background-image:url('assets/images/work/hero-vessel.webp')"></div>
+  </div>
+  <div class="wrap hero-grid">
+    <span class="eyebrow" style="color:#fff">20 лет на рынке грузоперевозок</span>
+    <h1>Сложный груз — <span class="o">понятный маршрут</span></h1>
+    <p class="lead">Транспортировка тяжеловесных и негабаритных грузов собственным автопарком по России, Казахстану, Беларуси и Узбекистану, а также доставка из Китая. Контейнерные и Ж/Д перевозки «от двери до двери».</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn btn-orange">Наши услуги <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#contacts" class="btn btn-ghost">Рассчитать перевозку</a>
+    </div>
+    <div class="hero-trust">
+      <div class="t"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span><b>Собственный автопарк</b><small>Тягачи и низкорамные тралы</small></span></div>
+      <div class="t"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Допуск к перевозкам</b><small>Международные разрешения</small></span></div>
+      <div class="t"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><span><b>Сопровождение 24/7</b><small>На всём маршруте</small></span></div>
+    </div>
+  </div>
+  <div class="hero-dots" id="dots"></div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="wrap">
+    <div class="stat reveal">
+      <div class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="6"/><path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11"/></svg></div>
+      <div class="num"><span data-count="20">0</span></div>
+      <div class="lbl">лет на рынке грузоперевозок</div>
+    </div>
+    <div class="stat reveal">
+      <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M8 10a4 4 0 0 1 8 0"/><path d="M7 10h10l2 10H5l2-10Z"/><path d="M9 14h6"/><path d="M12 14v4"/></svg></div>
+      <div class="num"><span data-count="365">0</span><span class="u">т</span></div>
+      <div class="lbl">максимальный вес груза</div>
+    </div>
+    <div class="stat reveal">
+      <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+      <div class="num"><span data-count="500">0</span><span class="u">+</span></div>
+      <div class="lbl">успешно выполненных проектов</div>
+    </div>
+    <div class="stat reveal">
+      <div class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11l19-9-9 19-2-8-8-2Z"/></svg></div>
+      <div class="num"><span data-count="5">0</span></div>
+      <div class="lbl">страны доставки: Россия, Казахстан, Беларусь, Узбекистан, Китай</div>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="block" id="about">
+  <div class="wrap about-grid">
+    <div class="about-photo reveal">
+      <div class="blob"></div>
+      <div class="frame">
+        <img src="assets/images/work/about.webp" alt="Автопарк МБМ-Транс — Volvo FH16 с негабаритным грузом">
+        <div class="cap"><div class="post">Собственный автопарк</div><div class="nm">Тягачи Volvo · Scania · Mercedes-Benz</div></div>
+      </div>
+      <div class="ribbon"><b>20</b><span>лет на рынке</span></div>
+    </div>
+    <div class="about-text reveal">
+      <span class="eyebrow">О компании</span>
+      <h2 class="sec-title" style="margin:.7rem 0 0">Надёжная логистика <span class="hl">тяжёлых грузов</span></h2>
+      <p class="big">Уже 20 лет ООО «МБМ-Транс» — одна из ведущих компаний Северо-Западного региона в области перевозки негабаритных и тяжеловесных грузов собственным автопарком.</p>
+      <p>Основные клиенты компании — крупнейшие российские предприятия: производители чёрных металлов, судостроительные, судоремонтные и машиностроительные заводы, а также ведущие транспортно-экспедиторские компании, доставляющие грузы «от двери до двери».</p>
+      <div class="about-feats">
+        <div class="f"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span><span><b>Собственный автопарк</b><small>Тягачи и низкорамные тралы</small></span></div>
+        <div class="f"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span><span><b>Разрешения и допуски</b><small>Международные перевозки</small></span></div>
+        <div class="f"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg></span><span><b>Проектная логистика</b><small>Полное сопровождение</small></span></div>
+        <div class="f"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M5 18v2M19 18v2M4 9h16"/><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M8 6V4h8v2"/></svg></span><span><b>Негабарит до 365 т</b><small>Спецтехника и сопровождение</small></span></div>
+      </div>
+      <a href="o-kompanii.html" class="btn btn-line">Подробнее о компании <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<hr class="hazard">
+<!-- SERVICES -->
+<section class="block tint" id="services">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <div class="left">
+        <span class="eyebrow">Что мы делаем</span>
+        <h2 class="sec-title">Наши <span class="hl">услуги</span></h2>
+        <p class="lead">Полный спектр транспортных решений для промышленных и проектных грузов любой сложности.</p>
+      </div>
+    </div>
+    <div class="svc-grid">
+      <article class="svc reveal"><span class="idx">01</span>
+        <div class="svc-ico svc-ico--container"><img src="assets/images/services/service-container-ai.webp" alt="Контейнер"></div>
+        <h3>Контейнерные перевозки</h3>
+        <p>Доставка грузов в контейнерах автомобильным транспортом по России и в порты Северо-Запада.</p>
+        <a href="kontejnernyie-perevozki.html" class="more">Подробнее <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </article>
+      <article class="svc reveal"><span class="idx">02</span>
+        <div class="svc-ico svc-ico--trailer"><img src="assets/images/services/service-trailer-ai.webp" alt="Низкорамный трал"></div>
+        <h3>Негабаритные грузы</h3>
+        <p>Перевозка крупногабаритных и тяжеловесных грузов с оформлением разрешений и сопровождением.</p>
+        <a href="perevozka-negabaritnyix-gruzov.html" class="more">Подробнее <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </article>
+      <article class="svc reveal"><span class="idx">03</span>
+        <div class="svc-ico svc-ico--crane"><img src="assets/images/services/service-crane-ai.webp" alt="Автокран"></div>
+        <h3>Техника в аренду</h3>
+        <p>Специализированная техника для погрузки, разгрузки и транспортировки тяжёлых грузов.</p>
+        <a href="texnika-v-arendu.html" class="more">Подробнее <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </article>
+      <article class="svc reveal"><span class="idx">04</span>
+        <div class="svc-ico svc-ico--rail"><img src="assets/images/services/service-rail-ai.webp" alt="Железнодорожная платформа"></div>
+        <h3>Ж/Д перевозки</h3>
+        <p>Перевозка грузов железнодорожным транспортом на универсальных и специальных платформах.</p>
+        <a href="zhd-perevozki.html" class="more">Подробнее <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<hr class="hazard">
+<!-- HOW WE WORK -->
+<section class="block process" id="process">
+  <div class="wrap">
+    <div class="head-row reveal" style="flex-direction:column;align-items:center;text-align:center">
+      <span class="eyebrow" style="color:#fff">Просто и прозрачно</span>
+      <h2 class="sec-title">Как мы <span class="hl">работаем</span></h2>
+      <p class="lead" style="text-align:center">От заявки до выгрузки — четыре понятных шага. Расчёт, разрешения и сопровождение берём на себя.</p>
+    </div>
+    <div class="steps">
+      <div class="step reveal">
+        <span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z"/><path d="M14 2v6h6"/><path d="M16 13H8M16 17H8M10 9H8"/></svg></span>
+        <span class="num">1</span>
+        <h3>Заявка</h3>
+        <p>Оставляете заявку с параметрами груза — вес, габариты и маршрут.</p>
+      </div>
+      <div class="step reveal">
+        <span class="ic"><svg class="icon" viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8"/><path d="M8 10h.01M12 10h.01M16 10h.01M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01M16 18h.01"/></svg></span>
+        <span class="num">2</span>
+        <h3>Расчёт и разрешения</h3>
+        <p>Рассчитываем стоимость, разрабатываем маршрут и оформляем все разрешения.</p>
+      </div>
+      <div class="step reveal">
+        <span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/><path d="m9 12 2 2 4-4"/></svg></span>
+        <span class="num">3</span>
+        <h3>Сопровождение</h3>
+        <p>Подаём технику, грузим и сопровождаем негабарит на всём маршруте.</p>
+      </div>
+      <div class="step reveal">
+        <span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></span>
+        <span class="num">4</span>
+        <h3>Доставка</h3>
+        <p>Доставляем груз в срок и аккуратно разгружаем на вашем объекте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTIFICATES -->
+<section class="block">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <div class="left">
+        <span class="eyebrow">Гарантии качества</span>
+        <h2 class="sec-title">Свидетельства <span class="hl">и сертификаты</span></h2>
+        <p class="lead">Подтверждённая надёжность и официальный допуск к перевозкам любого уровня сложности.</p>
+      </div>
+    </div>
+    <div class="cert-grid">
+      <button class="cert reveal lb" data-img="assets/images/doc/sert.webp" type="button"><span class="cert-thumb"><img src="assets/images/doc/sert.webp" loading="lazy" alt="Сертификат соответствия"></span><b>Сертификат соответствия</b><small>Система менеджмента качества</small></button>
+      <button class="cert reveal lb" data-img="assets/images/doc/udostoverenie.webp" type="button"><span class="cert-thumb"><img src="assets/images/doc/udostoverenie.webp" loading="lazy" alt="Допуск к международным перевозкам"></span><b>Допуск к международным перевозкам</b><small>Разрешительная документация</small></button>
+      <button class="cert reveal lb" data-img="assets/images/doc/bank.webp" type="button"><span class="cert-thumb"><img src="assets/images/doc/bank.webp" loading="lazy" alt="Банковская гарантия"></span><b>Банковская гарантия</b><small>Исполнения обязательств</small></button>
+      <button class="cert reveal lb" data-img="assets/images/doc/bank_1.webp" type="button"><span class="cert-thumb"><img src="assets/images/doc/bank_1.webp" loading="lazy" alt="Банковская гарантия"></span><b>Банковская гарантия</b><small>Исполнения обязательств</small></button>
+    </div>
+  </div>
+</section>
+
+<hr class="hazard">
+<!-- PROJECTS -->
+<section class="block tint" id="projects">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <div class="left">
+        <span class="eyebrow">Реализовано</span>
+        <h2 class="sec-title">Наши <span class="hl">проекты</span></h2>
+        <p class="lead">От промышленных аппаратов и реакторного оборудования до мостовых конструкций.</p>
+      </div>
+      <a href="nashi-proektyi.html" class="btn btn-line">Все проекты <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="proj-grid">
+      <a class="proj big reveal" href="nashi-proektyi.html">
+        <img src="assets/images/work/bridge.webp" loading="lazy" alt="Перевозка мостового пролёта на самоходных модулях">
+        <div class="cap"><span class="tag">Металлоконструкции</span><b>Перевозка мостового пролёта на самоходных модульных тележках</b></div>
+      </a>
+      <a class="proj reveal" href="nashi-proektyi.html">
+        <img src="assets/images/work/reactor.webp" loading="lazy" alt="Транспортировка корпуса промышленного аппарата">
+        <div class="cap"><span class="tag">Энергетика</span><b>Транспортировка корпуса промышленного аппарата</b></div>
+      </a>
+      <a class="proj reveal" href="nashi-proektyi.html">
+        <img src="assets/images/work/domes.webp" loading="lazy" alt="Перевозка днищ реакторов">
+        <div class="cap"><span class="tag">Энергетика</span><b>Перевозка крупногабаритных днищ аппаратов</b></div>
+      </a>
+      <a class="proj reveal" href="nashi-proektyi.html">
+        <img src="assets/images/work/tank.webp" loading="lazy" alt="Перевозка крупной ёмкости">
+        <div class="cap"><span class="tag">Оборудование</span><b>Перевозка крупногабаритной ёмкости</b></div>
+      </a>
+      <a class="proj reveal" href="nashi-proektyi.html">
+        <img src="assets/images/work/convoy.webp" loading="lazy" alt="Проектная перевозка автоколонной">
+        <div class="cap"><span class="tag">Проектная логистика</span><b>Перевозка негабарита автоколонной</b></div>
+      </a>
+      <a class="proj reveal" href="nashi-proektyi.html">
+        <img src="assets/images/work/modular.webp" loading="lazy" alt="Модульные тралы для тяжеловесных грузов">
+        <div class="cap"><span class="tag">Спецтехника</span><b>Модульные тралы для тяжеловесных грузов</b></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="head-row reveal" style="flex-direction:column;align-items:center;text-align:center">
+      <span class="eyebrow">Отвечаем на главное</span>
+      <h2 class="sec-title">Частые <span class="hl">вопросы</span></h2>
+      <p class="lead" style="text-align:center">Коротко о том, что обычно спрашивают перед заказом перевозки.</p>
+    </div>
+    <div class="faq-list">
+      <details class="faq reveal">
+        <summary>Какой максимальный вес и габариты груза вы перевозите?<span class="q-ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Перевозим грузы массой <strong>до 365 тонн</strong>. Груз считается негабаритным, если его ширина более 2,5 м, длина свыше 13,5 м, высота более 4 м или масса превышает 25 т — для таких грузов у нас есть низкорамные тралы и опыт сложных проектов.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>Нужны ли специальные разрешения на негабарит?<span class="q-ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Да. Мы берём оформление на себя: разрабатываем маршрут, получаем разрешения, согласуем перевозку с ГИБДД и при необходимости организуем автомобили сопровождения.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>В какие страны вы осуществляете перевозки?<span class="q-ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Перевозки выполняются по территории <strong>России, Казахстана, Беларуси и Узбекистана</strong>, а также организуем доставку грузов <strong>из Китая</strong>.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>Страхуется ли груз при перевозке?<span class="q-ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Да, груз страхуется на всю стоимость перевозки. Это касается как негабаритных, так и контейнерных и Ж/Д перевозок.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>Как рассчитывается стоимость перевозки?<span class="q-ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Стоимость зависит от веса и габаритов груза, маршрута, необходимости разрешений и сопровождения. Оставьте заявку с параметрами груза — менеджер рассчитает стоимость и сроки в течение рабочего дня.</div>
+      </details>
+      <details class="faq reveal">
+        <summary>Сколько времени занимает организация перевозки?<span class="q-ic"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg></span></summary>
+        <div class="ans">Зависит от сложности маршрута и оформления разрешений. Стандартные перевозки выезжают в ближайшие дни, сложные проектные — после согласования маршрута. Точные сроки сообщим при расчёте.</div>
+      </details>
+    </div>
+    <div style="text-align:center;margin-top:2.5rem">
+      <a href="#contacts" class="btn btn-orange">Остались вопросы? Задайте их нам <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<hr class="hazard">
+<!-- CLIENTS -->
+<section class="block tint" id="clients">
+  <div class="wrap">
+    <div class="head-row reveal" style="justify-content:center;text-align:center;flex-direction:column;align-items:center">
+      <span class="eyebrow">Нам доверяют</span>
+      <h2 class="sec-title">Наши <span class="hl">клиенты</span></h2>
+      <p class="lead" style="text-align:center">Крупнейшие промышленные предприятия России выбирают МБМ-Транс.</p>
+    </div>
+  </div>
+  <div class="clients-marquee reveal">
+    <div class="marquee-track" id="track">
+      <div class="client" title="Северсталь"><img src="assets/images/clients/severstal-logo2.webp" loading="lazy" alt="Северсталь"></div>
+      <div class="client" title="Ижорский трубный завод"><img src="assets/images/clients/ижорский трубный завод.webp" loading="lazy" alt="Ижорский трубный завод"></div>
+      <div class="client" title="ОМЗ-Спецсталь"><img src="assets/images/clients/omz-logo.webp" loading="lazy" alt="ОМЗ-Спецсталь"></div>
+      <div class="client" title="Севмаш"><img src="assets/images/clients/img2.webp" loading="lazy" alt="Севмаш"></div>
+      <div class="client" title="Мостотрест"><img src="assets/images/clients/logo_mostotrest.webp" loading="lazy" alt="Мостотрест"></div>
+      <div class="client" title="Инкотек"><img src="assets/images/clients/logo_inkotek.webp" loading="lazy" alt="Инкотек"></div>
+      <div class="client" title="НЭК"><img src="assets/images/clients/logo-nek.webp" loading="lazy" alt="Группа компаний НЭК"></div>
+      <div class="client" title="Natrex"><img src="assets/images/clients/logo_natrex.webp" loading="lazy" alt="Natrex"></div>
+      <div class="client" title="Bedford Group"><img src="assets/images/clients/logo_bedford.webp" loading="lazy" alt="Bedford Group"></div>
+      <div class="client" title="Instar Logistics"><img src="assets/images/clients/logo_instar.webp" loading="lazy" alt="Instar Logistics"></div>
+      <div class="client" title="AET Trans"><img src="assets/images/clients/logo_aettrans.webp" loading="lazy" alt="AET Trans"></div>
+      <div class="client" title="Ahlers"><img src="assets/images/clients/ahlers_logo.webp" loading="lazy" alt="Ahlers"></div>
+      <div class="client" title="Transport Systems Transy"><img src="assets/images/clients/logo_transy.webp" loading="lazy" alt="Transport Systems Transy"></div>
+      <div class="client" title="Premium Engineering"><img src="assets/images/clients/logo_premium_engineering.webp" loading="lazy" alt="Premium Engineering"></div>
+      <div class="client" title="ЛОНМАДИ · КВИНТМАДИ"><img src="assets/images/clients/logo_lonmadi_kwintmadi.webp" loading="lazy" alt="ЛОНМАДИ КВИНТМАДИ"></div>
+      <div class="client" title="Универсал Спецтехника"><img src="assets/images/clients/logo_universal_spectech.webp" loading="lazy" alt="Универсал Спецтехника"></div>
+      <div class="client" title="Ferronordic Machines"><img src="assets/images/clients/logo_ferronordic.webp" loading="lazy" alt="Ferronordic Machines"></div>
+      <div class="client" title="Keystone Logistics"><img src="assets/images/clients/logo_keystone.webp" loading="lazy" alt="Keystone Logistics"></div>
+      <div class="client" title="AsstrA"><img src="assets/images/clients/logo_asstra.webp" loading="lazy" alt="AsstrA"></div>
+      <div class="client" title="Yusen Logistics"><img src="assets/images/clients/logo_yusen.webp" loading="lazy" alt="Yusen Logistics"></div>
+    </div>
+  </div>
+  <div class="wrap" style="text-align:center;margin-top:2.5rem">
+    <a href="nashi-klientyi.html" class="btn btn-line">Все клиенты <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta">
+  <div class="wrap">
+    <div>
+      <h2>Нужно перевезти негабаритный груз?</h2>
+      <p>Оставьте данные — рассчитаем стоимость и сроки в течение рабочего дня.</p>
+    </div>
+    <a href="#contacts" class="btn btn-orange">Рассчитать перевозку <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+  </div>
+</div>
+
+<!-- CONTACTS -->
+<section class="block" id="contacts">
+  <div class="wrap">
+    <div class="head-row reveal">
+      <div class="left">
+        <span class="eyebrow">Свяжитесь с нами</span>
+        <h2 class="sec-title">Контакты</h2>
+      </div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <div class="row"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></span><div><div class="lbl">Адрес</div><div class="val">Россия, 198035, Санкт-Петербург,<br>Межевой канал, д. 3, корпус 2, 8 этаж</div></div></div>
+        <div class="row"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92Z"/></svg></span><div><div class="lbl">Телефон</div><div class="val"><a href="tel:+78124016564">+7 (812) 401-65-64</a></div></div></div>
+        <div class="row"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></span><div><div class="lbl">E-mail</div><div class="val"><a href="/cdn-cgi/l/email-protection#a8c1c6cec7e8c5cac585dcdac9c6db86dadd"><span class="__cf_email__" data-cfemail="c2abaca4ad82afa0afefb6b0a3acb1ecb0b7">[email&#160;protected]</span></a></div></div></div>
+        <div class="row"><span class="ic"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></span><div><div class="lbl">Режим работы</div><div class="val">Пн–Пт 9:00–18:00 · сопровождение 24/7</div></div></div>
+      </div>
+      <form class="form reveal" data-lead-form action="https://mbm-trans-leads.5br6b6c4st.workers.dev" method="post">
+        <h3>Оставить заявку</h3>
+        <div class="fd">Заполните форму — менеджер свяжется с вами и рассчитает стоимость перевозки.</div>
+        <div class="grid2">
+          <div class="field"><label for="f-name">Контактное лицо</label><input id="f-name" name="name" type="text" placeholder="Ваше имя" required></div>
+          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\+7 \([0-9]{3}\) [0-9]{3}-[0-9]{2}-[0-9]{2}" maxlength="18" placeholder="+7 (___) ___-__-__" required></div>
+        </div>
+        <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.ru"></div>
+        <div class="field"><label for="f-msg">Сообщение</label><textarea id="f-msg" name="message" placeholder="Опишите ваш груз и маршрут"></textarea></div>
+        <div class="lead-trap" aria-hidden="true"><label for="f-website">Сайт</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="lead_started_at" value="">
+        <input type="hidden" name="page" value="Главная">
+        <button class="btn btn-orange" type="submit">Отправить заявку <svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></button>
+        <div class="form-status" role="status" aria-live="polite"></div>
+      </form>
+    </div>
+    <div class="maps">
+      <div class="map-card">
+        <div class="map-pin"><svg class="icon" viewBox="0 0 24 24"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div class="map-copy">
+          <span class="eyebrow">Офис на карте</span>
+          <h3>Санкт-Петербург, Межевой канал, д. 3, корпус 2</h3>
+          <p>8 этаж · откроется в удобном картографическом сервисе</p>
+        </div>
+        <div class="map-actions">
+          <a class="btn btn-orange" href="https://yandex.ru/maps/?text=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%2C%20%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%2C%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">Открыть в Яндекс Картах <svg class="icon" viewBox="0 0 24 24"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
+          <div class="map-links" aria-label="Выбор карты">
+            <a href="https://maps.apple.com/?q=%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202%2C%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&ll=59.912326,30.262006" target="_blank" rel="noopener">Apple Maps</a>
+            <a href="https://www.google.com/maps/search/?api=1&query=59.912326%2C30.262006" target="_blank" rel="noopener">Google Maps</a>
+            <a href="https://2gis.ru/spb/search/%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">2GIS</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="hazard">
+<!-- FOOTER -->
+<footer>
+  <div class="wrap foot-grid">
+    <div class="foot-brand">
+      <img class="foot-logo-img" src="assets/css/imgs/logo_f.png" srcset="assets/css/imgs/logo_f.png 1x, assets/css/imgs/logo_f@2x.png 2x" width="219" height="84" alt="МБМ-Транс">
+      <p>Транспортно-экспедиторская компания. Перевозка негабаритных и тяжеловесных грузов по России, Казахстану, Беларуси, Узбекистану и из Китая.</p>
+    </div>
+    <div class="foot-col">
+      <h4>Услуги</h4>
+      <a href="kontejnernyie-perevozki.html">Контейнерные перевозки</a>
+      <a href="perevozka-negabaritnyix-gruzov.html">Негабаритные грузы</a>
+      <a href="texnika-v-arendu.html">Техника в аренду</a>
+      <a href="zhd-perevozki.html">Ж/Д перевозки</a>
+    </div>
+    <div class="foot-col">
+      <h4>Компания</h4>
+      <a href="o-kompanii.html">О компании</a>
+      <a href="nashi-proektyi.html">Наши проекты</a>
+      <a href="nashi-klientyi.html">Клиенты</a>
+      <a href="kontaktyi.html">Контакты</a>
+    </div>
+    <div class="foot-col">
+      <h4>Контакты</h4>
+      <a href="tel:+78124016564">+7 (812) 401-65-64</a>
+      <a href="/cdn-cgi/l/email-protection#127b7c747d527f707f3f6660737c613c6067"><span class="__cf_email__" data-cfemail="70191e161f301d121d5d0402111e035e0205">[email&#160;protected]</span></a>
+      <p>198035, Санкт-Петербург,<br>Межевой канал, д. 3, к. 2</p>
+    </div>
+  </div>
+  <div class="wrap foot-bottom">
+    <span>© 2008–2026 ООО «МБМ-Транс». Все права защищены.</span>
+    <span>Перевозка негабаритных грузов · Санкт-Петербург</span>
+  </div>
+</footer>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="close" id="lbClose" aria-label="Закрыть"><svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg></button>
+  <img id="lbImg" src="" alt="Документ">
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/site.js" defer></script>
+</body>
+</html>

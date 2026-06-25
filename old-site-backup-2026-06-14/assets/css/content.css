@@ -1,0 +1,239 @@
+.content_ {
+	color: #36424a;
+	font-size: 16px;
+	line-height: 1.3;
+}
+.content_ p{
+	margin-bottom: 16px;
+}
+.content_ b{
+	font-weight: 700;
+}
+.content_ h3{
+	color: #000;
+	font-size: 18px;
+	font-weight: 700;
+	margin-bottom: 16px;
+	text-transform: uppercase;
+}
+.content_ h4{
+	color: #000;
+	font-size: 18px;
+	font-weight: 400;
+	margin-bottom: 16px;
+	text-transform: uppercase;
+}
+.content_ ol{
+	list-style: decimal;
+	padding-bottom: 15px;
+}
+.content_ ol li{
+	margin-left: 61px;
+}
+.content_ .logo_c{
+	float: left;
+	text-align: center;
+	width: 200px;
+}
+.content_ .logo_c img{
+	border: 1px solid #b1b1b1;
+}
+.content_ .text_c{
+	float: right;
+	width: 740px;	
+}
+.content_ ul{
+	padding-bottom: 15px;
+}
+.content_ ul li{
+	padding-left: 37px;
+}
+.content_ ul li:before{
+  content:  '—';
+}
+.content_ .about{
+	margin-bottom: 25px;
+}
+.content_ .box_c{
+	border-top: 1px solid #b1b1b1;
+	position: relative;
+	padding: 38px 0 28px;
+}
+.content_ .box_c:after{
+	background: url('imgs/box_after.jpg');
+	content: '';
+	height: 24px;
+	position: absolute;
+	right: 86px;
+	top: -24px;
+	width: 29px;
+}
+.content_ .box_c:before{
+	background: #fff;
+	border-top: 1px solid #b1b1b1;
+	content: '';
+	height: 26px;
+	position: absolute;
+	right: 0;
+	top: -24px;
+	width: 86px;
+}
+.content_ .box_c.sea{
+	position: relative;
+}
+.content_ .box_c .sea:after{
+	background: url('imgs/rope.jpg');
+	content: '';
+	height: 620px;
+	position: absolute;
+	right: -496px;
+	top: -644px;
+	width: 603px;
+}
+.content_ b,
+.content_ strong{
+	font-weight: 700;
+}
+.content_ i,
+.content_ em{
+	font-style: italic;
+}
+
+.content_ .about_c .photo{
+	font-weight: 700;
+	float: left;
+	width: 150px;
+}
+.content_ .about_c .text{
+	float: right;
+	width: 760px;
+}
+.content_ .about_c .photo .post {
+	color: #6e8499;
+	font-size: 12px;
+	padding: 25px 0 12px;
+}
+.content_ .about_c .photo .name {
+font-size: 18px;
+}
+.content_ .box_c .text {
+	float: left;
+	width: 560px;
+}
+.content_ .box_c .image {
+	float: right;
+	width: 370px;
+}
+.content_ .quote {
+	color: #6e8499;
+	font-style: italic;
+	padding: 17px 30px;
+}
+.content_ .info {
+	background: #ffc040;
+	border-left: 3px solid #ff9d0a;
+	color: #000;
+	line-height: 50px;
+	padding-left: 17px;
+}
+.content_ .info a{
+	border-bottom: 1px dotted #000;
+	color: #000;
+	text-decoration: none;
+}
+.content_ .navigation ul{
+	display: inline-block;
+	vertical-align: middle;
+}
+.content_ .navigation li{
+	cursor: pointer;
+	display: inline-block;
+	margin-left: 5px;
+	padding: 9px;
+	text-decoration: underline;
+	vertical-align: middle;
+}
+.content_ .navigation li:before{
+	display: none;
+}
+.content_ .navigation li.active{
+	background: #ecf4f7;
+	text-decoration: none;
+}
+.content_ .navigation label{
+	color: #6e8499;
+}
+.content_ .range {
+	background: #f3f3f3;
+	height: 100px;
+	position: relative;
+}
+.content_ .range:after {
+	background: #fff;
+	bottom: 0;
+	display: block;
+	content: '';
+	left: 0;
+	height: 25px;
+	position: absolute;
+	width: 60px;
+}
+.content_ .range:before {
+	border-color: transparent;
+	border-width: 25px;
+	border-style: solid;
+	border-bottom-color: #fff;
+	content: '';
+	left: 35px;
+	margin-right: -33px;
+	height: 0px;
+	position: absolute;
+	bottom: 0;
+	width: 0px;
+	z-index: 9999;
+}
+.content_ .range .dsc{
+	float: left;
+	font-weight: 700;
+	margin-top: 37px;
+	padding-right: 22px;
+	text-align: right;
+	width: 233px;
+}
+.content_ .range .range_box{
+	float: left;
+	padding-top: 10px;
+	width: 445px;
+}
+.content_ .range .button{
+	float: right;
+	text-align: center;
+	padding-top: 28px;
+	width: 240px;
+}
+.content_  table {
+	color: #2c3e50;
+	font-size: 14px;
+	width: 100%;
+}
+.content_  table thead{
+	background: #daebf8;
+	line-height: 40px;
+}
+.content_  table tr{
+	line-height: 31px;
+}
+.content_  table tr:nth-child(even){
+	background: #f3f3f3;
+}
+.content_  table td{
+	padding-left: 10px;
+}
+.content_  table td+td{
+	padding: 0;
+	text-align: center;
+	width: 160px;
+}
+.content_  table td+td+td{
+	border-left: 1px solid #95a5a6; 
+}

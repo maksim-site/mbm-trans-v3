@@ -1,0 +1,8 @@
+name = "mbm-trans-leads"
+main = "src/worker.js"
+compatibility_date = "2026-06-14"
+workers_dev = true
+preview_urls = false
+
+[observability]
+enabled = true

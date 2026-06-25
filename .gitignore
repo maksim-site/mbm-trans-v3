@@ -2,3 +2,11 @@
 *.log
 __pycache__/
 telegram-config.php
+mbm-lead-mail-config.php
+screenshots-v2/
+modx-preview-mbm-2026/
+modx-preview-mbm-2026.zip
+mbm-preview-2026-content.zip
+.wrangler/
+cloudflare/**/.wrangler/
+cloudflare/**/.dev.vars

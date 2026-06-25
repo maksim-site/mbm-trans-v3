@@ -12,7 +12,7 @@ ICON = {
  'chev':'<svg class="icon" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></svg>',
  'doc':'<svg class="icon" viewBox="0 0 24 24"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v5h5"/><path d="M9 13h6M9 17h4"/></svg>',
  'box':'<svg class="icon" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></svg>',
- 'crane':'<svg class="icon" viewBox="0 0 24 24"><path d="M2 22V12a2 2 0 0 1 2-2h2"/><path d="m6 10 4-7 6 3-3 6"/><path d="M14 14h6v6a2 2 0 0 1-2 2H6"/><circle cx="6" cy="18" r="2"/></svg>',
+ 'rent':'<svg class="icon" viewBox="0 0 24 24"><circle cx="7.5" cy="14.5" r="3.5"/><path d="M10 12 20 2"/><path d="m15 7 2 2"/><path d="m13 9 2 2"/><path d="M4.9 17.1 3 19l2 2 1.9-1.9"/></svg>',
  'train':'<svg class="icon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="14" rx="2"/><path d="M4 11h16"/><path d="m8 19-2 3"/><path d="m18 22-2-3"/><circle cx="8.5" cy="14" r="1"/><circle cx="15.5" cy="14" r="1"/></svg>',
 }
 
@@ -21,7 +21,7 @@ NAV = [
  ('Услуги','kontejnernyie-perevozki.html',[
     ('Контейнерные перевозки','kontejnernyie-perevozki.html','box'),
     ('Перевозка негабаритных грузов','perevozka-negabaritnyix-gruzov.html','truck'),
-    ('Техника в аренду','texnika-v-arendu.html','crane'),
+    ('Техника в аренду','texnika-v-arendu.html','rent'),
     ('Ж/Д перевозки','zhd-perevozki.html','train'),
  ]),
  ('Наши проекты','nashi-proektyi.html',None),
@@ -59,18 +59,19 @@ def head(title, desc, active):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="shortcut icon" href="assets/favicon.ico?v=20260615w1" type="image/x-icon">
+<link rel="icon" href="assets/favicon.ico?v=20260615w1" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260615w1">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20260615w1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="МБМ-Транс">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="https://gysok1337.github.io/mbm-trans-redesign/assets/og-cover.jpg">
-<meta property="og:url" content="https://gysok1337.github.io/mbm-trans-redesign/{active}">
+<meta property="og:image" content="https://mbm-trans.ru/assets/og-cover.jpg">
+<meta property="og:url" content="https://mbm-trans.ru/{active}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/css/redesign.css">
+<link rel="stylesheet" href="assets/css/redesign.release1.css">
 </head>
 <body>
 <div class="topbar">
@@ -144,7 +145,7 @@ def footer():
   </div>
   <div class="wrap foot-bottom">
     <span>© 2008–2026 ООО «МБМ-Транс». Все права защищены.</span>
-    <span>Перевозка негабаритных грузов · Санкт-Петербург</span>
+    <span><a href="politika-konfidencialnosti.html">Политика конфиденциальности</a> · Перевозка негабаритных грузов · Санкт-Петербург</span>
   </div>
 </footer>
 <script src="assets/js/site.js" defer></script>
@@ -426,16 +427,19 @@ contacts_body=f'''<section class="block">
         <div class="row"><span class="ic">{ICON['mail']}</span><div><div class="lbl">E-mail</div><div class="val"><a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a></div></div></div>
         <div class="row"><span class="ic">{ICON['clock']}</span><div><div class="lbl">Режим работы</div><div class="val">Пн–Пт 9:00–18:00 · сопровождение 24/7</div></div></div>
       </div>
-      <form class="form reveal" data-lead-form action="telegram-lead.php" method="post">
+      <form class="form reveal" data-lead-form action="https://mbm-trans-leads.5br6b6c4st.workers.dev" method="post">
         <h3>Оставить заявку</h3>
         <div class="fd">Заполните форму — менеджер свяжется с вами и рассчитает стоимость перевозки.</div>
         <div class="grid2">
           <div class="field"><label for="f-name">Контактное лицо</label><input id="f-name" name="name" type="text" placeholder="Ваше имя" required></div>
-          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" placeholder="+7 (___) ___-__-__" required></div>
+          <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" pattern="\\+7 \\([0-9]{{3}}\\) [0-9]{{3}}-[0-9]{{2}}-[0-9]{{2}}" maxlength="18" placeholder="+7 (___) ___-__-__" required></div>
         </div>
-        <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" placeholder="you@company.ru"></div>
+        <div class="field"><label for="f-email">E-mail</label><input id="f-email" name="email" type="email" autocomplete="email" placeholder="you@company.ru"></div>
         <div class="field"><label for="f-msg">Сообщение</label><textarea id="f-msg" name="message" placeholder="Опишите ваш груз и маршрут"></textarea></div>
+        <div class="lead-trap" aria-hidden="true"><label for="f-website">Сайт</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+        <input type="hidden" name="lead_started_at" value="">
         <input type="hidden" name="page" value="Контакты">
+        <label class="consent"><input type="checkbox" name="consent" required><span>Я даю согласие на обработку персональных данных и принимаю <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span></label>
         <button class="btn btn-orange" type="submit">Отправить заявку {ICON['arrow']}</button>
         <div class="form-status" role="status" aria-live="polite"></div>
       </form>
@@ -466,5 +470,59 @@ write('kontaktyi.html','Контакты — МБМ-Транс',
       page_hero('Контакты','Свяжитесь с нами удобным способом — мы на связи в рабочее время и сопровождаем перевозки 24/7.',
                 [('Контакты','kontaktyi.html')]),
       contacts_body)
+
+# ---------------- ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ (152-ФЗ) ----------------
+privacy_body = '''<section class="block">
+  <div class="wrap" style="max-width:840px">
+    <article class="prose reveal">
+      <p>Настоящая Политика обработки персональных данных (далее — Политика) разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности, предпринимаемые ООО «МБМ-Транс» (далее — Оператор).</p>
+
+      <h2>1. Общие положения</h2>
+      <p>Оператор ставит важнейшей целью соблюдение прав и свобод человека при обработке его персональных данных, в том числе защиту прав на неприкосновенность частной жизни. Настоящая Политика применяется ко всей информации, которую Оператор может получить о посетителях сайта mbm-trans.ru.</p>
+
+      <h2>2. Какие данные мы собираем</h2>
+      <p>При заполнении формы заявки на сайте Оператор обрабатывает следующие данные, предоставленные пользователем добровольно:</p>
+      <ul>
+        <li>имя (контактное лицо);</li>
+        <li>номер телефона;</li>
+        <li>адрес электронной почты (при указании);</li>
+        <li>текст сообщения, который пользователь вводит самостоятельно.</li>
+      </ul>
+
+      <h2>3. Цели обработки</h2>
+      <p>Персональные данные обрабатываются исключительно в целях обработки обращений и заявок пользователей, предоставления консультаций, расчёта стоимости услуг и обратной связи. Данные не используются для рассылки рекламных материалов без отдельного согласия.</p>
+
+      <h2>4. Правовые основания</h2>
+      <p>Оператор обрабатывает персональные данные на основании согласия субъекта персональных данных, которое пользователь выражает, проставляя отметку в форме обратной связи и нажимая кнопку отправки.</p>
+
+      <h2>5. Порядок обработки и защита данных</h2>
+      <p>Обработка персональных данных ведётся с применением средств автоматизации. Оператор принимает необходимые организационные и технические меры для защиты данных от неправомерного доступа, уничтожения, изменения, блокирования и иных неправомерных действий. Передача данных третьим лицам не осуществляется, за исключением случаев, предусмотренных законодательством РФ.</p>
+
+      <h2>6. Права пользователя</h2>
+      <p>Субъект персональных данных вправе получать информацию об обработке своих данных, требовать их уточнения, блокирования или уничтожения, а также <strong>отозвать своё согласие на обработку</strong> в любой момент, направив обращение на электронную почту <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a>.</p>
+
+      <h2>7. Файлы cookie</h2>
+      <p>Сайт может использовать файлы cookie для корректной работы и анализа посещаемости. Пользователь может отключить cookie в настройках своего браузера.</p>
+
+      <h2>8. Реквизиты Оператора</h2>
+      <ul>
+        <li>Наименование: ООО «МБМ-Транс»</li>
+        <li>Адрес: Россия, 198035, г. Санкт-Петербург, Межевой канал, д. 3, корпус 2</li>
+        <li>E-mail: <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a></li>
+        <li>Телефон: <a href="tel:+78124016564">+7 (812) 401-65-64</a></li>
+        <li>ИНН / ОГРН: <em>указываются в учредительных документах</em></li>
+      </ul>
+
+      <h2>9. Изменения Политики</h2>
+      <p>Оператор вправе вносить изменения в настоящую Политику. Актуальная редакция всегда доступна на этой странице. Дата последнего обновления: 16.06.2026.</p>
+    </article>
+  </div>
+</section>'''
+write('politika-konfidencialnosti.html','Политика конфиденциальности — МБМ-Транс',
+      'Политика обработки персональных данных ООО «МБМ-Транс» в соответствии с 152-ФЗ.',
+      'politika-konfidencialnosti.html',
+      page_hero('Политика конфиденциальности','Обработка персональных данных в соответствии с Федеральным законом № 152-ФЗ.',
+                [('Политика конфиденциальности','politika-konfidencialnosti.html')]),
+      privacy_body)
 
 print('\nAll inner pages generated.')
