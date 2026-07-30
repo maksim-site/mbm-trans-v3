@@ -2,11 +2,11 @@
   "version": 5,
   "project_title": "MBM Trans Redesign v3",
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
-  "current_stage": "experience-selection",
+  "current_stage": "composition-selection",
   "status": "awaiting_user",
-  "note": "Three tiers prepared after UI/UX, Design Taste and Emil critic passes; director recommends Expressive at 5/10.",
+  "note": "Awaiting selection of A Route Split, B Project Mosaic or C Cargo Horizon.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-07-30T21:12:23+00:00",
+  "updated_at": "2026-07-30T21:38:08+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -31,6 +31,66 @@
       "stage": "experience-selection",
       "status": "awaiting_user",
       "note": "Three tiers prepared after UI/UX, Design Taste and Emil critic passes; director recommends Expressive at 5/10."
+    },
+    {
+      "at": "2026-07-30T21:17:35+00:00",
+      "stage": "experience-selection",
+      "status": "complete",
+      "note": "User selected Expressive, motion intensity 5/10, with route-in-motion signature interaction."
+    },
+    {
+      "at": "2026-07-30T21:17:35+00:00",
+      "stage": "reference-research",
+      "status": "in_progress",
+      "note": "Building a visible shortlist across direct heavy-logistics, adjacent industrial and motion references."
+    },
+    {
+      "at": "2026-07-30T21:30:19+00:00",
+      "stage": "reference-research",
+      "status": "complete",
+      "note": "Reviewed 14 candidates and retained eight visible references across direct, adjacent and object-led systems."
+    },
+    {
+      "at": "2026-07-30T21:30:19+00:00",
+      "stage": "reference-selection",
+      "status": "complete",
+      "note": "Delegated selection: RTL, Mammoet, deugro and Nooteboom."
+    },
+    {
+      "at": "2026-07-30T21:30:19+00:00",
+      "stage": "ux-foundation",
+      "status": "complete",
+      "note": "Corporate navigation, CTA hierarchy, content order, responsive and accessibility rules fixed."
+    },
+    {
+      "at": "2026-07-30T21:30:19+00:00",
+      "stage": "screen-plan",
+      "status": "complete",
+      "note": "Selection scope fixed to Home first viewport at 1440x900; full corporate route set recorded."
+    },
+    {
+      "at": "2026-07-30T21:30:19+00:00",
+      "stage": "composition-architecture",
+      "status": "complete",
+      "note": "Three bounded fingerprints and final composition prompts passed the pre-generation gate."
+    },
+    {
+      "at": "2026-07-30T21:30:19+00:00",
+      "stage": "composition-generation",
+      "status": "in_progress",
+      "note": "Generating Route Split, Project Mosaic and Cargo Horizon as separate first-viewport comps."
+    },
+    {
+      "at": "2026-07-30T21:38:08+00:00",
+      "stage": "composition-generation",
+      "status": "complete",
+      "note": "Three separate first-viewport comps generated from the same MBM assets and shared neutral interface contract; QA passed."
+    },
+    {
+      "at": "2026-07-30T21:38:08+00:00",
+      "stage": "composition-selection",
+      "status": "awaiting_user",
+      "note": "Awaiting selection of A Route Split, B Project Mosaic or C Cargo Horizon."
     }
   ]
 }
