@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """Generate redesigned inner pages with shared header/footer/nav."""
 
+import json
+
 ICON = {
  'arrow':'<svg class="icon" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>',
  'truck':'<svg class="icon" viewBox="0 0 24 24"><path d="M10 17h4V5H2v12h3"/><path d="M20 17h2v-3.34a4 4 0 0 0-1.17-2.83L19 9h-5v8h1"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>',
@@ -29,6 +31,120 @@ NAV = [
  ('Контакты','kontaktyi.html',None),
 ]
 SERVICE_PAGES = {'kontejnernyie-perevozki.html','perevozka-negabaritnyix-gruzov.html','texnika-v-arendu.html','zhd-perevozki.html'}
+SITE_URL = 'https://mbm-trans.ru/'
+ORGANIZATION_ID = SITE_URL + '#organization'
+LOCAL_BUSINESS_ID = SITE_URL + '#localbusiness'
+OFFICE_ID = SITE_URL + '#office'
+WEBSITE_ID = SITE_URL + '#website'
+
+SERVICE_SCHEMA = {
+    'kontejnernyie-perevozki.html': 'Контейнерные перевозки',
+    'perevozka-negabaritnyix-gruzov.html': 'Перевозка негабаритных и тяжеловесных грузов',
+    'texnika-v-arendu.html': 'Аренда специализированной техники',
+    'zhd-perevozki.html': 'Железнодорожные перевозки',
+}
+
+def page_url(active):
+    return SITE_URL if active in ('', '/', 'index.html') else SITE_URL + active
+
+def postal_address():
+    return {
+        '@type': 'PostalAddress',
+        'postalCode': '198035',
+        'addressCountry': 'RU',
+        'addressLocality': 'Санкт-Петербург',
+        'streetAddress': 'Межевой канал, д. 3, корпус 2, 8 этаж',
+    }
+
+def schema_json(title, desc, active):
+    web_page_type = 'ContactPage' if active == 'kontaktyi.html' else 'WebPage'
+    graph = [
+        {
+            '@type': 'Organization',
+            '@id': ORGANIZATION_ID,
+            'name': 'ООО «МБМ-Транс»',
+            'alternateName': 'МБМ-Транс',
+            'url': SITE_URL,
+            'logo': SITE_URL + 'assets/css/imgs/logo_h.jpg',
+            'foundingDate': '2008',
+            'email': 'info@mbm-trans.ru',
+            'telephone': '+7 812 401-65-64',
+            'address': postal_address(),
+            'contactPoint': {
+                '@type': 'ContactPoint',
+                'telephone': '+7 812 401-65-64',
+                'email': 'info@mbm-trans.ru',
+                'contactType': 'customer service',
+                'areaServed': ['RU', 'KZ', 'BY', 'UZ', 'CN'],
+                'availableLanguage': ['ru'],
+            },
+        },
+        {
+            '@type': ['LocalBusiness', 'ProfessionalService'],
+            '@id': LOCAL_BUSINESS_ID,
+            'name': 'МБМ-Транс',
+            'url': SITE_URL,
+            'image': SITE_URL + 'assets/css/imgs/logo_h.jpg',
+            'telephone': '+7 812 401-65-64',
+            'email': 'info@mbm-trans.ru',
+            'address': postal_address(),
+            'geo': {
+                '@type': 'GeoCoordinates',
+                'latitude': 59.912326,
+                'longitude': 30.262006,
+            },
+            'openingHoursSpecification': [{
+                '@type': 'OpeningHoursSpecification',
+                'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+                'opens': '09:00',
+                'closes': '18:00',
+            }],
+            'parentOrganization': {'@id': ORGANIZATION_ID},
+            'areaServed': ['Россия', 'Казахстан', 'Беларусь', 'Узбекистан', 'Китай'],
+        },
+        {
+            '@type': 'Place',
+            '@id': OFFICE_ID,
+            'name': 'Офис ООО «МБМ-Транс»',
+            'address': postal_address(),
+            'geo': {
+                '@type': 'GeoCoordinates',
+                'latitude': 59.912326,
+                'longitude': 30.262006,
+            },
+        },
+        {
+            '@type': 'WebSite',
+            '@id': WEBSITE_ID,
+            'url': SITE_URL,
+            'name': 'МБМ-Транс',
+            'publisher': {'@id': ORGANIZATION_ID},
+            'inLanguage': 'ru-RU',
+        },
+        {
+            '@type': web_page_type,
+            '@id': page_url(active) + '#webpage',
+            'url': page_url(active),
+            'name': title,
+            'description': desc,
+            'isPartOf': {'@id': WEBSITE_ID},
+            'about': {'@id': ORGANIZATION_ID},
+            'inLanguage': 'ru-RU',
+        },
+    ]
+    if active in SERVICE_SCHEMA:
+        graph.append({
+            '@type': 'Service',
+            '@id': page_url(active) + '#service',
+            'name': SERVICE_SCHEMA[active],
+            'serviceType': SERVICE_SCHEMA[active],
+            'description': desc,
+            'provider': {'@id': ORGANIZATION_ID},
+            'areaServed': ['Россия', 'Казахстан', 'Беларусь', 'Узбекистан', 'Китай'],
+            'url': page_url(active),
+        })
+    schema = json.dumps({'@context': 'https://schema.org', '@graph': graph}, ensure_ascii=False, indent=2)
+    return f'<script type="application/ld+json">\n{schema}\n</script>'
 
 def nav_html(active):
     out=['<nav class="main" id="nav">']
@@ -59,10 +175,10 @@ def head(title, desc, active):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;600;700;800&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="shortcut icon" href="assets/favicon.ico?v=20260615w1" type="image/x-icon">
-<link rel="icon" href="assets/favicon.ico?v=20260615w1" sizes="any">
-<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260615w1">
-<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20260615w1">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg?v=20260629full1">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png?v=20260629full1">
+<link rel="shortcut icon" href="assets/favicon.ico?v=20260629full1" type="image/x-icon">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20260629full1">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="МБМ-Транс">
 <meta property="og:locale" content="ru_RU">
@@ -71,7 +187,8 @@ def head(title, desc, active):
 <meta property="og:image" content="https://mbm-trans.ru/assets/og-cover.jpg">
 <meta property="og:url" content="https://mbm-trans.ru/{active}">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="stylesheet" href="assets/css/redesign.release1.css">
+{schema_json(title, desc, active)}
+<link rel="stylesheet" href="assets/css/redesign.release1.css?v=20260625-map">
 </head>
 <body>
 <div class="topbar">
@@ -418,6 +535,9 @@ write('nashi-klientyi.html','Клиенты — МБМ-Транс',
       clients_body)
 
 # ---------------- КОНТАКТЫ ----------------
+YANDEX_MAP_URL = 'https://yandex.ru/map-widget/v1/?ll=30.262006%2C59.912326&mode=whatshere&whatshere%5Bpoint%5D=30.262006%2C59.912326&whatshere%5Bzoom%5D=17&z=16'
+YANDEX_OPEN_URL = 'https://yandex.ru/maps/?ll=30.262006%2C59.912326&mode=whatshere&whatshere%5Bpoint%5D=30.262006%2C59.912326&whatshere%5Bzoom%5D=17&z=16'
+
 contacts_body=f'''<section class="block">
   <div class="wrap">
     <div class="contact-grid">
@@ -439,25 +559,30 @@ contacts_body=f'''<section class="block">
         <div class="lead-trap" aria-hidden="true"><label for="f-website">Сайт</label><input id="f-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
         <input type="hidden" name="lead_started_at" value="">
         <input type="hidden" name="page" value="Контакты">
-        <label class="consent"><input type="checkbox" name="consent" required><span>Я даю согласие на обработку персональных данных и принимаю <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span></label>
+        <label class="consent"><input type="checkbox" name="consent" required><span>Я даю согласие ООО «МБМ-Транс» (ИНН 4705027626) на обработку персональных данных для ответа на заявку и принимаю <a href="politika-konfidencialnosti.html" target="_blank" rel="noopener">Политику конфиденциальности</a>.</span></label>
         <button class="btn btn-orange" type="submit">Отправить заявку {ICON['arrow']}</button>
         <div class="form-status" role="status" aria-live="polite"></div>
       </form>
     </div>
     <div class="maps">
       <div class="map-card">
-        <div class="map-pin">{ICON['pin']}</div>
-        <div class="map-copy">
-          <span class="eyebrow">Офис на карте</span>
-          <h3>Санкт-Петербург, Межевой канал, д. 3, корпус 2</h3>
-          <p>8 этаж · откроется в удобном картографическом сервисе</p>
+        <div class="map-frame" aria-label="Карта офиса МБМ-Транс">
+          <iframe src="{YANDEX_MAP_URL}" title="Офис МБМ-Транс на Яндекс Картах" loading="lazy" allowfullscreen></iframe>
         </div>
-        <div class="map-actions">
-          <a class="btn btn-orange" href="https://yandex.ru/maps/?text=%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3%2C%20%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%2C%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">Открыть в Яндекс Картах {ICON['arrow']}</a>
-          <div class="map-links" aria-label="Выбор карты">
-            <a href="https://maps.apple.com/?q=%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202%2C%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&ll=59.912326,30.262006" target="_blank" rel="noopener">Apple Maps</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=59.912326%2C30.262006" target="_blank" rel="noopener">Google Maps</a>
-            <a href="https://2gis.ru/spb/search/%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">2GIS</a>
+        <div class="map-panel">
+          <div class="map-pin">{ICON['pin']}</div>
+          <div class="map-copy">
+            <span class="eyebrow">Офис на карте</span>
+            <h3>Санкт-Петербург, Межевой канал, д. 3, корпус 2</h3>
+            <p>8 этаж · карту можно двигать и приближать прямо на сайте</p>
+          </div>
+          <div class="map-actions">
+            <a class="btn btn-blue" href="{YANDEX_OPEN_URL}" target="_blank" rel="noopener">Открыть в Яндекс Картах {ICON['arrow']}</a>
+            <div class="map-links" aria-label="Выбор карты">
+              <a href="https://maps.apple.com/?q=%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202%2C%20%D0%A1%D0%B0%D0%BD%D0%BA%D1%82-%D0%9F%D0%B5%D1%82%D0%B5%D1%80%D0%B1%D1%83%D1%80%D0%B3&ll=59.912326,30.262006" target="_blank" rel="noopener">Apple Maps</a>
+              <a href="https://www.google.com/maps/search/?api=1&query=59.912326%2C30.262006" target="_blank" rel="noopener">Google Maps</a>
+              <a href="https://2gis.ru/spb/search/%D0%9C%D0%B5%D0%B6%D0%B5%D0%B2%D0%BE%D0%B9%20%D0%BA%D0%B0%D0%BD%D0%B0%D0%BB%203%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%202" target="_blank" rel="noopener">2GIS</a>
+            </div>
           </div>
         </div>
       </div>
@@ -473,48 +598,89 @@ write('kontaktyi.html','Контакты — МБМ-Транс',
 
 # ---------------- ПОЛИТИКА КОНФИДЕНЦИАЛЬНОСТИ (152-ФЗ) ----------------
 privacy_body = '''<section class="block">
-  <div class="wrap" style="max-width:840px">
-    <article class="prose reveal">
-      <p>Настоящая Политика обработки персональных данных (далее — Политика) разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных» и определяет порядок обработки персональных данных и меры по обеспечению их безопасности, предпринимаемые ООО «МБМ-Транс» (далее — Оператор).</p>
+  <div class="wrap" style="max-width:920px">
+    <article class="prose">
+      <p>Настоящая Политика обработки персональных данных (далее — Политика) определяет порядок обработки и защиты персональных данных пользователей сайта <a href="https://mbm-trans.ru/">mbm-trans.ru</a> и разработана в соответствии с Федеральным законом от 27.07.2006 № 152-ФЗ «О персональных данных».</p>
 
-      <h2>1. Общие положения</h2>
-      <p>Оператор ставит важнейшей целью соблюдение прав и свобод человека при обработке его персональных данных, в том числе защиту прав на неприкосновенность частной жизни. Настоящая Политика применяется ко всей информации, которую Оператор может получить о посетителях сайта mbm-trans.ru.</p>
-
-      <h2>2. Какие данные мы собираем</h2>
-      <p>При заполнении формы заявки на сайте Оператор обрабатывает следующие данные, предоставленные пользователем добровольно:</p>
+      <h2>1. Сведения об операторе</h2>
       <ul>
-        <li>имя (контактное лицо);</li>
+        <li>Оператор персональных данных: Общество с ограниченной ответственностью «МБМ-Транс».</li>
+        <li>Сокращённое наименование: ООО «МБМ-Транс».</li>
+        <li>ИНН: 4705027626.</li>
+        <li>ОГРН: 1054700235150.</li>
+        <li>Адрес: 198035, Россия, г. Санкт-Петербург, Межевой канал, д. 3, корпус 2, 8 этаж.</li>
+        <li>E-mail для обращений по персональным данным: <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a>.</li>
+        <li>Телефон: <a href="tel:+78124016564">+7 (812) 401-65-64</a>.</li>
+      </ul>
+
+      <h2>2. Основные понятия</h2>
+      <p>Персональные данные — любая информация, относящаяся прямо или косвенно к определённому или определяемому пользователю сайта. Обработка персональных данных — любое действие или совокупность действий с персональными данными, включая сбор, запись, систематизацию, хранение, уточнение, использование, передачу, блокирование и удаление.</p>
+
+      <h2>3. Категории пользователей и обрабатываемые данные</h2>
+      <p>Оператор обрабатывает данные посетителей сайта, которые заполняют формы обратной связи, направляют заявку или связываются с компанией по указанным контактам.</p>
+      <p>В зависимости от способа обращения могут обрабатываться следующие данные:</p>
+      <ul>
+        <li>имя или контактное лицо;</li>
         <li>номер телефона;</li>
-        <li>адрес электронной почты (при указании);</li>
-        <li>текст сообщения, который пользователь вводит самостоятельно.</li>
+        <li>адрес электронной почты;</li>
+        <li>содержание сообщения, включая сведения о грузе, маршруте и параметрах перевозки, если пользователь указал их самостоятельно;</li>
+        <li>технические данные, необходимые для работы сайта и защиты от злоупотреблений: IP-адрес, дата и время обращения, сведения о браузере, устройстве, источнике перехода и файлах cookie.</li>
       </ul>
+      <p>Оператор не запрашивает и не обрабатывает специальные категории персональных данных, сведения о здоровье, политических взглядах, религиозных убеждениях, биометрические персональные данные и данные несовершеннолетних.</p>
 
-      <h2>3. Цели обработки</h2>
-      <p>Персональные данные обрабатываются исключительно в целях обработки обращений и заявок пользователей, предоставления консультаций, расчёта стоимости услуг и обратной связи. Данные не используются для рассылки рекламных материалов без отдельного согласия.</p>
-
-      <h2>4. Правовые основания</h2>
-      <p>Оператор обрабатывает персональные данные на основании согласия субъекта персональных данных, которое пользователь выражает, проставляя отметку в форме обратной связи и нажимая кнопку отправки.</p>
-
-      <h2>5. Порядок обработки и защита данных</h2>
-      <p>Обработка персональных данных ведётся с применением средств автоматизации. Оператор принимает необходимые организационные и технические меры для защиты данных от неправомерного доступа, уничтожения, изменения, блокирования и иных неправомерных действий. Передача данных третьим лицам не осуществляется, за исключением случаев, предусмотренных законодательством РФ.</p>
-
-      <h2>6. Права пользователя</h2>
-      <p>Субъект персональных данных вправе получать информацию об обработке своих данных, требовать их уточнения, блокирования или уничтожения, а также <strong>отозвать своё согласие на обработку</strong> в любой момент, направив обращение на электронную почту <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a>.</p>
-
-      <h2>7. Файлы cookie</h2>
-      <p>Сайт может использовать файлы cookie для корректной работы и анализа посещаемости. Пользователь может отключить cookie в настройках своего браузера.</p>
-
-      <h2>8. Реквизиты Оператора</h2>
+      <h2>4. Цели обработки персональных данных</h2>
       <ul>
-        <li>Наименование: ООО «МБМ-Транс»</li>
-        <li>Адрес: Россия, 198035, г. Санкт-Петербург, Межевой канал, д. 3, корпус 2</li>
-        <li>E-mail: <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a></li>
-        <li>Телефон: <a href="tel:+78124016564">+7 (812) 401-65-64</a></li>
-        <li>ИНН / ОГРН: <em>указываются в учредительных документах</em></li>
+        <li>приём и обработка заявок на перевозку, аренду техники и сопутствующие услуги;</li>
+        <li>обратная связь с пользователем по телефону или электронной почте;</li>
+        <li>подготовка предварительного расчёта стоимости, сроков и маршрута перевозки;</li>
+        <li>ведение деловой переписки и фиксация истории обращений;</li>
+        <li>обеспечение корректной, безопасной и стабильной работы сайта;</li>
+        <li>исполнение требований законодательства Российской Федерации.</li>
       </ul>
+      <p>Оператор не использует полученные через формы сайта персональные данные для рекламных рассылок без отдельного согласия пользователя.</p>
 
-      <h2>9. Изменения Политики</h2>
-      <p>Оператор вправе вносить изменения в настоящую Политику. Актуальная редакция всегда доступна на этой странице. Дата последнего обновления: 16.06.2026.</p>
+      <h2>5. Правовые основания обработки</h2>
+      <p>Оператор обрабатывает персональные данные на основании согласия пользователя, выраженного путём проставления отметки в форме сайта и отправки заявки, а также в случаях, когда обработка необходима для подготовки, заключения или исполнения договора, ответа на обращение пользователя, выполнения требований закона или защиты прав и законных интересов Оператора.</p>
+
+      <h2>6. Порядок и способы обработки</h2>
+      <p>Обработка персональных данных осуществляется с использованием средств автоматизации и без использования таких средств. Оператор вправе совершать с персональными данными действия, необходимые для достижения указанных целей: сбор, запись, систематизацию, накопление, хранение, уточнение, использование, передачу в предусмотренных законом случаях, обезличивание, блокирование, удаление и уничтожение.</p>
+      <p>Оператор не принимает решений, порождающих юридические последствия для пользователя или иным образом затрагивающих его права и законные интересы, исключительно на основании автоматизированной обработки персональных данных.</p>
+
+      <h2>7. Передача данных третьим лицам</h2>
+      <p>Персональные данные не продаются и не передаются третьим лицам для самостоятельного маркетинга. Передача возможна только в объёме, необходимом для обработки заявки, обеспечения работы сайта, защиты от злоупотреблений, исполнения договора или выполнения требований закона.</p>
+      <p>Для работы сайта могут использоваться сервисы хостинга, обработки заявок, почтовой связи, веб-аналитики, картографические и технические сервисы. Такие лица получают доступ только к данным, необходимым для выполнения соответствующей функции, и обязаны обеспечивать их конфиденциальность.</p>
+
+      <h2>8. Файлы cookie и внешние сервисы</h2>
+      <p>Сайт может использовать файлы cookie и аналогичные технологии для корректной работы интерфейса, запоминания пользовательских настроек, анализа посещаемости и защиты форм от спама. Пользователь может ограничить или отключить cookie в настройках браузера, однако отдельные функции сайта могут работать некорректно.</p>
+      <p>На сайте могут использоваться внешние сервисы для отображения карт, шрифтов и технических элементов интерфейса. При загрузке таких элементов соответствующим сервисам могут передаваться технические данные браузера и устройства пользователя.</p>
+
+      <h2>9. Трансграничная передача</h2>
+      <p>При использовании инфраструктурных и технических сервисов, расположенных за пределами Российской Федерации, может осуществляться трансграничная передача технических данных и данных заявки в объёме, необходимом для обработки обращения и работы сайта. Такая передача осуществляется при наличии правового основания и с соблюдением требований законодательства Российской Федерации.</p>
+
+      <h2>10. Сроки хранения</h2>
+      <p>Персональные данные хранятся не дольше, чем этого требуют цели обработки. Заявки и деловая переписка могут храниться до 3 лет с даты последнего взаимодействия, если более длительный срок не требуется законом, договором, бухгалтерским учётом, претензионной работой или защитой прав Оператора.</p>
+      <p>После достижения целей обработки, истечения срока хранения или получения отзыва согласия данные удаляются либо обезличиваются, если отсутствуют законные основания для дальнейшего хранения.</p>
+
+      <h2>11. Защита персональных данных</h2>
+      <p>Оператор принимает необходимые правовые, организационные и технические меры для защиты персональных данных от неправомерного или случайного доступа, уничтожения, изменения, блокирования, копирования, предоставления, распространения и иных неправомерных действий. Доступ к персональным данным предоставляется только лицам, которым он необходим для выполнения рабочих обязанностей.</p>
+
+      <h2>12. Права пользователя</h2>
+      <p>Пользователь вправе:</p>
+      <ul>
+        <li>получать сведения об обработке своих персональных данных;</li>
+        <li>требовать уточнения, блокирования или уничтожения данных, если они являются неполными, устаревшими, неточными, незаконно полученными или не требуются для заявленной цели обработки;</li>
+        <li>отозвать согласие на обработку персональных данных;</li>
+        <li>обжаловать действия или бездействие Оператора в уполномоченный орган по защите прав субъектов персональных данных или в суд.</li>
+      </ul>
+      <p>Для реализации прав пользователь может направить обращение на <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a>. В обращении следует указать сведения, позволяющие идентифицировать заявителя и найти соответствующее обращение: имя, контактный телефон или e-mail, дату заявки и суть требования.</p>
+
+      <h2>13. Отзыв согласия</h2>
+      <p>Пользователь может в любой момент отозвать согласие на обработку персональных данных, направив сообщение на <a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a>. После получения отзыва Оператор прекращает обработку и удаляет данные в срок, предусмотренный законодательством, если отсутствуют иные законные основания для обработки.</p>
+
+      <h2>14. Актуализация Политики</h2>
+      <p>Оператор вправе изменять настоящую Политику. Новая редакция вступает в силу с момента публикации на сайте, если иной срок не указан в новой редакции. Актуальная версия постоянно доступна по адресу: <a href="https://mbm-trans.ru/politika-konfidencialnosti.html">https://mbm-trans.ru/politika-konfidencialnosti.html</a>.</p>
+
+      <p><strong>Дата последнего обновления:</strong> 28.06.2026.</p>
     </article>
   </div>
 </section>'''
