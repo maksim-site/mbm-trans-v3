@@ -48,3 +48,12 @@ The site should feel heavy, precise and well-controlled. Motion explains route p
 - Animate only transform, opacity and background-position/custom properties where supported.
 - Maximum one signature and two supporting motion patterns, with no more than two visibly moving elements in a viewport.
 - Lazy-load below-fold images, reserve dimensions and avoid layout shifts.
+
+## 2026-08-01 user-QA overrides
+
+- Hero media rotates automatically in the original-site order: aircraft, tram, cylindrical heavy cargo. There are no dots, captions or manual controls; reduced motion holds the first frame.
+- The full-viewport hero keeps the source aspect ratio. Wide legacy images use a centred 148% editorial crop, with small per-image focal offsets, so the vehicle and transported object stay legible without dark letterbox bands.
+- The duplicate statistics strip directly below the hero is removed; the three concise proof figures remain only inside the first viewport.
+- Service scenes stay restrained: the container remains one clean closed object, the crane raises its cable and load, and trailer/rail movement stays hover/focus-only.
+- FAQ opening and closing run in the same 280 ms interval, including answer padding, then settle to exactly one native `details` element with synchronized `aria-expanded`.
+- Decorative eyebrow dashes are removed globally. The original MBM blue mark remains unfiltered, while the favicon uses that same mark on white.

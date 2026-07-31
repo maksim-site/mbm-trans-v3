@@ -46,3 +46,15 @@
 - No GitHub push or hosting change was made.
 
 final result: pass
+
+## 2026-08-01 follow-up QA
+
+- Pass: hero has no selector controls, follows the verified aircraft → tram → heavy-cargo automatic order, fills the viewport and uses centred non-distorting crops.
+- Pass: the duplicate home statistics strip and all decorative eyebrow dashes are gone.
+- Pass: the container card contains one image; the crane has a restrained cable/load lift; service copy remains clear of media.
+- Pass: FAQ switching leaves exactly one disclosure open and synchronizes `aria-expanded` after a single coordinated 280 ms transition.
+- Pass: the trailer catalogue exposes 20 records with five rotating real local MBM photo treatments and no missing image paths.
+- Pass: the projects hero has no visible seam, all 45 archive records remain available, and project images use `object-fit: contain`.
+- Pass: the separate Clients item is absent from all primary/footer navigation while the home proof marquee and legacy route remain.
+- Pass: the Yandex widget displays a single point at `30.252743, 59.910989`; exact house links remain Yandex and 2GIS only.
+- Pass: active favicon links use exact raster logo compositions on white; the header logo has no CSS filter or surrounding plate.

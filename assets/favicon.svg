@@ -1,1 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"><rect width="48" height="48" fill="#005195"/><text x="24" y="24" text-anchor="middle" dominant-baseline="central" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="18" letter-spacing="-1" fill="#fff">МБМ</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <rect width="128" height="128" rx="22" fill="#fff"/>
+  <rect x="1" y="1" width="126" height="126" rx="21" fill="none" stroke="#dce6ed" stroke-width="2"/>
+  <image href="css/imgs/logo_h-clean@2x.png" x="6" y="42" width="116" height="44" preserveAspectRatio="xMidYMid meet"/>
+</svg>

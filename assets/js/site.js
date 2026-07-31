@@ -34,6 +34,58 @@
     observer.observe(firstView);
   }
 
+  function initHeroSlider() {
+    var track = document.getElementById('slides');
+    if (!track) return;
+
+    var slides = toArray(track.querySelectorAll('.slide'));
+    if (slides.length < 2) return;
+
+    var hero = track.closest('.hero');
+    var current = 0;
+    var timer = null;
+
+    function showSlide(index) {
+      current = (index + slides.length) % slides.length;
+      slides.forEach(function (slide, slideIndex) {
+        var active = slideIndex === current;
+        slide.classList.toggle('active', active);
+        slide.setAttribute('aria-hidden', active ? 'false' : 'true');
+      });
+    }
+
+    function stop() {
+      window.clearTimeout(timer);
+      timer = null;
+    }
+
+    function start(delay) {
+      stop();
+      if (reduceMotion || document.hidden) return;
+      timer = window.setTimeout(function advance() {
+        showSlide(current + 1);
+        timer = window.setTimeout(advance, 6800);
+      }, delay || 6800);
+    }
+
+    showSlide(0);
+    start();
+
+    if (hero) {
+      hero.addEventListener('pointerenter', stop);
+      hero.addEventListener('pointerleave', start);
+      hero.addEventListener('focusin', stop);
+      hero.addEventListener('focusout', function (event) {
+        if (!hero.contains(event.relatedTarget)) start();
+      });
+    }
+
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) stop();
+      else start();
+    });
+  }
+
   function initMobileMenu() {
     var burger = document.getElementById('burger');
     var nav = document.getElementById('nav');
@@ -249,97 +301,118 @@
   function initFaq() {
     var details = toArray(document.querySelectorAll('.faq'));
     if (!details.length) return;
+    var locked = false;
 
     function answerFor(item) {
       return item.querySelector('.ans');
-    }
-
-    function cancelAnimation(item) {
-      if (!item._faqAnimation) return;
-      item._faqAnimation.cancel();
-      item._faqAnimation = null;
     }
 
     function clearAnswerStyles(answer) {
       if (!answer) return;
       answer.style.height = '';
       answer.style.opacity = '';
+      answer.style.paddingBottom = '';
       answer.style.transform = '';
     }
 
-    function closeItem(item, immediate) {
-      var summary = item.querySelector('summary');
-      var answer = answerFor(item);
-      if (!item.open || !summary || !answer) return;
-      cancelAnimation(item);
-      summary.setAttribute('aria-expanded', 'false');
+    function setExpanded(item, expanded) {
+      var summary = item && item.querySelector('summary');
+      if (summary) summary.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+    }
 
-      if (immediate || reduceMotion || typeof answer.animate !== 'function') {
-        item.open = false;
-        delete item.dataset.faqClosing;
-        clearAnswerStyles(answer);
+    function settle(closing, opening) {
+      if (closing) {
+        closing.open = false;
+        clearAnswerStyles(answerFor(closing));
+      }
+      if (opening) clearAnswerStyles(answerFor(opening));
+      locked = false;
+    }
+
+    function switchItems(closing, opening) {
+      var closingAnswer = closing ? answerFor(closing) : null;
+      var openingAnswer = opening ? answerFor(opening) : null;
+      var canAnimate = !reduceMotion && openingAnswer && typeof openingAnswer.animate === 'function';
+
+      if (!canAnimate && closingAnswer && typeof closingAnswer.animate === 'function' && !reduceMotion) canAnimate = true;
+      setExpanded(closing, false);
+      setExpanded(opening, true);
+
+      if (!canAnimate) {
+        if (opening) opening.open = true;
+        settle(closing, opening);
         return;
       }
 
-      item.dataset.faqClosing = 'true';
-      var startHeight = answer.getBoundingClientRect().height || answer.scrollHeight;
-      item._faqAnimation = answer.animate([
-        { height: startHeight + 'px', opacity: 1, transform: 'translateY(0)' },
-        { height: '0px', opacity: 0, transform: 'translateY(-6px)' }
-      ], {
-        duration: 250,
-        easing: 'cubic-bezier(.2,.75,.25,1)',
-        fill: 'forwards'
-      });
-      item._faqAnimation.onfinish = function () {
-        item.open = false;
-        item._faqAnimation = null;
-        delete item.dataset.faqClosing;
-        clearAnswerStyles(answer);
-      };
-    }
+      locked = true;
+      var animations = [];
 
-    function openItem(item) {
-      var summary = item.querySelector('summary');
-      var answer = answerFor(item);
-      if (!summary || !answer) return;
-      cancelAnimation(item);
-      delete item.dataset.faqClosing;
-      details.forEach(function (other) {
-        if (other !== item) closeItem(other, reduceMotion);
-      });
-      item.open = true;
-      summary.setAttribute('aria-expanded', 'true');
+      if (closing && closingAnswer) {
+        var closingHeight = closingAnswer.getBoundingClientRect().height || closingAnswer.scrollHeight;
+        var closingPadding = window.getComputedStyle(closingAnswer).paddingBottom;
+        animations.push(closingAnswer.animate([
+          { height: closingHeight + 'px', paddingBottom: closingPadding, opacity: 1, transform: 'translateY(0)' },
+          { height: '0px', paddingBottom: '0px', opacity: 0, transform: 'translateY(-4px)' }
+        ], {
+          duration: 280,
+          easing: 'cubic-bezier(.23, 1, .32, 1)',
+          fill: 'forwards'
+        }));
+      }
 
-      if (reduceMotion || typeof answer.animate !== 'function') {
-        clearAnswerStyles(answer);
+      if (opening && openingAnswer) {
+        opening.open = true;
+        var openingHeight = openingAnswer.getBoundingClientRect().height || openingAnswer.scrollHeight;
+        var openingPadding = window.getComputedStyle(openingAnswer).paddingBottom;
+        openingAnswer.style.height = '0px';
+        openingAnswer.style.opacity = '0';
+        openingAnswer.style.paddingBottom = '0px';
+        openingAnswer.style.transform = 'translateY(-4px)';
+        void openingAnswer.offsetHeight;
+        animations.push(openingAnswer.animate([
+          { height: '0px', paddingBottom: '0px', opacity: 0, transform: 'translateY(-4px)' },
+          { height: openingHeight + 'px', paddingBottom: openingPadding, opacity: 1, transform: 'translateY(0)' }
+        ], {
+          duration: 280,
+          easing: 'cubic-bezier(.23, 1, .32, 1)',
+          fill: 'forwards'
+        }));
+      }
+
+      var remaining = animations.length;
+      if (!remaining) {
+        settle(closing, opening);
         return;
       }
 
-      var endHeight = answer.scrollHeight;
-      item._faqAnimation = answer.animate([
-        { height: '0px', opacity: 0, transform: 'translateY(-6px)' },
-        { height: endHeight + 'px', opacity: 1, transform: 'translateY(0)' }
-      ], {
-        duration: 290,
-        easing: 'cubic-bezier(.2,.75,.25,1)',
-        fill: 'forwards'
+      function finishOne() {
+        remaining -= 1;
+        if (remaining === 0) settle(closing, opening);
+      }
+
+      animations.forEach(function (animation) {
+        animation.onfinish = finishOne;
+        animation.oncancel = finishOne;
       });
-      item._faqAnimation.onfinish = function () {
-        item._faqAnimation = null;
-        clearAnswerStyles(answer);
-      };
     }
 
+    var initialOpen = null;
     details.forEach(function (item, index) {
       var summary = item.querySelector('summary');
       if (!summary) return;
       item.dataset.faqIndex = String(index + 1).padStart(2, '0');
+      if (item.open && initialOpen) item.open = false;
+      if (item.open) initialOpen = item;
       summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
       summary.addEventListener('click', function (event) {
         event.preventDefault();
-        if (item.open && !item.dataset.faqClosing) closeItem(item, false);
-        else openItem(item);
+        if (locked) return;
+        if (item.open) {
+          switchItems(item, null);
+          return;
+        }
+        var current = details.find(function (other) { return other.open; }) || null;
+        switchItems(current, item);
       });
     });
   }
@@ -654,6 +727,7 @@
 
   injectSkipLink();
   initHeaderState();
+  initHeroSlider();
   initMobileMenu();
   initProjectArchive();
   initReveals();

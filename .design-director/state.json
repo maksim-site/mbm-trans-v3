@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Serious Corporate Steel redesign refinement complete locally; original logo blue preserved, targeted logistics motion added, map and 45-project archive corrected.",
+  "note": "Final local MBM Trans refinement is complete and verified on redesign-v3; no GitHub push or hosting change performed.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-07-31T20:25:09+00:00",
+  "updated_at": "2026-07-31T22:50:23+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -283,6 +283,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Serious Corporate Steel redesign refinement complete locally; original logo blue preserved, targeted logistics motion added, map and 45-project archive corrected."
+    },
+    {
+      "at": "2026-07-31T22:05:39+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Refining hero rotation, service motion, FAQ coordination, trailer imagery, projects archive and client navigation from user QA."
+    },
+    {
+      "at": "2026-07-31T22:48:22+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Final user-directed hero, service, FAQ, trailer, projects, favicon and navigation corrections implemented locally."
+    },
+    {
+      "at": "2026-07-31T22:48:22+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Running final browser, asset, console, motion, responsive and Git validation before the local commit."
+    },
+    {
+      "at": "2026-07-31T22:50:23+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Browser QA passed for hero sequence and crop, services, FAQ, trailer catalogue, projects and Yandex marker; zero console errors and zero missing local assets."
+    },
+    {
+      "at": "2026-07-31T22:50:23+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Final local MBM Trans refinement is complete and verified on redesign-v3; no GitHub push or hosting change performed."
     }
   ]
 }

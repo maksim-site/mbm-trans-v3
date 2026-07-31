@@ -95,3 +95,13 @@ MBM Trans выглядит как современный оператор сло
 - Do not invent case metrics, partners, vehicles or locations.
 - No third-party font, analytics, video, image or animation requests.
 - Foreign-hosted form endpoint removed. Production form must stay on same-origin `/api/leads` and be backed by infrastructure in the Russian Federation.
+
+## 2026-08-01 final page-system corrections
+
+- Home hero: three verified legacy photographs rotate automatically in the order aircraft, tram, heavy cylindrical cargo; no manual selector and no repeated statistics band beneath it.
+- Services: one closed-container visual replaces the rejected double-door composition; crane, low-loader and rail micro-scenes remain available without obscuring text.
+- FAQ: the container-inspired numbered accordion stays, but disclosure transitions are coordinated rather than sequential.
+- Oversize service: all 20 trailer records now carry representative real MBM fleet/project photography while retaining the existing dimensions and picker data.
+- Projects: the hero uses the reactor transport image without a seam; archive media uses contained framing so complete loads remain visible.
+- Clients remain as a continuous proof marquee on the home page, while the separate Clients route is removed from primary navigation and footer navigation. The existing route file is retained for compatibility.
+- Exact original-colour header logo is unchanged; active favicon formats use the original blue logo on a white field.
