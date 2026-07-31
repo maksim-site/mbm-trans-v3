@@ -1,12 +1,12 @@
 {
-  "version": 5,
+  "version": 6,
   "project_title": "MBM Trans Redesign v3",
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
-  "current_stage": "composition-selection",
+  "current_stage": "style-selection",
   "status": "awaiting_user",
-  "note": "Awaiting selection from revised A Brand Cinematic, B RTL Motion or C Fleet Stage; previous image-generated set remains rejected.",
+  "note": "Three color systems rendered with identical geometry and corrected transparent MBM logo; awaiting A, B or C selection.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-07-31T11:02:56+00:00",
+  "updated_at": "2026-07-31T12:16:27+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -109,6 +109,42 @@
       "stage": "composition-selection",
       "status": "awaiting_user",
       "note": "Awaiting selection from revised A Brand Cinematic, B RTL Motion or C Fleet Stage; previous image-generated set remains rejected."
+    },
+    {
+      "at": "2026-07-31T12:08:03+00:00",
+      "stage": "composition-selection",
+      "status": "complete",
+      "note": "User selected revised B RTL Motion as the composition direction; logo placement must be corrected in style comps."
+    },
+    {
+      "at": "2026-07-31T12:08:03+00:00",
+      "stage": "style-architecture",
+      "status": "in_progress",
+      "note": "Locking B geometry and preparing Brand Night, Cobalt Steel and Arctic Light color systems with the transparent official MBM logo asset."
+    },
+    {
+      "at": "2026-07-31T12:10:40+00:00",
+      "stage": "style-architecture",
+      "status": "complete",
+      "note": "B layout locked; three style fingerprints and exact shared content recorded in style-prompts.md."
+    },
+    {
+      "at": "2026-07-31T12:10:40+00:00",
+      "stage": "style-generation",
+      "status": "in_progress",
+      "note": "Rendering Brand Night, Cobalt Steel and Arctic Light from one shared locked-geometry HTML prototype."
+    },
+    {
+      "at": "2026-07-31T12:16:27+00:00",
+      "stage": "style-generation",
+      "status": "complete",
+      "note": "Three browser-rendered color candidates saved; exact geometry, logo ratio, overflow, console and critical contrast pairs passed QA."
+    },
+    {
+      "at": "2026-07-31T12:16:27+00:00",
+      "stage": "style-selection",
+      "status": "awaiting_user",
+      "note": "Awaiting user choice of A Brand Night, B Cobalt Steel or C Arctic Light; all use the corrected transparent official logo."
     }
   ]
 }
