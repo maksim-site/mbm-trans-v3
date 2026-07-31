@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Selected cobalt glass redesign built across all ten active pages; responsive, interaction, privacy, accessibility, and exact hero comparison QA passed.",
+  "note": "Local Corporate Steel redesign correction is complete and verified; all ten routes preserved, no GitHub push or hosting change performed.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-07-31T13:15:41+00:00",
+  "updated_at": "2026-07-31T18:40:07+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -223,6 +223,24 @@
       "stage": "complete",
       "status": "complete",
       "note": "Selected cobalt glass redesign built across all ten active pages; responsive, interaction, privacy, accessibility, and exact hero comparison QA passed."
+    },
+    {
+      "at": "2026-07-31T17:47:54+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "User found visible P1/P2 issues in logo treatment, CTA highlights, rental card overlap, process endpoint, certificate thumbnails, FAQ alignment, client loop, and map marker/address; reopening blocking visual QA."
+    },
+    {
+      "at": "2026-07-31T18:40:07+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Corrective Corporate Steel pass complete: transparent unplated logo, self-hosted Onest, restrained business palette, repaired services/process/certificates/FAQ/client loop/map, and desktop/mobile regression QA all pass."
+    },
+    {
+      "at": "2026-07-31T18:40:07+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Local Corporate Steel redesign correction is complete and verified; all ten routes preserved, no GitHub push or hosting change performed."
     }
   ]
 }

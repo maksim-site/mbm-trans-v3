@@ -219,29 +219,30 @@
     observer.observe(process);
   }
 
-  function initClientRail() {
+  function initClientMarquee() {
     var track = document.getElementById('track');
     if (!track) return;
-    var section = track.closest('#clients');
-    var marquee = track.closest('.clients-marquee');
-    if (!section || !marquee || section.querySelector('.client-rail-controls')) return;
+    if (track.querySelector('.logo-set')) return;
 
-    var controls = document.createElement('div');
-    controls.className = 'client-rail-controls';
-    controls.setAttribute('aria-label', 'Управление списком клиентов');
-    controls.innerHTML =
-      '<button class="rail-button" type="button" data-direction="-1" aria-label="Предыдущие клиенты"><svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M19 12H5m7-7-7 7 7 7"/></svg></button>' +
-      '<button class="rail-button" type="button" data-direction="1" aria-label="Следующие клиенты"><svg viewBox="0 0 24 24" class="icon" aria-hidden="true"><path d="M5 12h14m-7-7 7 7-7 7"/></svg></button>';
-    section.insertBefore(controls, marquee);
+    var clients = toArray(track.children).filter(function (item) {
+      return item.classList && item.classList.contains('client');
+    });
+    if (!clients.length) return;
 
-    toArray(controls.querySelectorAll('button')).forEach(function (button) {
-      button.addEventListener('click', function () {
-        var direction = Number(button.dataset.direction || 1);
-        track.scrollBy({
-          left: direction * Math.max(240, track.clientWidth * .72),
-          behavior: reduceMotion ? 'auto' : 'smooth'
-        });
-      });
+    var primary = document.createElement('div');
+    primary.className = 'logo-set';
+    clients.forEach(function (client) { primary.appendChild(client); });
+
+    var duplicate = primary.cloneNode(true);
+    duplicate.setAttribute('aria-hidden', 'true');
+    toArray(duplicate.querySelectorAll('img')).forEach(function (image) {
+      image.alt = '';
+    });
+
+    track.appendChild(primary);
+    track.appendChild(duplicate);
+    window.requestAnimationFrame(function () {
+      track.classList.add('is-ready');
     });
   }
 
@@ -298,21 +299,6 @@
     });
     document.addEventListener('keydown', function (event) {
       if (event.key === 'Escape' && lightbox.classList.contains('open')) closeLightbox();
-    });
-  }
-
-  function initGlassPointer() {
-    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
-    toArray(document.querySelectorAll('.btn, .burger, .rail-button, .lightbox .close')).forEach(function (control) {
-      control.addEventListener('pointermove', function (event) {
-        var rect = control.getBoundingClientRect();
-        control.style.setProperty('--mx', (((event.clientX - rect.left) / rect.width) * 100).toFixed(1) + '%');
-        control.style.setProperty('--my', (((event.clientY - rect.top) / rect.height) * 100).toFixed(1) + '%');
-      });
-      control.addEventListener('pointerleave', function () {
-        control.style.setProperty('--mx', '50%');
-        control.style.setProperty('--my', '20%');
-      });
     });
   }
 
@@ -509,10 +495,9 @@
   initMobileMenu();
   initReveals();
   initRoute();
-  initClientRail();
+  initClientMarquee();
   initFaq();
   initLightbox();
-  initGlassPointer();
   initForms();
   initTrailerPicker();
 })();
