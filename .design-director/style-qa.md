@@ -42,4 +42,4 @@
 - CTA alignment: primary `252 x 54` at `x=50, y=662`; secondary `200 x 54` at `x=316, y=662`.
 - Both CTA surfaces use `14 px` radius and the same `blur(16px) saturate(135%)` backdrop treatment.
 - Horizontal overflow: none. Browser console: no errors or warnings.
-- Result: passed; awaiting confirmation of the refined B hero before page-system expansion.
+- Result: passed and confirmed by the user; expanded into the complete Cobalt Steel page system.

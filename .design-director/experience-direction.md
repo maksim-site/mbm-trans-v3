@@ -2,19 +2,19 @@
 
 ## Design read
 
-Reading this as: эволюционный редизайн многостраничного B2B-сайта для руководителей логистики, снабжения и проектов, с индустриальной trust-first подачей и одной содержательной транспортной механикой.
+Reading this as: корпоративный redesign-preserve для B2B-заказчиков тяжёлой логистики, с фирменным кобальтово-синим языком, реальными проектными фотографиями и матовым web-glass только на интерактивных элементах.
 
 ## Working dials
 
 - Current site estimate: design variance 4/10; motion intensity 1/10; visual density 6/10.
-- Redesign target: design variance 6/10; motion intensity depends on the selected tier below; visual density 4/10.
+- Redesign target: design variance 7/10; motion intensity 6/10; visual density 4/10.
 - Redesign mode: targeted evolution. Сохраняем логотип, URL, информационную архитектуру, реальные доказательства и смысл текстов; обновляем типографику, ритм, цвет, media treatment и motion layer.
 
 ## Decision status
 
-- Current stage: experience selection.
-- Director recommendation: Expressive.
-- User choice: awaiting selection.
+- Selected by user: Candidate 02, Expressive / route in motion.
+- Selected style: Cobalt Steel with the original blue MBM header logo and restrained matte-glass controls.
+- Scope: complete local multi-page version before publication or hosting work.
 
 ## Candidate 01 — Core / polished corporate
 
@@ -30,11 +30,11 @@ Reading this as: эволюционный редизайн многостран�
 - Motion intensity: 5/10.
 - Signature interaction: тонкая маршрутная линия проходит через блок процесса. Небольшой маркер-тягач движется по ней от «Заявки» до «Доставки», колёса вращаются только во время движения, а реальные этапы активируются по scroll.
 - Content purpose: механика не украшает фон, а быстро объясняет, как MBM Trans ведёт сложную перевозку от расчёта до закрывающих документов.
-- Supporting pattern 01: 2–3 карточки проектов получают короткий micro-video loop длительностью 3–5 секунд. На desktop он запускается по hover или отдельной кнопке preview, на touch — по tap. До запуска и после паузы показывается исходная фотография.
-- Supporting pattern 02: один logo rail на странице показывает реальные клиентские логотипы. Есть ручные стрелки, pause, остановка при hover/focus и полностью статичная версия при `prefers-reduced-motion`.
+- Supporting pattern 01: проектные фотографии получают короткий contained zoom/pan и световой сдвиг по hover/focus. Это честная работа с исходными кадрами, а не имитация отсутствующего видео.
+- Supporting pattern 02: один ручной scroll-snap rail показывает реальные клиентские логотипы; на desktop есть стрелки, на touch — swipe. Автопрокрутки нет.
 - Smooth scroll: только native scroll и `scroll-behavior: smooth` для якорей. Инерционный scroll engine не нужен.
-- Asset route: micro-video делаем из 2–3 существующих сильных фотографий через локальный 2.5D parallax, маски, свет и лёгкое движение камеры. Не генерируем вымышленные машины, грузы или маршруты и не деформируем логотипы.
-- Trade-off: требует производства нескольких качественных loops и тщательного mobile/performance QA, но не требует настоящего 3D или новых съёмок.
+- Asset route: используем только существующие фото MBM, документы и клиентские логотипы. Не генерируем вымышленные машины, грузы, маршруты или партнёров и не деформируем логотипы.
+- Trade-off: выразительность достигается композицией, UI и движением маршрута без тяжёлого WebGL и без зависимости от новых съёмок.
 
 ## Candidate 03 — Immersive / transport scene
 

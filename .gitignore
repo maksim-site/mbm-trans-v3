@@ -10,3 +10,9 @@ mbm-preview-2026-content.zip
 .wrangler/
 cloudflare/**/.wrangler/
 cloudflare/**/.dev.vars
+
+# Local design-review captures; keep only the selected hero lock and comparison.
+.design-director/assets/qa/v3-*.png
+!.design-director/assets/qa/v3-home-1280x800.png
+!.design-director/assets/qa/v3-hero-comparison.png
+.design-director/assets/references/old-*.png
