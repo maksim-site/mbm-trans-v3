@@ -1,5 +1,25 @@
 # Composition prompt pack
 
+## Revision 2: brand-grounded structural prototypes
+
+The first image-generated set is retained as a rejected historical record. The replacement set is authored as exact local HTML composition prototypes so the logo, Russian copy, navigation, CTA proportions and real MBM photographs cannot drift.
+
+Shared constraints:
+
+- MBM blue `#005195`, orange `#ff6418`, white and deep navy only;
+- actual logo file and actual project photography;
+- complete 1440 x 900 first viewport, no next section;
+- same headline, body, actions and proof;
+- familiar navigation with phone contact;
+- one route-in-motion signature interaction;
+- no collage, glass-card dashboard, decorative 3D or invented cargo.
+
+Candidates:
+
+1. **A — Brand Cinematic:** recognizable evolution of the current MBM hero; white corporate header, cinematic full-bleed project photograph, left-aligned message and a quiet route/proof layer.
+2. **B — RTL Motion:** closest in experience to RTL; full-screen operational photograph, floating compact navigation, lower-screen message and route staging, while retaining MBM colors and identity.
+3. **C — Fleet Stage:** safest high-trust corporate structure; light information field and large authentic fleet photograph, with a single route connecting proof and media.
+
 ## Shared interface contract - P0
 
 - Site model: Corporate multipage.

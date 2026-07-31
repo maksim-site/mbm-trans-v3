@@ -1,5 +1,27 @@
 # Art direction
 
+## Revision 2 after user rejection
+
+The first generated set was rejected as strange and unlike the company. That criticism is valid: the neutral graphite/rust comparison palette, editorial mosaic and generic international-heavy-logistics tone obscured MBM's existing identity.
+
+The corrected territory is an evolutionary redesign, not an invented rebrand:
+
+- preserve MBM blue `#005195`, orange `#ff6418`, white and deep transport navy;
+- use the existing logo without redrawing it;
+- let one authentic MBM project photograph dominate each first viewport;
+- keep familiar Russian corporate navigation, visible phone and a proportional calculation CTA;
+- borrow RTL's cinematic scale and motion restraint, not its oversized typography or exact layout;
+- eliminate editorial collages, graphite/rust palettes, fake UI panels and decorative international-tech styling;
+- stage the expressive tier through one route-in-motion line and project transitions, not through unusual page geometry.
+
+### Design read and dials
+
+Reading this as a preserve-mode redesign of a Russian B2B transport company for logistics and procurement decision-makers, using a confident industrial-corporate language with cinematic project photography.
+
+- `DESIGN_VARIANCE: 5` - noticeably fresher than the current site, but still familiar and procurement-friendly.
+- `MOTION_INTENSITY: 5` - route progression, project transitions and hover media only where they explain movement or project scale.
+- `VISUAL_DENSITY: 4` - enough proof above the fold without turning the hero into a dashboard.
+
 ## Director thesis
 
 - Site model: Corporate multipage.

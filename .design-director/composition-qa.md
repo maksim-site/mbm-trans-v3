@@ -1,5 +1,52 @@
 # Composition QA
 
+## Revision 2: brand-grounded HTML prototypes
+
+The initial generated set is rejected and is not eligible for selection. Revision 2 uses the real MBM logo, brand palette, copy and project photography in exact local HTML prototypes.
+
+### Interface and scope gates
+
+| Gate | A Brand Cinematic | B RTL Motion | C Fleet Stage |
+|---|---|---|---|
+| Complete first viewport | pass | pass | pass |
+| Familiar navigation | pass | pass | pass |
+| Content-sized primary CTA | pass | pass | pass |
+| Company and action clear in three seconds | pass | pass | pass |
+| Real MBM identity and imagery | pass | pass | pass |
+| No partial next section | pass | pass | pass |
+| Plausible mobile collapse | pass | pass | pass |
+| Route interaction has static fallback | pass | pass | pass |
+
+### Bounded fingerprints
+
+| Field | A Brand Cinematic | B RTL Motion | C Fleet Stage |
+|---|---|---|---|
+| Hero layout family | institutional full-bleed | cinematic full-screen | light asymmetric split |
+| Reading path | header, upper-left copy, bottom proof | floating nav, lower-left copy, lower-right proof | left copy, right fleet image, shared bottom route |
+| Copy geometry | compact upper-left block | wide lower-left block | narrow two-line left block |
+| Primary asset treatment | bright operational scene under directional navy scrim | dark low-key cargo scene as dominant field | hard split with unobstructed fleet crop |
+| Proof integration | lower-left baseline | lower-right operational rail | left metrics connected into image |
+| Route staging | long lower-right geographic route | lower-right process route | route crosses the information/image boundary |
+| Mass balance | dark left, bright right | predominantly dark with open sky | light left, photographic right |
+
+### Pairwise review
+
+| Pair | Fingerprint distance | Silhouette distance | Decision |
+|---|---:|---|---|
+| A / B | 4 / 7 | medium | pass |
+| A / C | 6 / 7 | strong | pass |
+| B / C | 6 / 7 | strong | pass |
+
+### Critic result
+
+- A is the safest evolution of the current MBM site.
+- B is the closest to the requested RTL-like cinematic experience without copying RTL's identity.
+- C is the clearest light corporate alternative.
+- Removed the rejected set's editorial collage, neutral rust palette, rotated pagination, floating project labels, decorative grid and hand-drawn interface icons.
+- All visible copy was re-read; headline, primary action and proof are consistent across the set.
+
+Final result: **passed**.
+
 ## Interface and scope gate
 
 | Candidate | Full first viewport | Navigation | CTA | Asset truth | Familiarity | Decision |
