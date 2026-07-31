@@ -1,19 +1,19 @@
 # Design QA
 
-## Corrective pass scope
+## Final corrective pass scope
 
 - User-directed regression pass on branch `redesign-v3` after visible issues were found in the first Cobalt Glass build.
-- Primary desktop audit at `1280 x 720`; focused mobile audit at a real `390 x 844` iframe viewport; the rental service page was also checked independently.
+- Desktop audits at `1024`, `1280` and `1440`; focused mobile audit at `390 x 844`; home, projects and the rental service page were checked independently.
 - All ten active routes and both self-hosted font files returned HTTP 200 from the local server.
 - Browser console finished with zero errors.
 
 ## P0 — identity, structure and truth
 
-- Pass: the official MBM mark now uses the existing alpha PNG with no white or dark identity plate, no border and no generated redraw.
+- Pass: the original MBM JPEG was converted deterministically to a transparent PNG using its exact source blue `#025194`; the mark has no plate, white fringe, border, redraw or recolouring.
 - Pass: the visual direction was corrected from neon cobalt to a restrained Corporate Steel system: graphite navy, muted steel blue, low-contrast borders and no decorative glow.
 - Pass: Onest variable Cyrillic and Latin subsets are self-hosted in `assets/fonts`; the OFL license is included and the site makes no runtime font or CDN request.
 - Pass: all current route filenames, primary navigation labels, verified facts, project media, client logos, certificates and legal copy remain present.
-- Pass: the office address, Yandex widget, Yandex house link and both JSON-LD coordinate blocks now use `59.910989, 30.252743` for Межевой канал, 3к2.
+- Pass: the office address, neutral Yandex widget, external Yandex house link, custom centred marker and both JSON-LD coordinate blocks use `59.910989, 30.252743` for Межевой канал, 3к2; the intrusive `whatshere` balloon is removed.
 - Pass: the previous site snapshot and the approved earlier redesign commit remain preserved in Git history; GitHub and hosting are untouched.
 
 ## P1 — visual system and interaction
@@ -21,7 +21,8 @@
 - Pass: all buttons use restrained matte fills, a thin border and compact movement; the pointer-following white glare and boxed hero arrow were removed.
 - Pass: the complete interface now uses one local Onest type system, including navigation, buttons, headings, labels and body copy.
 - Pass: every service card is its own positioning context with a reserved media zone and a separate text scrim; geometric checks report no image/text overlap on desktop or mobile.
-- Pass: the four-step route line and moving marker end at the exact centre of the Delivery icon; the marker then disappears into the endpoint instead of continuing into empty space.
+- Pass: service hover/focus uses four restrained object-led micro-scenes: container door, moving trailer, working crane and moving rail platform; no loop runs when idle.
+- Pass: the four-step route line and moving trailer end at the exact centre of the Delivery icon; the vehicle docks and fades instead of continuing into empty space.
 - Pass: all four certificate cards and thumbnails use identical dimensions and document ratios at desktop, tablet and mobile breakpoints.
 - Pass: the FAQ block is centred exactly in its content container while question and answer copy remains left aligned.
 - Pass: the client strip now contains two equal logo sets and runs as a seamless continuous loop; it pauses on hover/focus and removes the duplicate set for reduced motion.
@@ -31,11 +32,13 @@
 
 - Pass: desktop and `390 px` mobile layouts have no horizontal document overflow.
 - Pass: the mobile drawer opens with synchronized `aria-expanded`, overlay and body scroll lock.
-- Pass: FAQ keeps one disclosure open and synchronizes `aria-expanded`.
+- Pass: FAQ uses a container-door/latch motif, keeps one disclosure open, animates measured height/opacity and synchronizes `aria-expanded`.
+- Pass: projects archive exposes all 45 existing records through seven accessible filters, starts with 12 items, reveals more in batches and uses a deterministic 2+3-column hierarchy instead of a random mosaic.
 - Pass: certificate lightbox opens, locks body scroll and closes from its visible close control.
 - Pass: the continuous client track moves between timed samples and contains 40 cards across two equal sets.
 - Pass: all ten JSON-LD blocks parse; the local HTML/CSS asset audit reports zero missing files.
-- Pass: `node --check assets/js/site.js` and `git diff --check` pass.
+- Pass: desktop and mobile Lighthouse audits score 100 for accessibility, best practices, SEO and agentic browsing.
+- Pass: `node --check assets/js/site.js`, Python logo-builder compilation, HTML validation and `git diff --check` pass.
 
 ## Deployment boundary
 

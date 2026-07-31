@@ -6,10 +6,10 @@ MBM Trans выглядит как современный оператор сло
 
 ## Global shell
 
-- Один тёмный cobalt/navy theme на всех маршрутах; светлые поверхности допустимы только для оригинального логотипа, документов, логотипов клиентов и полей формы.
+- Один сдержанный graphite/navy theme на всех маршрутах; светлые поверхности допустимы только для документов, логотипов клиентов и полей формы.
 - Контейнер: максимум 1360 px, боковой отступ `clamp(20px, 4vw, 64px)`.
-- Desktop header: плавающая 76 px панель, оригинальный синий `logo_h@2x.jpg` внутри белой identity plate; навигация, телефон и CTA остаются на одной линии.
-- Mobile header: identity plate, кнопка телефона и menu button; drawer открывается без потери фокуса и закрывается по Escape.
+- Desktop header: сразу видимая непрозрачная 80 px панель; очищенный от JPEG-фона оригинальный синий знак расположен без плашки, навигация и CTA остаются на одной линии.
+- Mobile header: тот же оригинальный знак без плашки и menu button; полноэкранный drawer открывается без потери фокуса и закрывается по Escape.
 - Skip link, логичный tab order и заметный focus ring обязательны.
 - Footer сохраняет реквизиты, контакты, существующие маршруты и ссылку на политику.
 
@@ -32,12 +32,12 @@ MBM Trans выглядит как современный оператор сло
 
 - Асимметричная 12-column композиция из четырёх услуг: доминирующая карточка негабаритных перевозок, две средние и одна горизонтальная железнодорожная.
 - Каждая карточка использует существующую фотографию, короткое описание и явную ссылку; весь tile не маскируется под кнопку без accessible name.
-- Desktop hover раскрывает изображение на 3–4%; touch получает тот же контент без hover-зависимости.
+- Desktop hover раскрывает не абстрактный эффект, а короткую предметную микро-сцену: створка контейнера, движение трала/вагона или работа крана. Touch получает тот же контент без hover-зависимости.
 
 ### 4. Process / signature route
 
 - Тёмный глубокий cobalt блок с четырьмя сохранёнными этапами: заявка, расчёт/разрешения, перевозка/сопровождение, доставка/документы.
-- Маркер один раз проходит по линии после входа блока в viewport и синхронно активирует этапы.
+- Силуэт существующего трала один раз проходит по линии после входа блока в viewport, синхронно активирует этапы и точно останавливается у «Доставки».
 - Сами этапы видимы до, во время и после анимации; смысл не зависит от движения.
 
 ### 5. Documents / trust proof
@@ -47,14 +47,14 @@ MBM Trans выглядит как современный оператор сло
 
 ### 6. Projects / real evidence
 
-- Мозаика: один крупный кейс и четыре поддерживающих проекта с реальными изображениями.
+- На главной: один крупный кейс и поддерживающие проекты с реальными изображениями. На странице архива: 45 работ, два ведущих кейса, строгая трёхколоночная сетка, фильтры по типу груза и поэтапное раскрытие.
 - Короткий contained zoom/pan по hover/focus; без ложной кнопки play и без вымышленного видео.
 - Ссылка ведёт на существующий индекс проектов.
 
 ### 7. FAQ / remove friction
 
-- Одноколоночный accordion с сохранёнными вопросами и ответами.
-- Только один пункт открыт одновременно на desktop; клавиатура и `aria-expanded` работают.
+- Одноколоночный accordion с сохранёнными вопросами и ответами; рёбра, центральный шов и круглая защёлка визуально отсылают к двери грузового контейнера.
+- Только один пункт открыт одновременно; высота и прозрачность раскрываются мягко, клавиатура и `aria-expanded` работают.
 
 ### 8. Clients / social proof
 
@@ -66,7 +66,7 @@ MBM Trans выглядит как современный оператор сло
 
 - Split между реквизитами/каналами связи и матово-стеклянной формой.
 - Сохраняются порядок и имена полей, mask/validation и текст согласия; action переведён на same-origin `/api/leads`, который будет подключён к российскому backend при переносе.
-- Карта остаётся российской: Yandex и 2GIS; иностранные картографические переходы не выводятся.
+- Карта остаётся российской: спокойный Yandex map layer без режима `whatshere`, отдельная точная метка по координатам офиса и внешние переходы в Yandex/2GIS; иностранные картографические переходы не выводятся.
 
 ## Internal routes
 
@@ -77,7 +77,7 @@ MBM Trans выглядит как современный оператор сло
 | `perevozka-negabaritnyix-gruzov.html` | service hero, oversized-load proof, process, projects, CTA | transport facts, project media, form |
 | `texnika-v-arendu.html` | service hero plus dense equipment catalogue | all equipment records and picker logic |
 | `zhd-perevozki.html` | service hero, rail capability, process, FAQ, CTA | service copy and inquiry fields |
-| `nashi-proektyi.html` | varied project mosaic/grid | all current project images and captions |
+| `nashi-proektyi.html` | structured filterable archive with two featured projects | all 45 current project images and captions |
 | `nashi-klientyi.html` | responsive neutral logo field | every current client identity |
 | `kontaktyi.html` | direct-contact hero, form and map | phone, email, address, consent and form names |
 | `politika-konfidencialnosti.html` | readable dark document surface, 65–75ch | legal text verbatim |

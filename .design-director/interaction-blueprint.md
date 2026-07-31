@@ -4,30 +4,28 @@
 
 The site should feel heavy, precise and well-controlled. Motion explains route progression and gives controls physical response; it never makes the cargo or company claims feel fictional.
 
-## Signature interaction — route in motion
+## Signature interaction — cargo on the route
 
-- Trigger: the process section intersects at roughly 35%; animation runs once per page load.
-- Sequence: line draws in 900 ms; one marker travels in 2200 ms with a controlled ease-in-out; four labels activate at matching offsets.
-- Geometry: CSS custom properties and transforms only; no scroll scrubbing and no scroll-jacking.
-- Completion: route remains fully drawn and all stages remain active.
-- Reduced motion: line and stages render immediately; marker does not travel.
-- Mobile: vertical/stepped route or a horizontally scrollable contained track, never wider than the viewport.
+- Trigger: the process section intersects at roughly 28%; animation runs once per page load.
+- Sequence: the route line draws in 900 ms; the existing MBM trailer cutout travels from the first stage to the centre of the fourth stage in 2200 ms; the four stages activate at matching offsets.
+- Geometry: a contained CSS pseudo-element with the local transparent trailer asset; no WebGL, scroll scrubbing or scroll-jacking.
+- Completion: the trailer reaches the exact final-stage centre and fades, while the route and all four stages remain complete.
+- Reduced motion: the line and stages render immediately and the trailer stays hidden.
+- Mobile: the route becomes a vertical four-step list; the travelling trailer and horizontal line are removed.
 
-## Supporting interaction 01 — matte-glass controls
+## Supporting interaction 01 — service equipment micro-scenes
 
-- Targets: primary/secondary CTAs, header controls, carousel arrows and form controls.
-- Hover on fine pointers: 2 px lift, internal highlight shifts toward pointer, arrow moves 3 px; 180–240 ms custom ease-out.
-- Press: `scale(0.975)` for 110–140 ms.
-- Focus-visible: 2 px ice ring plus 3 px dark offset; no motion required to locate focus.
-- Pointer highlight is driven by `pointermove` on the control itself and stored in `--mx/--my`; it never listens to document scroll.
-- Reduced transparency: blur is removed and the control becomes an opaque cobalt/navy surface.
+- Fine pointer hover and keyboard focus-within only: container shifts and exposes a door seam, the low-loader advances on a restrained road line, the crane makes a slight boom lift and the rail platform rolls along its track.
+- Every card retains its full title, copy and link without activation; touch receives the complete static state on first paint.
+- Movement stays between 10 and 24 px, with 420–700 ms custom ease-out and no looping.
+- Reduced motion: all equipment remains static and fully visible.
 
-## Supporting interaction 02 — project media
+## Supporting interaction 02 — container-door FAQ
 
-- Fine pointer hover or keyboard focus: image scales to 1.035 and translates no more than 1.5%; title/arrow moves slightly.
-- Touch: content is fully visible without activation; links work on first tap.
-- Duration: 500–700 ms for media, 180–240 ms for labels.
-- No autoplay, fake play icon, animated GIF, generated vehicle or infinite loop.
+- Native `details/summary` semantics remain intact, with only one answer open at a time.
+- The answer reveals vertically in 280 ms while a ribbed container seam opens and the circular latch turns 45 degrees.
+- The interaction works by click and keyboard, preserves `aria-expanded`, and never hides content from assistive technology.
+- Reduced motion: state changes immediately with no height, opacity or latch animation.
 
 ## Global reveal language
 
@@ -40,7 +38,7 @@ The site should feel heavy, precise and well-controlled. Motion explains route p
 
 - Desktop dropdowns open on pointer intent and focus-within; they remain keyboard reachable.
 - Mobile drawer traps focus while open, closes on Escape/backdrop/link and returns focus to menu button.
-- FAQ updates `aria-expanded` and panel visibility atomically.
+- FAQ synchronizes `open` and `aria-expanded`; close animation finishes before `open` is removed.
 - Client rail uses explicit previous/next buttons and `scrollBy`; no automatic movement.
 - Form feedback is text plus state color, never color alone.
 
@@ -48,5 +46,5 @@ The site should feel heavy, precise and well-controlled. Motion explains route p
 
 - No GSAP, Three.js, canvas or runtime image generation.
 - Animate only transform, opacity and background-position/custom properties where supported.
-- Maximum two visibly moving elements in a viewport.
+- Maximum one signature and two supporting motion patterns, with no more than two visibly moving elements in a viewport.
 - Lazy-load below-fold images, reserve dimensions and avoid layout shifts.

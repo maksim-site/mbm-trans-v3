@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Local Corporate Steel redesign correction is complete and verified; all ten routes preserved, no GitHub push or hosting change performed.",
+  "note": "Serious Corporate Steel redesign refinement complete locally; original logo blue preserved, targeted logistics motion added, map and 45-project archive corrected.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-07-31T18:40:07+00:00",
+  "updated_at": "2026-07-31T20:25:09+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -241,6 +241,48 @@
       "stage": "complete",
       "status": "complete",
       "note": "Local Corporate Steel redesign correction is complete and verified; all ten routes preserved, no GitHub push or hosting change performed."
+    },
+    {
+      "at": "2026-07-31T19:38:18+00:00",
+      "stage": "experience-blueprint",
+      "status": "in_progress",
+      "note": "Refining the approved system around one cargo-route narrative: persistent header, clean official logo, service micro-scenes, container-door FAQ, precise map point and structured projects archive."
+    },
+    {
+      "at": "2026-07-31T20:25:09+00:00",
+      "stage": "experience-blueprint",
+      "status": "complete",
+      "note": "Cargo-route narrative locked: clean source logo, persistent header, object-led service scenes, container-door FAQ, exact office marker and filtered projects archive."
+    },
+    {
+      "at": "2026-07-31T20:25:09+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Applying the final user-directed corporate motion and project archive corrective pass."
+    },
+    {
+      "at": "2026-07-31T20:25:09+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Final local corrective pass implemented across shared shell, home, contacts and all-projects route without publishing."
+    },
+    {
+      "at": "2026-07-31T20:25:09+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Checking desktop, mobile, keyboard, motion preferences, assets, routes, console and source validity."
+    },
+    {
+      "at": "2026-07-31T20:25:09+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "QA passed at 390, 1024, 1280 and 1440 widths; no overflow, missing local assets or console errors; Lighthouse audited categories remain 100."
+    },
+    {
+      "at": "2026-07-31T20:25:09+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Serious Corporate Steel redesign refinement complete locally; original logo blue preserved, targeted logistics motion added, map and 45-project archive corrected."
     }
   ]
 }

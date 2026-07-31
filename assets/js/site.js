@@ -248,18 +248,180 @@
 
   function initFaq() {
     var details = toArray(document.querySelectorAll('.faq'));
-    details.forEach(function (item) {
+    if (!details.length) return;
+
+    function answerFor(item) {
+      return item.querySelector('.ans');
+    }
+
+    function cancelAnimation(item) {
+      if (!item._faqAnimation) return;
+      item._faqAnimation.cancel();
+      item._faqAnimation = null;
+    }
+
+    function clearAnswerStyles(answer) {
+      if (!answer) return;
+      answer.style.height = '';
+      answer.style.opacity = '';
+      answer.style.transform = '';
+    }
+
+    function closeItem(item, immediate) {
+      var summary = item.querySelector('summary');
+      var answer = answerFor(item);
+      if (!item.open || !summary || !answer) return;
+      cancelAnimation(item);
+      summary.setAttribute('aria-expanded', 'false');
+
+      if (immediate || reduceMotion || typeof answer.animate !== 'function') {
+        item.open = false;
+        delete item.dataset.faqClosing;
+        clearAnswerStyles(answer);
+        return;
+      }
+
+      item.dataset.faqClosing = 'true';
+      var startHeight = answer.getBoundingClientRect().height || answer.scrollHeight;
+      item._faqAnimation = answer.animate([
+        { height: startHeight + 'px', opacity: 1, transform: 'translateY(0)' },
+        { height: '0px', opacity: 0, transform: 'translateY(-6px)' }
+      ], {
+        duration: 250,
+        easing: 'cubic-bezier(.2,.75,.25,1)',
+        fill: 'forwards'
+      });
+      item._faqAnimation.onfinish = function () {
+        item.open = false;
+        item._faqAnimation = null;
+        delete item.dataset.faqClosing;
+        clearAnswerStyles(answer);
+      };
+    }
+
+    function openItem(item) {
+      var summary = item.querySelector('summary');
+      var answer = answerFor(item);
+      if (!summary || !answer) return;
+      cancelAnimation(item);
+      delete item.dataset.faqClosing;
+      details.forEach(function (other) {
+        if (other !== item) closeItem(other, reduceMotion);
+      });
+      item.open = true;
+      summary.setAttribute('aria-expanded', 'true');
+
+      if (reduceMotion || typeof answer.animate !== 'function') {
+        clearAnswerStyles(answer);
+        return;
+      }
+
+      var endHeight = answer.scrollHeight;
+      item._faqAnimation = answer.animate([
+        { height: '0px', opacity: 0, transform: 'translateY(-6px)' },
+        { height: endHeight + 'px', opacity: 1, transform: 'translateY(0)' }
+      ], {
+        duration: 290,
+        easing: 'cubic-bezier(.2,.75,.25,1)',
+        fill: 'forwards'
+      });
+      item._faqAnimation.onfinish = function () {
+        item._faqAnimation = null;
+        clearAnswerStyles(answer);
+      };
+    }
+
+    details.forEach(function (item, index) {
       var summary = item.querySelector('summary');
       if (!summary) return;
+      item.dataset.faqIndex = String(index + 1).padStart(2, '0');
       summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
-      item.addEventListener('toggle', function () {
-        summary.setAttribute('aria-expanded', item.open ? 'true' : 'false');
-        if (!item.open) return;
-        details.forEach(function (other) {
-          if (other !== item && other.open) other.open = false;
-        });
+      summary.addEventListener('click', function (event) {
+        event.preventDefault();
+        if (item.open && !item.dataset.faqClosing) closeItem(item, false);
+        else openItem(item);
       });
     });
+  }
+
+  function initProjectArchive() {
+    var gallery = document.getElementById('projectGallery');
+    var more = document.getElementById('projectMore');
+    if (!gallery || !more) return;
+
+    var cards = toArray(gallery.querySelectorAll('.proj'));
+    var filters = toArray(document.querySelectorAll('[data-project-filter]'));
+    var result = document.getElementById('projectResult');
+    var total = document.querySelector('[data-project-total]');
+    var active = 'all';
+    var limit = 12;
+
+    function categoryFor(label) {
+      var value = String(label || '').toLowerCase();
+      if (value.indexOf('энерг') !== -1) return 'energy';
+      if (value.indexOf('оборуд') !== -1) return 'equipment';
+      if (value.indexOf('спецтех') !== -1 || value.indexOf('спецтран') !== -1) return 'special';
+      if (value.indexOf('металлоконструк') !== -1) return 'metal';
+      if (value.indexOf('авиа') !== -1) return 'aviation';
+      return 'oversize';
+    }
+
+    cards.forEach(function (card) {
+      var tag = card.querySelector('.tag');
+      card.dataset.projectCategory = categoryFor(tag ? tag.textContent : '');
+    });
+    filters.forEach(function (button) {
+      button.setAttribute('aria-controls', 'projectGallery');
+    });
+    if (total) total.textContent = String(cards.length);
+
+    function render(animateNew) {
+      var matches = cards.filter(function (card) {
+        return active === 'all' || card.dataset.projectCategory === active;
+      });
+      var visible = matches.slice(0, limit);
+
+      cards.forEach(function (card) {
+        var show = visible.indexOf(card) !== -1;
+        var wasHidden = card.hidden;
+        card.hidden = !show;
+        card.classList.remove('is-featured');
+        if (!show) return;
+        card.classList.add('in');
+        if (animateNew && wasHidden && !reduceMotion && typeof card.animate === 'function') {
+          card.animate([
+            { opacity: 0, transform: 'translateY(12px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ], { duration: 300, easing: 'cubic-bezier(.2,.75,.25,1)' });
+        }
+      });
+
+      visible.slice(0, 2).forEach(function (card) {
+        card.classList.add('is-featured');
+      });
+      more.hidden = visible.length >= matches.length;
+      if (result) result.textContent = 'Показано ' + visible.length + ' из ' + matches.length;
+    }
+
+    filters.forEach(function (button) {
+      button.addEventListener('click', function () {
+        active = button.dataset.projectFilter || 'all';
+        limit = 12;
+        filters.forEach(function (other) {
+          var selected = other === button;
+          other.classList.toggle('is-active', selected);
+          other.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        });
+        render(true);
+      });
+    });
+
+    more.addEventListener('click', function () {
+      limit += 12;
+      render(true);
+    });
+
+    render(false);
   }
 
   function initLightbox() {
@@ -493,6 +655,7 @@
   injectSkipLink();
   initHeaderState();
   initMobileMenu();
+  initProjectArchive();
   initReveals();
   initRoute();
   initClientMarquee();
