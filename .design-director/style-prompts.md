@@ -72,3 +72,12 @@ Apply the **Arctic Light** visual system to the locked B composition. Preserve e
 - Contrast: CTA and hero copy checked in the rendered browser output; critical pairs range from `5.51:1` to `8.56:1`.
 - Geometry audit: all measured anchors and component boxes are identical across A, B and C.
 - Result: generated and ready for user style selection.
+
+## Selected B refinement
+
+- User selected **B - Cobalt Steel** and requested two identity/interface corrections before page-system expansion.
+- Logo: use the existing header identity asset `assets/css/imgs/logo_h@2x.jpg` in its original blue color, with no filter or redraw. Render the intrinsic `466 x 176` source at `160 x 60.4` inside a centered `196 x 68` white identity anchor.
+- CTA system: replace the sharp flat pair with restrained cobalt/navy glass. Both buttons share `54 px` height, `14 px` radius, one baseline, a subtle inner highlight and `blur(16px) saturate(135%)` backdrop treatment.
+- Primary CTA remains visually dominant through a higher-opacity cobalt tint and contained arrow tile; secondary CTA remains dark translucent glass.
+- The glass treatment is limited to interactive surfaces and navigation. It must not spread into decorative floating cards or obscure the authentic cargo photograph.
+- Final merged reference: `assets/concepts/style/b-cobalt-glass.png`.
