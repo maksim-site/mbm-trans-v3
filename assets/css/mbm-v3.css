@@ -345,7 +345,7 @@ h4 {
 }
 
 .logo-img--header {
-  filter: brightness(0) saturate(100%) invert(46%) sepia(71%) saturate(1290%) hue-rotate(169deg) brightness(88%) contrast(101%) drop-shadow(0 5px 10px rgba(0, 15, 30, .22));
+  filter: none;
 }
 
 nav.main {
