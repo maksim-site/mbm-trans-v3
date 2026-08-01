@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Final local MBM Trans refinement is complete and verified on redesign-v3; no GitHub push or hosting change performed.",
+  "note": "Exact saved statistics band, single home contact destination, local Lenis scrolling and user-directed catalogue/icon/crane corrections are complete and verified locally; no publication was performed.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-07-31T22:50:23+00:00",
+  "updated_at": "2026-08-01T09:31:58+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -313,6 +313,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Final local MBM Trans refinement is complete and verified on redesign-v3; no GitHub push or hosting change performed."
+    },
+    {
+      "at": "2026-08-01T09:04:01+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Applying user QA: remove trailer photos and crane load, replace ambiguous heavy-load icon, and move hero metrics into a compact strip."
+    },
+    {
+      "at": "2026-08-01T09:26:49+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Restored the exact saved animated four-cell proof band; removed duplicate hero figures, trailer photos and crane load; consolidated Contacts into the home section; added locally vendored Lenis."
+    },
+    {
+      "at": "2026-08-01T09:26:49+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Verifying desktop and mobile layout, counters, contact anchors, smooth-scroll fallback, source validity, assets and browser console before the local Git commit."
+    },
+    {
+      "at": "2026-08-01T09:31:58+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Desktop and 390 x 844 QA passed: counters finish at 20/365/500/5, contact anchors settle 92 px below the header, the legacy URL redirects, no horizontal overflow or console warnings/errors remain."
+    },
+    {
+      "at": "2026-08-01T09:31:58+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "User-directed MBM correction is complete locally with exact Git-restored proof band, consolidated Contacts, self-hosted Lenis and cleaned service/catalogue visuals; GitHub and hosting remain untouched."
     }
   ]
 }

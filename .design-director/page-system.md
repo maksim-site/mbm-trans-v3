@@ -11,7 +11,7 @@ MBM Trans выглядит как современный оператор сло
 - Desktop header: сразу видимая непрозрачная 80 px панель; очищенный от JPEG-фона оригинальный синий знак расположен без плашки, навигация и CTA остаются на одной линии.
 - Mobile header: тот же оригинальный знак без плашки и menu button; полноэкранный drawer открывается без потери фокуса и закрывается по Escape.
 - Skip link, логичный tab order и заметный focus ring обязательны.
-- Footer сохраняет реквизиты, контакты, существующие маршруты и ссылку на политику.
+- Footer сохраняет реквизиты, контакты, существующие маршруты и ссылку на политику; все пункты «Контакты» ведут к секции `#contacts` на главной.
 
 ## Home page
 
@@ -79,7 +79,7 @@ MBM Trans выглядит как современный оператор сло
 | `zhd-perevozki.html` | service hero, rail capability, process, FAQ, CTA | service copy and inquiry fields |
 | `nashi-proektyi.html` | structured filterable archive with two featured projects | all 45 current project images and captions |
 | `nashi-klientyi.html` | responsive neutral logo field | every current client identity |
-| `kontaktyi.html` | direct-contact hero, form and map | phone, email, address, consent and form names |
+| `kontaktyi.html` | compatibility redirect to `index.html#contacts` | legacy URL remains valid; no duplicate contact page |
 | `politika-konfidencialnosti.html` | readable dark document surface, 65–75ch | legal text verbatim |
 
 ## Responsive behavior
@@ -98,10 +98,12 @@ MBM Trans выглядит как современный оператор сло
 
 ## 2026-08-01 final page-system corrections
 
-- Home hero: three verified legacy photographs rotate automatically in the order aircraft, tram, heavy cylindrical cargo; no manual selector and no repeated statistics band beneath it.
-- Services: one closed-container visual replaces the rejected double-door composition; crane, low-loader and rail micro-scenes remain available without obscuring text.
+- Home hero: three verified legacy photographs rotate automatically in the order aircraft, tram, heavy cylindrical cargo; no manual selector. The floating hero figures are removed and the exact earlier animated four-cell proof band is restored once beneath the hero: `20 лет`, `365 т`, `500+`, `5 стран`.
+- Services: one closed-container visual replaces the rejected double-door composition; low-loader and rail micro-scenes remain available without obscuring text, while the crane uses only its real cutout with no synthetic cable or striped load.
 - FAQ: the container-inspired numbered accordion stays, but disclosure transitions are coordinated rather than sequential.
-- Oversize service: all 20 trailer records now carry representative real MBM fleet/project photography while retaining the existing dimensions and picker data.
+- Oversize service: all 20 trailer records retain their dimensions and picker data in compact text/specification cards; the rejected catalogue photographs are removed.
 - Projects: the hero uses the reactor transport image without a seam; archive media uses contained framing so complete loads remain visible.
 - Clients remain as a continuous proof marquee on the home page, while the separate Clients route is removed from primary navigation and footer navigation. The existing route file is retained for compatibility.
 - Exact original-colour header logo is unchanged; active favicon formats use the original blue logo on a white field.
+- Contacts are a single home-page destination. Every navigation/CTA contact link targets `index.html#contacts`, while `kontaktyi.html` performs a compatibility redirect and is excluded from indexing.
+- Subtle smooth scrolling uses a locally vendored Lenis bundle with one controlled anchor path. Reduced-motion users keep immediate native scrolling; no CDN or runtime foreign request is introduced.

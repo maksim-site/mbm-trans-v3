@@ -50,11 +50,20 @@ final result: pass
 ## 2026-08-01 follow-up QA
 
 - Pass: hero has no selector controls, follows the verified aircraft → tram → heavy-cargo automatic order, fills the viewport and uses centred non-distorting crops.
-- Pass: the duplicate home statistics strip and all decorative eyebrow dashes are gone.
-- Pass: the container card contains one image; the crane has a restrained cable/load lift; service copy remains clear of media.
+- Pass: the floating hero statistics and all decorative eyebrow dashes are gone; the exact saved animated four-cell proof band appears once beneath the hero.
+- Pass: the container card contains one image; the crane contains no synthetic cable or striped load; service copy remains clear of media.
 - Pass: FAQ switching leaves exactly one disclosure open and synchronizes `aria-expanded` after a single coordinated 280 ms transition.
-- Pass: the trailer catalogue exposes 20 records with five rotating real local MBM photo treatments and no missing image paths.
+- Pass: the trailer catalogue exposes all 20 records as compact text/specification cards with no rejected photographs or missing data.
 - Pass: the projects hero has no visible seam, all 45 archive records remain available, and project images use `object-fit: contain`.
 - Pass: the separate Clients item is absent from all primary/footer navigation while the home proof marquee and legacy route remain.
 - Pass: the Yandex widget displays a single point at `30.252743, 59.910989`; exact house links remain Yandex and 2GIS only.
 - Pass: active favicon links use exact raster logo compositions on white; the header logo has no CSS filter or surrounding plate.
+
+## 2026-08-01 contact, scroll and proof-strip correction
+
+- Pass: the statistics block was restored directly from saved commit `41fe2d1`; browser samples captured intermediate animated values and the final `20 / 365 / 500 / 5` state.
+- Pass: no duplicate figure group remains in the hero and no legacy `hero-metrics` markup remains in active source.
+- Pass: all active navigation, CTA and footer contact links resolve to the single home `#contacts` section; `kontaktyi.html` is a `noindex,follow` compatibility redirect.
+- Pass: the locally vendored Lenis 1.3.23 bundle provides restrained wheel smoothing and one controlled anchor path without a CDN request; reduced-motion retains the native fallback.
+- Pass: desktop and `390 x 844` mobile contact navigation settles with a 92 px header clearance and no horizontal overflow.
+- Pass: the heavy-load feature now uses an unambiguous weight outline; the crane pseudo cable/load and all trailer-card photo pseudo-elements compute to `none`.

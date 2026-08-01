@@ -14,11 +14,11 @@
 | Project detail template | Deep proof | Challenge, solution, transport method, gallery | Обсудить похожую перевозку | Verified project facts |
 | About / expertise | Establish company trust | History, fleet, team/process, documents | Связаться | 20 years, permits, certificates |
 | Clients | Reinforce credibility | Real client logos and relationships | Рассчитать перевозку | Existing logo archive |
-| Contacts | Complete inquiry | Phone, email, address, lead form | Отправить заявку | Same-origin form and consent |
+| Home / contacts section | Complete inquiry | Phone, email, address, lead form | Отправить заявку | Same-origin form and consent |
 | Privacy | Legal clarity | Personal-data policy | None | Current legal text |
 
 ## Composition selection contract
 
 - Only the first row is visualized now.
 - Remaining frames are expanded after composition and style selection.
-- Existing public routes remain unchanged unless redirects are explicitly approved.
+- Existing public routes remain unchanged unless redirects are explicitly approved; the user approved consolidating Contacts into the home-page section, with the legacy URL retained only as a compatibility redirect.

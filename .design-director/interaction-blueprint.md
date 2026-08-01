@@ -32,7 +32,7 @@ The site should feel heavy, precise and well-controlled. Motion explains route p
 - IntersectionObserver adds `.is-visible` once; default is 12–20 px translate plus opacity.
 - Stagger only direct siblings and cap at 80 ms.
 - Header state uses a hero sentinel IntersectionObserver, not a scroll event listener.
-- Native anchor scrolling only; no inertial scroll engine.
+- A locally vendored Lenis instance adds restrained wheel interpolation (`lerp: 0.085`) and owns same-page anchor movement through one controlled `scrollTo` path. It does not scrub content or hijack touch input; reduced-motion users retain native immediate anchors.
 
 ## Navigation and controls
 
@@ -53,7 +53,8 @@ The site should feel heavy, precise and well-controlled. Motion explains route p
 
 - Hero media rotates automatically in the original-site order: aircraft, tram, cylindrical heavy cargo. There are no dots, captions or manual controls; reduced motion holds the first frame.
 - The full-viewport hero keeps the source aspect ratio. Wide legacy images use a centred 148% editorial crop, with small per-image focal offsets, so the vehicle and transported object stay legible without dark letterbox bands.
-- The duplicate statistics strip directly below the hero is removed; the three concise proof figures remain only inside the first viewport.
-- Service scenes stay restrained: the container remains one clean closed object, the crane raises its cable and load, and trailer/rail movement stays hover/focus-only.
+- The floating hero figures are removed. The exact saved four-cell statistics band directly below the hero is restored once, and each number counts from zero when the band enters the viewport.
+- Service scenes stay restrained: the container remains one clean closed object, the crane has no synthetic cable or load, and trailer/rail movement stays hover/focus-only.
 - FAQ opening and closing run in the same 280 ms interval, including answer padding, then settle to exactly one native `details` element with synchronized `aria-expanded`.
 - Decorative eyebrow dashes are removed globally. The original MBM blue mark remains unfiltered, while the favicon uses that same mark on white.
+- Navigation and CTA links labelled «Контакты» or «Рассчитать» resolve to the single home-page contact section. The old contact-page URL redirects there for compatibility.

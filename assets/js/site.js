@@ -11,6 +11,65 @@
     return Array.prototype.slice.call(items || []);
   }
 
+  function initSmoothScroll() {
+    if (reduceMotion || typeof window.Lenis !== 'function') return;
+
+    var lenis = new window.Lenis({
+      autoRaf: true,
+      lerp: .085,
+      smoothWheel: true,
+      syncTouch: false,
+      wheelMultiplier: .92,
+      stopInertiaOnNavigate: true,
+      prevent: function (node) {
+        return Boolean(node && node.closest && node.closest('.main.open, .lightbox.open'));
+      }
+    });
+
+    window.mbmLenis = lenis;
+
+    function onAnchorClick(event) {
+      var link = event.target.closest && event.target.closest('a[href^="#"]');
+      if (!link) return;
+      var hash = link.getAttribute('href');
+      if (!hash || hash === '#') return;
+      var target = document.getElementById(decodeURIComponent(hash.slice(1)));
+      if (!target) return;
+
+      event.preventDefault();
+      if (window.history && typeof window.history.pushState === 'function') {
+        window.history.pushState(null, '', hash);
+      }
+      lenis.scrollTo(target, {
+        offset: -92,
+        duration: .85,
+        lock: false
+      });
+    }
+
+    document.addEventListener('click', onAnchorClick);
+
+    function alignInitialHash() {
+      if (!window.location.hash) return;
+      var targetId = decodeURIComponent(window.location.hash.slice(1));
+      var target = document.getElementById(targetId);
+      if (target) lenis.scrollTo(target, { offset: -92, immediate: true });
+    }
+
+    if (document.readyState === 'complete') {
+      window.requestAnimationFrame(alignInitialHash);
+    } else {
+      window.addEventListener('load', function () {
+        window.requestAnimationFrame(alignInitialHash);
+      }, { once: true });
+    }
+
+    window.addEventListener('pagehide', function () {
+      document.removeEventListener('click', onAnchorClick);
+      lenis.destroy();
+    }, { once: true });
+  }
+
   function injectSkipLink() {
     var target = document.querySelector('.hero, .page-hero, section.block');
     if (!target || document.querySelector('.skip-link')) return;
@@ -726,6 +785,7 @@
   }
 
   injectSkipLink();
+  initSmoothScroll();
   initHeaderState();
   initHeroSlider();
   initMobileMenu();

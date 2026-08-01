@@ -60,6 +60,11 @@ html {
   scroll-padding-top: 104px;
 }
 
+html.lenis {
+  scroll-behavior: auto;
+  scroll-padding-top: 0;
+}
+
 body {
   min-width: 320px;
   margin: 0;
@@ -537,8 +542,7 @@ nav.main .has-sub:focus-within > a {
   padding: 150px 0 76px;
 }
 
-.hero-message,
-.hero-side {
+.hero-message {
   position: relative;
   z-index: 2;
 }
@@ -589,33 +593,6 @@ nav.main .has-sub:focus-within > a {
 
 .hero-actions .btn-ghost {
   min-width: 190px;
-}
-
-.hero-side {
-  padding-bottom: 5px;
-}
-
-.hero-proof {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(92px, 1fr));
-  gap: 24px;
-  margin-bottom: 0;
-}
-
-.hero-proof b {
-  display: block;
-  color: var(--text-100);
-  font-size: clamp(1.55rem, 2.1vw, 2rem);
-  line-height: 1;
-  letter-spacing: -.045em;
-}
-
-.hero-proof span {
-  display: block;
-  margin-top: 8px;
-  color: var(--text-300);
-  font-size: .7rem;
-  font-weight: 650;
 }
 
 .hero-trust {
@@ -943,41 +920,6 @@ section.block.tint {
   transition: transform 650ms var(--ease-out-v3), opacity 250ms ease;
 }
 
-.svc-ico--crane img {
-  transform-origin: 70% 82%;
-}
-
-.svc-ico--crane::before {
-  position: absolute;
-  z-index: 0;
-  top: 66%;
-  left: 14%;
-  width: 1px;
-  height: 21%;
-  background: rgba(205, 221, 231, .7);
-  content: "";
-  transform: scaleY(1);
-  transform-origin: top;
-  transition: transform 260ms cubic-bezier(.23, 1, .32, 1);
-}
-
-.svc-ico--crane::after {
-  position: absolute;
-  z-index: 2;
-  top: 84%;
-  left: 8.5%;
-  width: 11%;
-  min-width: 20px;
-  height: 10px;
-  border: 1px solid rgba(215, 229, 238, .45);
-  border-radius: 2px;
-  background: repeating-linear-gradient(135deg, #d4a228 0 5px, #162734 5px 10px);
-  box-shadow: 0 6px 12px rgba(0, 4, 17, .3);
-  content: "";
-  transform: translateY(0);
-  transition: transform 260ms cubic-bezier(.23, 1, .32, 1);
-}
-
 .svc:nth-child(1) .svc-ico {
   top: 26px;
   right: 1%;
@@ -1077,15 +1019,6 @@ section.block.tint {
     transform: scaleX(1);
   }
 
-  .svc:hover .svc-ico--crane::before,
-  .svc:focus-within .svc-ico--crane::before {
-    transform: scaleY(.42);
-  }
-
-  .svc:hover .svc-ico--crane::after,
-  .svc:focus-within .svc-ico--crane::after {
-    transform: translateY(-13px);
-  }
 }
 
 /* Route process */
@@ -2016,63 +1949,18 @@ section.service-content {
   color: var(--text-100);
 }
 
-.trailer-photo-note {
-  max-width: 76ch;
-  margin: -.35rem 0 1.15rem;
-  color: var(--text-400);
-  font-size: .84rem;
-  line-height: 1.5;
-}
-
 .trailer-card {
   overflow: hidden;
-  padding: 0 0 18px;
-}
-
-.trailer-card::before {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border-bottom: 1px solid var(--line-v3);
-  background-color: #06131d;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  content: "";
-}
-
-.trailer-card:nth-child(5n + 1)::before {
-  background-image: url("../images/work/gallery/g01.webp");
-  background-position: center 63%;
-}
-
-.trailer-card:nth-child(5n + 2)::before {
-  background-image: url("../images/work/gallery/g12.webp");
-  background-position: center 56%;
-}
-
-.trailer-card:nth-child(5n + 3)::before {
-  background-image: url("../images/work/modular.webp");
-  background-position: center 54%;
-}
-
-.trailer-card:nth-child(5n + 4)::before {
-  background-image: url("../images/work/reactor.webp");
-  background-position: center 48%;
-}
-
-.trailer-card:nth-child(5n + 5)::before {
-  background-image: url("../images/work/gallery/g05.webp");
-  background-position: center 56%;
+  padding: 20px;
 }
 
 .trailer-card h4 {
-  margin: 0;
-  padding: 18px 18px 12px;
+  margin: 0 0 14px;
+  padding: 0;
 }
 
 .trailer-card .trailer-specs {
-  padding: 0 18px;
+  padding: 0;
 }
 
 .trailer-card.is-match {
@@ -2480,10 +2368,6 @@ footer {
     padding-top: 140px;
   }
 
-  .hero-side {
-    max-width: 580px;
-  }
-
   .stats .wrap {
     grid-template-columns: 1fr 1fr;
   }
@@ -2653,10 +2537,6 @@ footer {
   .hero-actions .btn-ghost {
     width: 100%;
     min-width: 0;
-  }
-
-  .hero-side {
-    display: none;
   }
 
   .stats .wrap {
@@ -2987,11 +2867,7 @@ footer {
   .svc:hover .svc-ico,
   .svc:focus-within .svc-ico,
   .svc:hover .svc-ico img,
-  .svc:focus-within .svc-ico img,
-  .svc:hover .svc-ico--crane::before,
-  .svc:focus-within .svc-ico--crane::before,
-  .svc:hover .svc-ico--crane::after,
-  .svc:focus-within .svc-ico--crane::after {
+  .svc:focus-within .svc-ico img {
     transform: none !important;
   }
 
