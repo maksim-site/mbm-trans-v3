@@ -1188,6 +1188,7 @@ section.cert-section {
 
 .cert-grid {
   display: flex;
+  align-items: flex-start;
   gap: 14px;
   overflow-x: auto;
   padding: 2px 1px 12px;
@@ -1217,8 +1218,9 @@ section.cert-section {
   width: auto;
   flex: 0 0 clamp(300px, 29vw, 350px);
   grid-template-columns: 86px minmax(0, 1fr);
-  grid-template-rows: auto 1fr;
-  align-items: stretch;
+  grid-template-rows: auto auto;
+  align-content: start;
+  align-items: start;
   column-gap: 14px;
   min-width: 0;
   min-height: 140px;
@@ -3070,9 +3072,24 @@ footer {
   }
 
   nav.main.open {
-    width: 100%;
-    padding: 88px 16px max(24px, env(safe-area-inset-bottom));
-    border-left: 0;
+    top: 76px;
+    right: 12px;
+    bottom: auto;
+    left: 12px;
+    width: auto;
+    max-height: calc(100svh - 88px);
+    padding: 10px;
+    border: 1px solid var(--line-v3);
+    border-radius: 20px;
+    background: rgba(7, 20, 32, .985);
+    box-shadow: 0 24px 70px rgba(0, 4, 17, .58);
+    touch-action: pan-y;
+  }
+
+  nav.main.open > a,
+  nav.main.open .has-sub > a {
+    min-height: 48px;
+    padding-inline: 14px;
   }
 
   .stat {
@@ -3094,7 +3111,7 @@ footer {
     max-width: none;
     margin-left: 0;
     margin-right: 0;
-    padding-right: calc(100% - var(--cert-card-mobile) - 1px);
+    padding-right: calc(100vw - 333px);
     scrollbar-width: none;
   }
 
@@ -3105,7 +3122,7 @@ footer {
   .cert {
     flex-basis: var(--cert-card-mobile);
     grid-template-columns: 78px minmax(0, 1fr);
-    min-height: 128px;
+    min-height: 0;
   }
 
   .cert .cert-thumb {
@@ -3163,7 +3180,14 @@ footer {
   }
 }
 
+@media (max-width: 363px) {
+  .cert-grid {
+    padding-right: 31px;
+  }
+}
+
 @media (max-width: 360px) {
+
   .brand {
     width: 138px;
   }

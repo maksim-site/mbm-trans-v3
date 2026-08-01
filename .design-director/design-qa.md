@@ -125,3 +125,17 @@ final result: passed
 - Pass: the final browser console is empty and cache tokens were refreshed on all nine active pages.
 
 final result: passed
+
+## 2026-08-01 Safari carousel and compact mobile controls
+
+- Source evidence: the user reproduction at `393 x 852` showed a blank certificate position after the second arrow click, an oversized empty area below certificate content and a full-height mobile menu with unused space.
+- P1 fixed: certificate cards no longer participate in the vertical reveal observer; all four documents remain rendered with computed `opacity: 1` before, during and after horizontal navigation in Safari-compatible layouts.
+- P1 fixed: arrow navigation now resolves the exact target card coordinate instead of accumulating a relative `scrollBy`, and resize/initialization normalize any preserved intermediate position.
+- Pass: at `393 px`, the four arrow positions are exactly `0 / 312 / 624 / 936`; at `320 px`, they are `0 / 268 / 536 / 804`. The final card is `1 px` from the shared left rail line at both widths.
+- Pass: mobile certificate cards now size to their image and copy instead of stretching the second grid row; the rail is `147 px` high and cards are `130–133 px`, down from the reproduced `204 px` rail and `190 px` cards.
+- Pass: the `1280 x 900` regression keeps all four cards at an equal `142 px`, a `156 px` rail, working end controls and zero document overflow.
+- Pass: the phone menu is a compact top panel below the persistent branded header. Its closed-services height is `221 px` at both `393 x 852` and `320 x 760`; the expanded Services state is `422 px` and remains inside the viewport.
+- Pass: the original logo remains visible above the panel, background scroll is locked while the menu is open, focus/ARIA state and overlay dismissal remain synchronized, and document overflow is `0 px`.
+- Pass: mobile browser console is empty, cache tokens are refreshed on all nine active routes, JavaScript syntax and `git diff --check` pass.
+
+final result: passed

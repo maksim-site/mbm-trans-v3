@@ -605,6 +605,7 @@
     var rail = document.getElementById('certificateRail');
     if (!rail) return;
     var controls = toArray(document.querySelectorAll('[data-cert-scroll]'));
+    var cards = toArray(rail.querySelectorAll('.cert'));
     var ticking = false;
 
     function maxScroll() {
@@ -621,19 +622,40 @@
       ticking = false;
     }
 
-    function cardStep() {
-      var card = rail.querySelector('.cert');
-      if (!card) return rail.clientWidth * .8;
-      var styles = window.getComputedStyle(rail);
-      var gap = parseFloat(styles.columnGap || styles.gap) || 0;
-      return card.getBoundingClientRect().width + gap;
+    function cardPosition(card) {
+      if (!card) return 0;
+      var railRect = rail.getBoundingClientRect();
+      var cardRect = card.getBoundingClientRect();
+      var rawPosition = rail.scrollLeft + cardRect.left - railRect.left;
+      return Math.max(0, Math.min(maxScroll(), rawPosition));
+    }
+
+    function currentIndex() {
+      var closestIndex = 0;
+      var closestDistance = Infinity;
+      cards.forEach(function (card, index) {
+        var distance = Math.abs(cardPosition(card) - rail.scrollLeft);
+        if (distance < closestDistance) {
+          closestDistance = distance;
+          closestIndex = index;
+        }
+      });
+      return closestIndex;
+    }
+
+    function scrollToIndex(index, behavior) {
+      var target = cards[Math.max(0, Math.min(cards.length - 1, index))];
+      if (!target) return;
+      var left = cardPosition(target);
+      if (typeof rail.scrollTo === 'function') {
+        rail.scrollTo({ left: left, behavior: behavior });
+      } else {
+        rail.scrollLeft = left;
+      }
     }
 
     function move(direction) {
-      rail.scrollBy({
-        left: cardStep() * direction,
-        behavior: reduceMotion ? 'auto' : 'smooth'
-      });
+      scrollToIndex(currentIndex() + direction, reduceMotion ? 'auto' : 'smooth');
     }
 
     controls.forEach(function (button) {
@@ -654,8 +676,15 @@
       move(event.key === 'ArrowLeft' ? -1 : 1);
     });
 
-    window.addEventListener('resize', updateControls, { passive: true });
-    updateControls();
+    window.addEventListener('resize', function () {
+      scrollToIndex(currentIndex(), 'auto');
+      updateControls();
+    }, { passive: true });
+
+    window.requestAnimationFrame(function () {
+      scrollToIndex(currentIndex(), 'auto');
+      updateControls();
+    });
   }
 
   function initForms() {

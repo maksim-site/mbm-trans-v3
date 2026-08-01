@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Mobile certificate end-snap correction complete locally; GitHub publication remains deferred",
+  "note": "Safari-safe certificate carousel, compact document cards and compact phone menu completed and verified locally",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T19:50:18+00:00",
+  "updated_at": "2026-08-01T20:14:18+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -463,6 +463,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Mobile certificate end-snap correction complete locally; GitHub publication remains deferred"
+    },
+    {
+      "at": "2026-08-01T19:54:22+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Replacing Safari-fragile relative scrolling and percentage padding with deterministic card targets and fixed mobile end space"
+    },
+    {
+      "at": "2026-08-01T20:14:18+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Deterministic certificate targets, always-rendered carousel cards, content-sized document rows and compact phone menu implemented"
+    },
+    {
+      "at": "2026-08-01T20:14:18+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Checking every carousel position, compact menu states, card height, overflow, routes and console at 393 and 320 px"
+    },
+    {
+      "at": "2026-08-01T20:14:18+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Exact carousel positions, 130 to 133 px cards, compact menu, zero overflow, clean console and active routes passed"
+    },
+    {
+      "at": "2026-08-01T20:14:18+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Safari carousel and compact mobile menu correction complete locally; GitHub publication remains deferred"
     }
   ]
 }
