@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Complete responsive adaptation is ready in a local Git revision; publication intentionally deferred",
+  "note": "Live crop, content-sized CTA, later navigation collapse and compact section rhythm correction complete locally; GitHub publication deferred",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T18:12:51+00:00",
+  "updated_at": "2026-08-01T18:58:33+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -373,6 +373,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Complete responsive adaptation is ready in a local Git revision; publication intentionally deferred"
+    },
+    {
+      "at": "2026-08-01T18:44:52+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Comparing live MBM crops across aspect ratios and refining image focal points, responsive navigation, content-sized CTAs and section density"
+    },
+    {
+      "at": "2026-08-01T18:57:19+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Live-site crop model applied: cover plus centered focal points without image masks; responsive nav retained through 861 px; content-sized CTAs and compact proof strip implemented"
+    },
+    {
+      "at": "2026-08-01T18:57:19+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Validating 45 route and viewport combinations, mobile menu, crop coverage, console, source assets and desktop regression"
+    },
+    {
+      "at": "2026-08-01T18:58:33+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Exact live-site crop comparison passed at 1280 x 720; 45 route and viewport checks passed from 320 to 1440 px, plus index coverage through 1920 px; console clean"
+    },
+    {
+      "at": "2026-08-01T18:58:33+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Live crop, content-sized CTA, later navigation collapse and compact section rhythm correction complete locally; GitHub publication deferred"
     }
   ]
 }

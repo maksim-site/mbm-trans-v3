@@ -79,3 +79,20 @@ final result: pass
 - Pass: service and policy headings, trailer specifications, client names and legal copy have safe wrapping at `320 px`; all old fallback font declarations were normalized to the self-hosted Onest family.
 - Pass: the Lenis anchor offset now follows the actual responsive header height and animated counters clamp their progress before the section enters view, preventing negative values.
 - Pass: the final mobile browser pass found no missing real images, stuck reveal content, unexpected overflow or console warnings/errors; the `1440 x 900` desktop regression retained the approved layout.
+
+## 2026-08-01 live crop and responsive-density correction
+
+- Source visual: live [mbm-trans.ru](https://mbm-trans.ru/) home hero.
+- Implementation screenshot: local `redesign-v3` home hero.
+- Viewport: `1280 x 720` for the exact side-by-side reference, plus responsive checks from `320` to `1920 px`.
+- Comparison image: `.design-director/assets/qa/live-crop-comparison-1280x720.png`.
+- Pass: all three home photographs now follow the live site's crop contract — full-slot `cover`, centred subject focal point and no image mask, manual width inflation or internal top/bottom fields.
+- Pass: the image rectangle covers the full hero at `320 x 844`, `390 x 844`, `620 x 900`, `720 x 900`, `860 x 700`, `861 x 700`, `1020 x 700`, `1440 x 700` and `1920 x 720`.
+- Pass: the two hero actions remain content-sized (`252 px` and `190 px`) at phone widths instead of stretching to the viewport edge; related mobile section actions use the same content-sized rule.
+- Pass: the full navigation remains visible from `861 px`; at `860 px` and below the existing accessible drawer takes over without header overflow.
+- Pass: the proof strip is one compact four-cell row from `621 px`, is `132–134 px` high at standard desktop/tablet widths, and becomes a restrained two-row phone grid below that breakpoint.
+- Pass: mobile section spacing, service-card height, process gaps and inner hero height were reduced without changing information architecture or removing proof.
+- Pass: 45 route/viewport combinations across all nine content pages returned zero document overflow, broken images, heading overflow, header overflow, stretched hero actions or failed hero coverage checks.
+- Pass: mobile menu open/close state, overlay, body lock and ARIA state remain synchronized; final browser console contains no warnings or errors.
+
+final result: passed

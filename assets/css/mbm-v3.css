@@ -494,36 +494,28 @@ nav.main .has-sub:focus-within > a {
 .hero .slide-media {
   position: absolute;
   z-index: 1;
-  top: 50%;
-  left: 50%;
-  width: 148%;
-  max-width: none;
-  height: auto;
-  opacity: .98;
-  transform: translate(-50%, -50%);
-  -webkit-mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  mask-image: linear-gradient(180deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-}
-
-.hero .slide--plane .slide-media {
-  left: 52%;
-}
-
-.hero .slide--tram .slide-media {
-  left: 55%;
-}
-
-.hero .slide--vessel .slide-media {
-  top: 0;
+  inset: 0;
   width: 100%;
+  max-width: none;
   height: 100%;
+  opacity: .98;
   object-fit: cover;
-  object-position: 52% center;
-  left: 0;
-  max-width: 100%;
+  object-position: 50% 50%;
   transform: none;
   -webkit-mask-image: none;
   mask-image: none;
+}
+
+.hero .slide--plane .slide-media {
+  object-position: 50% 50%;
+}
+
+.hero .slide--tram .slide-media {
+  object-position: 50% 50%;
+}
+
+.hero .slide--vessel .slide-media {
+  object-position: 52% center;
 }
 
 .hero .slide::after {
@@ -617,8 +609,8 @@ nav.main .has-sub:focus-within > a {
 }
 
 .stat {
-  min-height: 196px;
-  padding: 38px clamp(22px, 3vw, 42px);
+  min-height: 132px;
+  padding: 24px clamp(20px, 2.2vw, 32px);
   border: 0;
   border-right: 1px solid var(--line-v3);
   border-radius: 0;
@@ -641,7 +633,7 @@ nav.main .has-sub:focus-within > a {
 .stat .num {
   color: var(--text-100);
   font-family: inherit;
-  font-size: clamp(2.25rem, 3.2vw, 3.7rem);
+  font-size: clamp(2.05rem, 2.8vw, 3.1rem);
   font-weight: 680;
   letter-spacing: -.055em;
 }
@@ -652,9 +644,9 @@ nav.main .has-sub:focus-within > a {
 
 .stat .lbl {
   max-width: 24ch;
-  margin-top: 12px;
+  margin-top: 8px;
   color: var(--text-400);
-  font-size: .85rem;
+  font-size: .8rem;
   font-weight: 550;
   line-height: 1.42;
 }
@@ -2456,10 +2448,83 @@ footer {
   }
 }
 
+/* Keep the full corporate navigation while it still fits comfortably. */
+@media (min-width: 861px) and (max-width: 1020px) {
+  .header .wrap {
+    display: grid;
+    grid-template-columns: 158px minmax(410px, 1fr) auto;
+    width: min(calc(100% - 32px), 1000px);
+    gap: 12px;
+  }
+
+  .brand {
+    width: 158px;
+  }
+
+  .logo-img {
+    width: 134px;
+  }
+
+  nav.main {
+    position: relative;
+    inset: auto;
+    display: flex;
+    width: auto;
+    padding: 6px;
+    border: 1px solid rgba(150, 183, 205, .22);
+    border-radius: 999px;
+  }
+
+  nav.main > a,
+  nav.main .has-sub > a {
+    min-height: 40px;
+    padding-inline: 8px;
+    border: 0;
+    border-radius: 999px;
+    font-size: .71rem;
+  }
+
+  .burger {
+    display: none;
+  }
+
+  .h-right > .btn {
+    display: inline-flex;
+    min-height: 46px;
+    padding-inline: 14px;
+  }
+
+  .stats .wrap {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .stat:nth-child(2) {
+    border-right: 1px solid var(--line-v3);
+  }
+
+  .stat:nth-child(-n + 2) {
+    border-bottom: 0;
+  }
+}
+
+@media (min-width: 621px) and (max-width: 860px) {
+  .stats .wrap {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .stat:nth-child(2) {
+    border-right: 1px solid var(--line-v3);
+  }
+
+  .stat:nth-child(-n + 2) {
+    border-bottom: 0;
+  }
+}
+
 /* Mobile */
 @media (max-width: 720px) {
   :root {
-    --section-space: 72px;
+    --section-space: 64px;
   }
 
   body {
@@ -2511,18 +2576,22 @@ footer {
   }
 
   .hero .slide-media {
-    width: auto;
+    width: 100%;
     height: 100%;
-    -webkit-mask-image: none;
-    mask-image: none;
+    object-fit: cover;
+    object-position: 50% 50%;
   }
 
   .hero .slide--plane .slide-media {
-    left: 61%;
+    object-position: 50% 50%;
   }
 
   .hero .slide--tram .slide-media {
-    left: 58%;
+    object-position: 50% 50%;
+  }
+
+  .hero .slide--vessel .slide-media {
+    object-position: 50% 50%;
   }
 
   .hero-grid {
@@ -2547,16 +2616,25 @@ footer {
   }
 
   .hero-actions {
-    flex-direction: column;
-    gap: 9px;
+    flex-flow: row wrap;
+    gap: 10px;
     margin-top: 22px;
   }
 
   .hero-actions .btn,
   .hero-actions .btn-orange,
   .hero-actions .btn-ghost {
-    width: 100%;
-    min-width: 0;
+    width: auto;
+    min-height: 52px;
+    padding-inline: 18px;
+  }
+
+  .hero-actions .btn-orange {
+    min-width: min(252px, 100%);
+  }
+
+  .hero-actions .btn-ghost {
+    min-width: min(190px, 100%);
   }
 
   .stats .wrap {
@@ -2564,16 +2642,18 @@ footer {
   }
 
   .stat {
-    min-height: 138px;
-    padding: 22px 18px;
+    min-height: 108px;
+    padding: 16px 14px;
   }
 
   .stat .num {
-    font-size: 2.1rem;
+    font-size: 1.82rem;
   }
 
   .stat .lbl {
-    font-size: .76rem;
+    margin-top: 7px;
+    font-size: .7rem;
+    line-height: 1.3;
   }
 
   .sec-title {
@@ -2586,7 +2666,7 @@ footer {
     display: grid;
     align-items: start;
     gap: 14px;
-    margin-bottom: 34px;
+    margin-bottom: 28px;
   }
 
   .head-row .lead {
@@ -2594,12 +2674,12 @@ footer {
   }
 
   .head-row > .btn {
-    width: 100%;
+    width: fit-content;
     justify-content: center;
   }
 
   .about-grid {
-    gap: 48px;
+    gap: 36px;
   }
 
   .about-photo .ribbon {
@@ -2607,7 +2687,7 @@ footer {
   }
 
   .about-text .btn {
-    width: 100%;
+    width: fit-content;
     justify-content: center;
   }
 
@@ -2623,11 +2703,11 @@ footer {
   .svc:nth-child(n) {
     grid-column: auto;
     grid-row: auto;
-    min-height: 400px;
+    min-height: 360px;
   }
 
   .svc:nth-child(1) {
-    min-height: 420px;
+    min-height: 380px;
   }
 
   .svc .svc-ico,
@@ -2644,12 +2724,12 @@ footer {
   }
 
   .process .head-row {
-    margin-bottom: 48px;
+    margin-bottom: 36px;
   }
 
   .steps {
     grid-template-columns: 1fr;
-    gap: 36px;
+    gap: 28px;
   }
 
   .step {
@@ -2792,11 +2872,11 @@ footer {
   }
 
   .cta .wrap {
-    align-items: stretch;
+    align-items: flex-start;
   }
 
   .cta .btn {
-    width: 100%;
+    width: fit-content;
     justify-content: center;
   }
 
@@ -2819,7 +2899,7 @@ footer {
 
   .page-hero,
   .page-hero .wrap {
-    min-height: 440px;
+    min-height: 420px;
   }
 
   .page-hero .wrap {
@@ -2845,8 +2925,8 @@ footer {
   .page-service-container .page-hero,
   .page-service-rental .page-hero,
   .page-service-rail .page-hero {
-    background-position: center, 68% 34%;
-    background-size: cover, 116% auto;
+    background-position: center, 66% center;
+    background-size: cover, min(108%, 600px) auto;
   }
 
   .page-service-oversize .page-hero,
@@ -2998,16 +3078,16 @@ footer {
   }
 
   .stat {
-    min-height: 132px;
-    padding-inline: 14px;
+    min-height: 104px;
+    padding: 14px 12px;
   }
 
   .stat .num {
-    font-size: 1.72rem;
+    font-size: 1.62rem;
   }
 
   .stat .lbl {
-    font-size: .72rem;
+    font-size: .66rem;
   }
 
   .form {
