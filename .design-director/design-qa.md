@@ -96,3 +96,19 @@ final result: pass
 - Pass: mobile menu open/close state, overlay, body lock and ARIA state remain synchronized; final browser console contains no warnings or errors.
 
 final result: passed
+
+## 2026-08-01 compact certificate rail
+
+- Source visual: previous full-height certificate grid in `.design-director/assets/qa/v3-documents-1280.png`.
+- Implementation screenshot: `.design-director/assets/qa/v3-documents-compact-1280.png`.
+- Viewport: `1280 x 900`, with responsive checks at `390 x 844` and `320 x 760`.
+- Comparison image: `.design-director/assets/qa/v3-documents-compact-comparison.png`.
+- Pass: four tall document cards were replaced by one restrained horizontal rail; the section height at `1280 px` is `597 px` and each card is `182 px` high.
+- Pass: three complete cards and the edge of the fourth are visible at desktop width, clearly communicating horizontal continuation without increasing page height.
+- Pass: previous/next controls move exactly one card step, update their disabled states at both ends and retain keyboard focus styling.
+- Pass: phone layouts show one complete card and a visible portion of the next; the rail begins on the shared `16 px` content line and does not create document-level horizontal overflow at `320` or `390 px`.
+- Pass: touch scrolling and CSS scroll snapping work without JavaScript; JavaScript only adds the desktop controls and respects `prefers-reduced-motion`.
+- Pass: selecting a certificate still opens the original document in the modal, the visible close control works and focus returns to the triggering card.
+- Pass: all nine local routes respond, all cache tokens were refreshed, local document assets exist, JavaScript syntax and `git diff --check` pass, and the final browser console is empty.
+
+final result: passed

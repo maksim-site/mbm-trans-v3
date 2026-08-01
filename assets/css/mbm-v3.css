@@ -1135,26 +1135,100 @@ section.block.tint {
 }
 
 /* Documents */
-.cert-grid {
+section.cert-section {
+  padding: clamp(58px, 6vw, 82px) 0;
+}
+
+.cert-head {
+  align-items: flex-end;
+  margin-bottom: 30px;
+}
+
+.cert-controls {
+  display: flex;
+  flex: none;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.cert-arrow {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  align-items: stretch;
-  gap: 18px;
+  width: 44px;
+  height: 44px;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--line-v3);
+  border-radius: 12px;
+  background: var(--ink-850);
+  color: var(--text-100);
+  cursor: pointer;
+  transition: color 180ms ease, border-color 180ms ease, background 180ms ease, opacity 180ms ease;
+}
+
+.cert-arrow .icon {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.cert-arrow:disabled {
+  opacity: .32;
+  cursor: default;
+}
+
+.cert-arrow:focus-visible,
+.cert-grid:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.cert-grid {
+  display: flex;
+  gap: 14px;
+  overflow-x: auto;
+  padding: 2px 1px 12px;
+  scroll-padding-inline: 1px;
+  scroll-snap-type: x mandatory;
+  scrollbar-color: rgba(143, 177, 201, .42) transparent;
+  scrollbar-width: thin;
+  overscroll-behavior-inline: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+.cert-grid::-webkit-scrollbar {
+  height: 4px;
+}
+
+.cert-grid::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.cert-grid::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: rgba(143, 177, 201, .42);
 }
 
 .cert {
-  display: flex;
-  min-width: 0;
-  min-height: 450px;
-  flex-direction: column;
+  display: grid;
+  width: auto;
+  flex: 0 0 clamp(300px, 29vw, 350px);
+  grid-template-columns: 86px minmax(0, 1fr);
+  grid-template-rows: auto 1fr;
   align-items: stretch;
-  justify-content: flex-start;
-  padding: 16px;
+  column-gap: 14px;
+  min-width: 0;
+  min-height: 140px;
+  padding: 12px;
   border: 1px solid var(--line-v3);
-  border-radius: var(--radius-xl);
+  border-radius: 18px;
   background: var(--ink-850);
   box-shadow: none;
   color: var(--text-100);
+  scroll-snap-align: start;
   text-align: left;
   transition: border-color 220ms ease, transform 300ms var(--ease-out-v3);
 }
@@ -1178,16 +1252,16 @@ section.block.tint {
 
 .cert .cert-thumb {
   display: grid;
-  width: 100%;
-  min-height: 0;
-  aspect-ratio: 700 / 990;
-  flex: none;
+  grid-row: 1 / 3;
+  width: 86px;
+  height: 116px;
   place-items: center;
   overflow: hidden;
-  padding: 14px;
+  padding: 8px;
   border: 1px solid rgba(255, 255, 255, .1);
-  border-radius: 16px;
+  border-radius: 11px;
   background: #eef3f8;
+  margin: 0;
 }
 
 .cert:nth-child(1) .cert-thumb {
@@ -1204,23 +1278,32 @@ section.block.tint {
 
 .cert b {
   display: block;
-  min-height: 2.6em;
-  margin: 16px 4px 0;
+  min-height: 0;
+  margin: 5px 2px 0 0;
   color: var(--text-100);
   font-family: inherit;
-  line-height: 1.3;
+  font-size: .98rem;
+  line-height: 1.28;
 }
 
 .cert small {
-  margin: 4px 4px 2px;
+  margin: 6px 2px 0 0;
   color: var(--text-400);
+  font-size: .79rem;
+  line-height: 1.4;
 }
 
 @media (hover: hover) and (pointer: fine) {
+  .cert-arrow:not(:disabled):hover {
+    border-color: var(--line-strong);
+    background: var(--ink-800);
+    color: var(--accent-soft);
+  }
+
   .cert:hover {
     border-color: var(--line-strong);
     box-shadow: none;
-    transform: translateY(-4px);
+    transform: translateY(-2px);
   }
 }
 
@@ -2411,7 +2494,7 @@ footer {
   }
 
   .cert-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
   }
 
   .cert:nth-child(n) {
@@ -2760,7 +2843,7 @@ footer {
   }
 
   .cert-grid {
-    grid-template-columns: 1fr 1fr;
+    gap: 12px;
   }
 
   .cert:nth-child(n) {
@@ -3007,7 +3090,21 @@ footer {
   }
 
   .cert-grid {
-    grid-template-columns: 1fr;
+    max-width: none;
+    margin-left: 0;
+    margin-right: -16px;
+    padding-right: 16px;
+  }
+
+  .cert {
+    flex-basis: min(300px, calc(100vw - 64px));
+    grid-template-columns: 78px minmax(0, 1fr);
+    min-height: 128px;
+  }
+
+  .cert .cert-thumb {
+    width: 78px;
+    height: 104px;
   }
 
   .cert:nth-child(1),

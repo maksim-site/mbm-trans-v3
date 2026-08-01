@@ -601,6 +601,63 @@
     });
   }
 
+  function initCertificateRail() {
+    var rail = document.getElementById('certificateRail');
+    if (!rail) return;
+    var controls = toArray(document.querySelectorAll('[data-cert-scroll]'));
+    var ticking = false;
+
+    function maxScroll() {
+      return Math.max(0, rail.scrollWidth - rail.clientWidth);
+    }
+
+    function updateControls() {
+      var limit = maxScroll();
+      controls.forEach(function (button) {
+        var direction = Number(button.dataset.certScroll || 0);
+        var disabled = direction < 0 ? rail.scrollLeft <= 2 : rail.scrollLeft >= limit - 2;
+        button.disabled = disabled || limit <= 2;
+      });
+      ticking = false;
+    }
+
+    function cardStep() {
+      var card = rail.querySelector('.cert');
+      if (!card) return rail.clientWidth * .8;
+      var styles = window.getComputedStyle(rail);
+      var gap = parseFloat(styles.columnGap || styles.gap) || 0;
+      return card.getBoundingClientRect().width + gap;
+    }
+
+    function move(direction) {
+      rail.scrollBy({
+        left: cardStep() * direction,
+        behavior: reduceMotion ? 'auto' : 'smooth'
+      });
+    }
+
+    controls.forEach(function (button) {
+      button.addEventListener('click', function () {
+        move(Number(button.dataset.certScroll || 0));
+      });
+    });
+
+    rail.addEventListener('scroll', function () {
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame(updateControls);
+    }, { passive: true });
+
+    rail.addEventListener('keydown', function (event) {
+      if (event.target !== rail || (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight')) return;
+      event.preventDefault();
+      move(event.key === 'ArrowLeft' ? -1 : 1);
+    });
+
+    window.addEventListener('resize', updateControls, { passive: true });
+    updateControls();
+  }
+
   function initForms() {
     var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
@@ -799,6 +856,7 @@
   initRoute();
   initClientMarquee();
   initFaq();
+  initCertificateRail();
   initLightbox();
   initForms();
   initTrailerPicker();

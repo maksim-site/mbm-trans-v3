@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Live crop, content-sized CTA, later navigation collapse and compact section rhythm correction complete locally; GitHub publication deferred",
+  "note": "Compact horizontally scrollable certificate section complete locally; GitHub publication remains deferred",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T18:58:33+00:00",
+  "updated_at": "2026-08-01T19:32:35+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -403,6 +403,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Live crop, content-sized CTA, later navigation collapse and compact section rhythm correction complete locally; GitHub publication deferred"
+    },
+    {
+      "at": "2026-08-01T19:25:06+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Compact horizontal certificate rail with desktop controls, touch swipe and preserved document lightbox"
+    },
+    {
+      "at": "2026-08-01T19:32:35+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Compact certificate rail implemented with horizontal cards, responsive swipe and preserved lightbox"
+    },
+    {
+      "at": "2026-08-01T19:32:35+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Checking desktop and mobile rail geometry, controls, touch fallback, lightbox, assets, routes and console"
+    },
+    {
+      "at": "2026-08-01T19:32:35+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Certificate rail QA passed at 1280, 390 and 320 px; controls, lightbox, focus return, route responses and console are clean"
+    },
+    {
+      "at": "2026-08-01T19:32:35+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Compact horizontally scrollable certificate section complete locally; GitHub publication remains deferred"
     }
   ]
 }
