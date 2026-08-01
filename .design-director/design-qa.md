@@ -139,3 +139,15 @@ final result: passed
 - Pass: mobile browser console is empty, cache tokens are refreshed on all nine active routes, JavaScript syntax and `git diff --check` pass.
 
 final result: passed
+
+## 2026-08-01 mobile hero image art direction
+
+- Source evidence: the user capture at `393 x 852` showed the `1600 x 593` tram photograph being forced through a full-height `cover` slot, leaving only a narrow central fragment of the vehicle visible.
+- P1 fixed: below `720 px`, the hero now separates image presentation from vertical fill. The original unedited source is shown as a centred sharp foreground frame, while a dark restrained backdrop made from the same local image fills the remaining hero height.
+- Pass: the aircraft, tram and heavy-cargo subjects were each visually checked at `393 x 852`; all primary cargo and vehicle silhouettes remain visible and the foreground frames retain their natural aspect ratios.
+- Pass: at `393 px`, the aircraft/tram frame exposes `81%` of the source width and the heavy-cargo frame exposes `91%`; the previous tall `cover` treatment exposed roughly one fifth of the wide source.
+- Pass: the `320 x 760` fallback keeps the aircraft and truck visible, preserves content-sized actions and has `0 px` document overflow.
+- Pass: the `1280 x 720` regression still uses the approved full-height centred `cover` treatment with no mask or layout change.
+- Pass: all three original local images load at their expected `1600 px` natural width, the updated stylesheet token is active on all nine content routes, `site.js` syntax and `git diff --check` pass, and the local server recorded no failed requests during QA.
+
+final result: passed

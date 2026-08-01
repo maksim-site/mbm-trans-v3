@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Safari-safe certificate carousel, compact document cards and compact phone menu completed and verified locally",
+  "note": "Mobile hero crop correction complete locally; GitHub publication remains deferred",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T20:14:18+00:00",
+  "updated_at": "2026-08-01T20:31:48+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -493,6 +493,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Safari carousel and compact mobile menu correction complete locally; GitHub publication remains deferred"
+    },
+    {
+      "at": "2026-08-01T20:24:59+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "P1 mobile hero art direction: replace impossible full-height cover crop with local-image layered composition preserving vehicle visibility"
+    },
+    {
+      "at": "2026-08-01T20:31:47+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Mobile hero layered art direction implemented with original local images and subject-preserving natural-aspect frames"
+    },
+    {
+      "at": "2026-08-01T20:31:47+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Checking all three hero slides at 393 x 852, 320 x 760 fallback and 1280 x 720 desktop regression"
+    },
+    {
+      "at": "2026-08-01T20:31:48+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "All three mobile subjects remain visible at 393 px; 320 px has zero overflow; desktop cover treatment is unchanged; assets and syntax pass"
+    },
+    {
+      "at": "2026-08-01T20:31:48+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Mobile hero crop correction complete locally; GitHub publication remains deferred"
     }
   ]
 }
