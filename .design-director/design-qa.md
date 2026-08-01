@@ -151,3 +151,17 @@ final result: passed
 - Pass: all three original local images load at their expected `1600 px` natural width, the updated stylesheet token is active on all nine content routes, `site.js` syntax and `git diff --check` pass, and the local server recorded no failed requests during QA.
 
 final result: passed
+
+## 2026-08-02 responsive hero crop and contact cleanup
+
+- Source evidence: user captures at `670 x 852` and `800 x 852` exposed opposite crop failures: the smaller layout showed the photograph too timidly, while the wider compact layout cropped away most of the cargo.
+- P1 fixed: the hero now has separate art-direction ranges instead of one universal compact crop. At `670 px` the photograph is enlarged with a restrained edge crop; at `800 px` the wider frame preserves the vehicle and cargo silhouette.
+- Pass: `1181 x 852` and `1280 x 852` retain the compact image stage, while `1280 x 720` intentionally returns to the approved full-height desktop cover treatment; all three checks report `0 px` document overflow.
+- Pass: at `670 x 852` and `800 x 852`, the image-to-copy transition is continuous and the `Проектная логистика` label starts immediately below the faded photo edge.
+- Pass: all three local hero images load at their expected `1600 px` natural width; the responsive stage remains identical between slides at phone widths.
+- Pass: the projects page contains no visible archive terminology and now reports `45 выполненных перевозок`.
+- Pass: the map card contains the embedded Yandex map and address only, with no duplicate external-map buttons; iframe interaction is enabled.
+- Pass: the contact section spacing is reduced and the calculation card uses a restrained dark surface with a white call-to-action label.
+- Pass: stylesheet cache tokens match on all nine active pages, mobile contacts and projects have `0 px` document overflow, and the final browser console contains no warnings or errors.
+
+final result: passed

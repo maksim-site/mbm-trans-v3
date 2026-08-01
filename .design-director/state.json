@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Mobile hero crop correction complete locally; GitHub publication remains deferred",
+  "note": "Responsive crop and related contact and projects refinements are complete in the local redesign-v3 branch; this iteration has not been pushed.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T20:31:48+00:00",
+  "updated_at": "2026-08-01T23:20:11+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -523,6 +523,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Mobile hero crop correction complete locally; GitHub publication remains deferred"
+    },
+    {
+      "at": "2026-08-01T22:39:47+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Removing archive terminology from projects and equalizing mobile hero photo stage to meet the Project Logistics label"
+    },
+    {
+      "at": "2026-08-01T23:17:36+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Responsive hero art direction, project terminology, map, contact spacing and CTA refinements implemented locally."
+    },
+    {
+      "at": "2026-08-01T23:19:48+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Checking 670 and 800 px crops, compact-to-desktop boundaries, mobile overflow, embedded map interaction and console state."
+    },
+    {
+      "at": "2026-08-01T23:19:57+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Visual QA passed at 320, 393, 670, 800, 1181 and 1280 px; no overflow, missing hero media or console warnings and embedded map remains interactive."
+    },
+    {
+      "at": "2026-08-01T23:20:11+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Responsive crop and related contact and projects refinements are complete in the local redesign-v3 branch; this iteration has not been pushed."
     }
   ]
 }

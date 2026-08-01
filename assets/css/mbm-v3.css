@@ -1623,6 +1623,14 @@ section.cert-section {
   background: var(--ink-950);
 }
 
+#contacts {
+  padding-top: clamp(64px, 5vw, 88px);
+}
+
+#contacts .head-row {
+  margin-bottom: clamp(28px, 3vw, 44px);
+}
+
 .contact-grid {
   grid-template-columns: minmax(320px, .8fr) minmax(520px, 1.2fr);
   gap: clamp(44px, 7vw, 104px);
@@ -1757,7 +1765,7 @@ section.cert-section {
 
 .map-frame iframe {
   filter: saturate(.72) contrast(1.04);
-  pointer-events: none;
+  pointer-events: auto !important;
 }
 
 .map-marker {
@@ -2068,11 +2076,30 @@ section.service-content {
 
 .side-card.accent {
   border: 1px solid var(--line-strong);
-  background: linear-gradient(145deg, #2b658f, #173b55);
+  background: linear-gradient(145deg, #132f42, #081722 72%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .06), 0 24px 60px rgba(0, 5, 18, .3);
 }
 
 .side-card.accent p {
   color: var(--text-200);
+}
+
+.side-card.accent .btn,
+.side-card.accent .btn .icon {
+  color: #fff;
+}
+
+.side-card.accent .btn {
+  border-color: rgba(151, 188, 212, .52);
+  background: rgba(39, 95, 143, .92);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .1), 0 14px 30px rgba(0, 5, 18, .26);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .side-card.accent .btn:hover {
+    background: rgba(49, 111, 159, .98);
+    color: #fff;
+  }
 }
 
 .person {
@@ -2606,6 +2633,70 @@ footer {
   }
 }
 
+/* Tall tablet / compact desktop hero: avoid a sudden full-height cover crop. */
+@media (min-width: 721px) and (max-width: 1180px) and (min-height: 700px),
+  (min-width: 1181px) and (max-width: 1280px) and (min-height: 800px) {
+  .hero {
+    min-height: max(100svh, 760px);
+  }
+
+  .hero .slide--plane {
+    --hero-tablet-image: url("../images/fp_slider/slider3_.webp");
+  }
+
+  .hero .slide--tram {
+    --hero-tablet-image: url("../images/fp_slider/slider1_.webp");
+  }
+
+  .hero .slide--vessel {
+    --hero-tablet-image: url("../images/work/hero-vessel.webp");
+  }
+
+  .hero .slide::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: -24px;
+    background-image: var(--hero-tablet-image);
+    background-position: 50% 42%;
+    background-size: cover;
+    filter: blur(18px) saturate(.58) brightness(.64);
+    opacity: .76;
+    transform: scale(1.08);
+  }
+
+  .hero .slide-media,
+  .hero .slide--vessel .slide-media {
+    inset: auto auto auto 50%;
+    top: 74px;
+    width: min(110vw, calc(100vw + 90px), 1180px);
+    height: min(40.8vw, calc(37.04vw + 33.33px), 437px);
+    object-fit: cover;
+    object-position: 50% 50%;
+    transform: translateX(-50%);
+    -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 74%, transparent 100%);
+    mask-image: linear-gradient(180deg, #000 0%, #000 74%, transparent 100%);
+  }
+
+  .hero .slide--vessel .slide-media {
+    object-position: 50% 54%;
+  }
+
+  .hero .slide::after {
+    background:
+      linear-gradient(180deg, rgba(2, 13, 25, .16) 0%, rgba(2, 13, 25, .16) 24%, rgba(2, 13, 25, .56) 45%, rgba(2, 13, 25, .92) 68%, rgba(2, 13, 25, .98) 100%),
+      linear-gradient(90deg, rgba(0, 35, 77, .38) 0%, transparent 76%);
+  }
+
+  .hero-grid {
+    min-height: max(100svh, 760px);
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 30px;
+    padding: calc(74px + min(40.8vw, calc(37.04vw + 33.33px), 437px)) 0 40px;
+  }
+}
+
 /* Mobile */
 @media (max-width: 720px) {
   :root {
@@ -2688,9 +2779,9 @@ footer {
   .hero .slide-media {
     inset: auto auto auto 50%;
     top: 66px;
-    width: min(122vw, 540px);
-    height: auto;
-    object-fit: contain;
+    width: min(122vw, calc(100vw + 90px));
+    height: min(45.2vw, calc(37.04vw + 33.33px));
+    object-fit: cover;
     object-position: 50% 50%;
     transform: translateX(-50%);
     -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 72%, transparent 100%);
@@ -2706,8 +2797,8 @@ footer {
   }
 
   .hero .slide--vessel .slide-media {
-    width: min(108vw, 480px);
-    object-position: 50% 50%;
+    width: min(122vw, calc(100vw + 90px));
+    object-position: 50% 54%;
   }
 
   .hero .slide::after {
@@ -2720,7 +2811,7 @@ footer {
     min-height: 760px;
     align-items: start;
     gap: 30px;
-    padding: 282px 0 34px;
+    padding: calc(66px + min(45.2vw, calc(37.04vw + 33.33px))) 0 34px;
   }
 
   .hero .eyebrow {
