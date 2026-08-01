@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Exact saved statistics band, single home contact destination, local Lenis scrolling and user-directed catalogue/icon/crane corrections are complete and verified locally; no publication was performed.",
+  "note": "Complete responsive adaptation is ready in a local Git revision; publication intentionally deferred",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T09:31:58+00:00",
+  "updated_at": "2026-08-01T18:12:51+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -343,6 +343,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "User-directed MBM correction is complete locally with exact Git-restored proof band, consolidated Contacts, self-hosted Lenis and cleaned service/catalogue visuals; GitHub and hosting remain untouched."
+    },
+    {
+      "at": "2026-08-01T17:51:58+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Full mobile adaptation pass across shared shell, home, service, project, client and policy routes at 320 to 430 px."
+    },
+    {
+      "at": "2026-08-01T18:08:30+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Responsive system completed for 320, 375, 390 and 430 px plus phone landscape: mobile shell, heroes, proof grid, sections, FAQ, projects, clients, forms, map and footer refined."
+    },
+    {
+      "at": "2026-08-01T18:08:30+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Running final route, touch interaction, overflow, asset, console and desktop regression checks before the local Git commit."
+    },
+    {
+      "at": "2026-08-01T18:12:50+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Mobile QA passed at 320, 375, 390 and 430 px plus 844 x 390 landscape; desktop regression passed"
+    },
+    {
+      "at": "2026-08-01T18:12:51+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Complete responsive adaptation is ready in a local Git revision; publication intentionally deferred"
     }
   ]
 }

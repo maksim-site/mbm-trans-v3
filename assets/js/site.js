@@ -28,6 +28,11 @@
 
     window.mbmLenis = lenis;
 
+    function anchorOffset() {
+      var header = document.getElementById('header');
+      return -((header ? header.offsetHeight : 80) + 12);
+    }
+
     function onAnchorClick(event) {
       var link = event.target.closest && event.target.closest('a[href^="#"]');
       if (!link) return;
@@ -41,7 +46,7 @@
         window.history.pushState(null, '', hash);
       }
       lenis.scrollTo(target, {
-        offset: -92,
+        offset: anchorOffset(),
         duration: .85,
         lock: false
       });
@@ -53,7 +58,7 @@
       if (!window.location.hash) return;
       var targetId = decodeURIComponent(window.location.hash.slice(1));
       var target = document.getElementById(targetId);
-      if (target) lenis.scrollTo(target, { offset: -92, immediate: true });
+      if (target) lenis.scrollTo(target, { offset: anchorOffset(), immediate: true });
     }
 
     if (document.readyState === 'complete') {
@@ -266,7 +271,7 @@
     var duration = 1250;
     var started = performance.now();
     function frame(now) {
-      var progress = Math.min((now - started) / duration, 1);
+      var progress = Math.max(0, Math.min((now - started) / duration, 1));
       var eased = 1 - Math.pow(1 - progress, 3);
       element.textContent = String(Math.round(target * eased));
       if (progress < 1) window.requestAnimationFrame(frame);

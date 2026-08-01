@@ -67,3 +67,15 @@ final result: pass
 - Pass: the locally vendored Lenis 1.3.23 bundle provides restrained wheel smoothing and one controlled anchor path without a CDN request; reduced-motion retains the native fallback.
 - Pass: desktop and `390 x 844` mobile contact navigation settles with a 92 px header clearance and no horizontal overflow.
 - Pass: the heavy-load feature now uses an unambiguous weight outline; the crane pseudo cable/load and all trailer-card photo pseudo-elements compute to `none`.
+
+## 2026-08-01 complete mobile adaptation
+
+- Pass: all nine active content routes were checked at `320`, `375`, `390` and `430 px`; document width equals viewport width, long headings wrap safely and no content element escapes the mobile canvas.
+- Pass: the home and inner heroes, original logo, sticky header, full-screen navigation drawer and nested Services menu are usable at phone widths without covering page copy.
+- Pass: landscape-phone rules were verified at `844 x 390`; hero content stays reachable, focal images remain centred and primary actions fit without horizontal clipping.
+- Pass: compact mobile layouts were added for statistics, services, process, projects, certificates, clients, contact form, map and footer while preserving the approved desktop composition.
+- Pass: touch controls meet a practical minimum target, project filters remain horizontally scrollable, the certificate lightbox fits the viewport and the two-column phone footer avoids the previous excessive height.
+- Pass: the FAQ keeps one item open, changes items in one coordinated transition and gives the answer copy clear spacing below its divider.
+- Pass: service and policy headings, trailer specifications, client names and legal copy have safe wrapping at `320 px`; all old fallback font declarations were normalized to the self-hosted Onest family.
+- Pass: the Lenis anchor offset now follows the actual responsive header height and animated counters clamp their progress before the section enters view, preventing negative values.
+- Pass: the final mobile browser pass found no missing real images, stuck reveal content, unexpected overflow or console warnings/errors; the `1440 x 900` desktop regression retained the approved layout.
