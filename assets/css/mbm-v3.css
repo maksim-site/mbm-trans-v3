@@ -3090,14 +3090,20 @@ footer {
   }
 
   .cert-grid {
+    --cert-card-mobile: min(300px, calc(100vw - 64px));
     max-width: none;
     margin-left: 0;
-    margin-right: -16px;
-    padding-right: 16px;
+    margin-right: 0;
+    padding-right: calc(100% - var(--cert-card-mobile) - 1px);
+    scrollbar-width: none;
+  }
+
+  .cert-grid::-webkit-scrollbar {
+    display: none;
   }
 
   .cert {
-    flex-basis: min(300px, calc(100vw - 64px));
+    flex-basis: var(--cert-card-mobile);
     grid-template-columns: 78px minmax(0, 1fr);
     min-height: 128px;
   }

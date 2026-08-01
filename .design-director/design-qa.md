@@ -112,3 +112,16 @@ final result: passed
 - Pass: all nine local routes respond, all cache tokens were refreshed, local document assets exist, JavaScript syntax and `git diff --check` pass, and the final browser console is empty.
 
 final result: passed
+
+## 2026-08-01 mobile certificate end-snap correction
+
+- Source evidence: user capture at `393 x 852` showed the final card right-aligned with a clipped fragment of the preceding card remaining on the left.
+- Implementation screenshot: `.design-director/assets/qa/v3-documents-mobile-end-393.png`.
+- Comparison image: `.design-director/assets/qa/v3-documents-mobile-end-comparison.png`.
+- P2 fixed: the mobile rail now reserves an exact trailing snap area derived from the responsive card width, so the final card reaches the same left content line as the first card.
+- Pass: measured final-card alignment is `1 px` from the rail start at both `320` and `393 px`; document-level horizontal overflow remains `0 px`.
+- Pass: the last position is exactly `scrollLeft 936 / maxScroll 936` at `393 px`, with the previous arrow enabled and next arrow disabled.
+- Pass: the phone-only scrollbar is hidden while touch swipe, arrow controls, CSS snapping and keyboard behavior remain available.
+- Pass: the final browser console is empty and cache tokens were refreshed on all nine active pages.
+
+final result: passed

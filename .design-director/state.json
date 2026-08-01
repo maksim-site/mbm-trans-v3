@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Compact horizontally scrollable certificate section complete locally; GitHub publication remains deferred",
+  "note": "Mobile certificate end-snap correction complete locally; GitHub publication remains deferred",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T19:32:35+00:00",
+  "updated_at": "2026-08-01T19:50:18+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -433,6 +433,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Compact horizontally scrollable certificate section complete locally; GitHub publication remains deferred"
+    },
+    {
+      "at": "2026-08-01T19:40:57+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Correcting mobile certificate rail end alignment so the final card snaps to the shared left content line"
+    },
+    {
+      "at": "2026-08-01T19:50:18+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Mobile rail trailing snap space corrected; last certificate now aligns to the left content line"
+    },
+    {
+      "at": "2026-08-01T19:50:18+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Verifying exact 393 x 852 user reproduction, 320 px fallback, end controls, overflow and console"
+    },
+    {
+      "at": "2026-08-01T19:50:18+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Last certificate aligns within 1 px at 320 and 393 px; no overflow, visible scrollbar or console errors"
+    },
+    {
+      "at": "2026-08-01T19:50:18+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Mobile certificate end-snap correction complete locally; GitHub publication remains deferred"
     }
   ]
 }
