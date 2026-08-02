@@ -1633,7 +1633,16 @@ section.cert-section {
 
 .contact-grid {
   grid-template-columns: minmax(320px, .8fr) minmax(520px, 1.2fr);
+  align-items: start;
   gap: clamp(44px, 7vw, 104px);
+}
+
+.contact-column {
+  min-width: 0;
+}
+
+#contacts .form {
+  margin-top: 0;
 }
 
 .contact-info .row {

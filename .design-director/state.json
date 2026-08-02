@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Responsive crop and related contact and projects refinements are complete in the local redesign-v3 branch; this iteration has not been pushed.",
+  "note": "Navigation and content simplification complete and ready for GitHub Pages publication.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-01T23:20:11+00:00",
+  "updated_at": "2026-08-02T12:24:44+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -553,6 +553,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Responsive crop and related contact and projects refinements are complete in the local redesign-v3 branch; this iteration has not been pushed."
+    },
+    {
+      "at": "2026-08-02T12:19:03+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Simplifying favicon and information architecture: about anchors to home, certificate section removal, and contact form alignment."
+    },
+    {
+      "at": "2026-08-02T12:24:13+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Favicon, home-about routing, certificate removal and contact alignment implemented across active routes."
+    },
+    {
+      "at": "2026-08-02T12:24:25+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Checking exact desktop alignment, 393 px routes, anchor redirects, section continuity, assets and console."
+    },
+    {
+      "at": "2026-08-02T12:24:36+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Form and heading share one top line; eight mobile routes have zero overflow, no broken media or console errors; favicon and redirects verified."
+    },
+    {
+      "at": "2026-08-02T12:24:44+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Navigation and content simplification complete and ready for GitHub Pages publication."
     }
   ]
 }

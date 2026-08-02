@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" role="img" aria-labelledby="title">
+  <title id="title">МБМ</title>
   <rect width="128" height="128" rx="22" fill="#fff"/>
-  <rect x="1" y="1" width="126" height="126" rx="21" fill="none" stroke="#dce6ed" stroke-width="2"/>
-  <image href="css/imgs/logo_h-clean@2x.png" x="6" y="42" width="116" height="44" preserveAspectRatio="xMidYMid meet"/>
+  <g fill="#025194">
+    <path d="M8 97V49h12l5 20 5-20h12v48H32V71l-5 19h-4l-5-19v26H8Z"/>
+    <path fill-rule="evenodd" d="M43 26h39v12H57v13h10c14 0 22 8 22 23 0 14-9 23-24 23H43V26Zm14 37v22h7c8 0 11-4 11-11s-4-11-11-11h-7Z"/>
+    <path d="M88 97V49h11l5 20 5-20h12v48h-10V71l-5 19h-4l-4-19v26H88Z"/>
+  </g>
 </svg>

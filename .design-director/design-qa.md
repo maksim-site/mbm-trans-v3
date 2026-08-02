@@ -165,3 +165,18 @@ final result: passed
 - Pass: stylesheet cache tokens match on all nine active pages, mobile contacts and projects have `0 px` document overflow, and the final browser console contains no warnings or errors.
 
 final result: passed
+
+## 2026-08-02 navigation, favicon and contact alignment simplification
+
+- Source evidence: user capture at approximately `1600 x 1000` showed the application card starting well below the `Контакты` heading, plus an unreadable full-logo favicon at small sizes.
+- Implementation screenshot: `.design-director/assets/qa/contact-form-aligned-1600.jpg`.
+- Comparison image: `.design-director/assets/qa/contact-form-alignment-comparison.png`.
+- P1 fixed: the contact section is now one semantic two-column grid; the form card and left heading wrapper share the exact same top coordinate, and the form title aligns visually with the `Контакты` heading.
+- Pass: at `1600 x 1000`, measured form-to-heading-wrapper offset is `0 px`; the previous large empty desktop band is gone without negative margins.
+- Pass: at `393 x 852`, contact information and the form stack in a clear single-column order, the form is `361 px` wide and document overflow is `0 px`.
+- Pass: the favicon is a deterministic white square with only the blue `МБМ` lettermark; the central `Б` is deliberately taller, and the resulting SVG, 32 px PNG, 180 px touch icon and ICO all use the same geometry.
+- Pass: every active navigation and footer `О компании` link now resolves to the home `#about` section; the legacy `o-kompanii.html` route immediately redirects there and was removed from the sitemap.
+- Pass: the home certificate section and its lightbox markup are removed; `Как мы работаем` now flows directly into `Наши проекты` across a single divider with no blank section.
+- Pass: all eight content routes checked at `393 x 852` have `0 px` overflow, no broken images, the new favicon reference and the correct home-about target; final browser console contains no warnings or errors.
+
+final result: passed
