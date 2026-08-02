@@ -1,0 +1,57 @@
+Options -Indexes
+DirectoryIndex index.html index.php
+AddType application/manifest+json .webmanifest
+AddType font/woff2 .woff2
+
+RewriteEngine On
+
+# Единый основной адрес: HTTPS без www.
+RewriteCond %{HTTP_HOST} ^www\.mbm-trans\.ru$ [NC]
+RewriteRule ^ https://mbm-trans.ru%{REQUEST_URI} [R=301,L,NE]
+
+RewriteCond %{HTTPS} !=on
+RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
+RewriteRule ^ https://mbm-trans.ru%{REQUEST_URI} [R=301,L,NE]
+
+# Не индексируем отдельные варианты адреса главной.
+RewriteCond %{THE_REQUEST} \s/+index\.(html|php)[\s?] [NC]
+RewriteRule ^index\.(html|php)$ https://mbm-trans.ru/ [R=301,L,NE]
+
+# Старые страницы теперь являются разделами главной.
+RewriteRule ^o-kompanii\.html$ https://mbm-trans.ru/#about [R=301,L,NE]
+RewriteRule ^kontaktyi\.html$ https://mbm-trans.ru/#contacts [R=301,L,NE]
+RewriteRule ^nashi-klientyi\.html$ https://mbm-trans.ru/#clients [R=301,L,NE]
+
+ErrorDocument 404 /404.html
+
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/javascript application/javascript application/json application/xml image/svg+xml
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 0 seconds"
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/avif "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+
+  <FilesMatch "\.(html?|php)$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
+
+  <FilesMatch "\.(css|js|avif|webp|jpe?g|png|svg|ico|woff2)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+</IfModule>

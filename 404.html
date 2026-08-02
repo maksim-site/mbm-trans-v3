@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#06131f">
+  <meta name="robots" content="noindex,follow">
+  <title>Страница не найдена — МБМ-Транс</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg?v=20260802seo1">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png?v=20260802seo1">
+  <style>
+    @font-face {
+      font-family: "Onest";
+      src: url("/assets/fonts/onest-cyrillic-wght-normal.woff2") format("woff2");
+      font-style: normal;
+      font-weight: 100 900;
+      font-display: swap;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { color-scheme: dark; }
+
+    body {
+      min-height: 100svh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      padding: 32px 20px;
+      color: #f3f7fb;
+      background:
+        radial-gradient(circle at 70% 20%, rgba(75, 143, 187, .16), transparent 34rem),
+        #06131f;
+      font-family: "Onest", system-ui, sans-serif;
+    }
+
+    main { width: min(760px, 100%); }
+
+    .logo {
+      display: block;
+      width: 180px;
+      height: auto;
+      margin-bottom: clamp(48px, 9vw, 96px);
+    }
+
+    .code {
+      margin: 0 0 12px;
+      color: #7da9c5;
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: .16em;
+    }
+
+    h1 {
+      max-width: 680px;
+      margin: 0;
+      font-size: clamp(48px, 10vw, 96px);
+      line-height: .98;
+      letter-spacing: -.055em;
+    }
+
+    p {
+      max-width: 560px;
+      margin: 28px 0 0;
+      color: #a8b8c5;
+      font-size: clamp(17px, 2.4vw, 22px);
+      line-height: 1.55;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+
+    a {
+      min-height: 52px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 22px;
+      border: 1px solid #34546a;
+      border-radius: 14px;
+      color: #eef6fb;
+      text-decoration: none;
+      font-weight: 650;
+    }
+
+    a:first-child {
+      border-color: #4c92bd;
+      background: #2c6f9e;
+    }
+
+    a:focus-visible {
+      outline: 3px solid #8dc4e7;
+      outline-offset: 3px;
+    }
+
+    @media (max-width: 520px) {
+      .logo { width: 148px; }
+      nav { flex-direction: column; }
+      a { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <img class="logo" src="/assets/css/imgs/logo_h-transparent@2x.png" alt="МБМ-Транс" width="436" height="171">
+    <p class="code">ОШИБКА 404</p>
+    <h1>Такого маршрута нет.</h1>
+    <p>Страница могла переехать или ссылка устарела. Вернитесь на главную либо посмотрите услуги и выполненные перевозки.</p>
+    <nav aria-label="Полезные ссылки">
+      <a href="/">На главную</a>
+      <a href="/#services">Услуги</a>
+      <a href="/nashi-proektyi.html">Наши проекты</a>
+      <a href="/#contacts">Контакты</a>
+    </nav>
+  </main>
+</body>
+</html>

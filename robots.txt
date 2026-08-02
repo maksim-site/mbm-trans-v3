@@ -1,10 +1,11 @@
 User-agent: *
 Allow: /
-Sitemap: https://mbm-trans.ru/sitemap.xml
-Host: mbm-trans.ru
 Disallow: /old-site-backup-2026-06-14/
 Disallow: /mbm-preview-2026/
 Disallow: /otpravka-pisem.json
-Disallow: /assets/images/photo.jpg
 Disallow: /api/
 Disallow: /cloudflare/
+Clean-param: utm_source&utm_medium&utm_campaign&utm_content&utm_term&yclid&gclid&from /
+
+Host: mbm-trans.ru
+Sitemap: https://mbm-trans.ru/sitemap.xml

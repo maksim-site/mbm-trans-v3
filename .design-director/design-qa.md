@@ -210,3 +210,20 @@ final result: passed
 - Pass: the local server is bound to `0.0.0.0:4173` for phone review. GitHub and the production domain remain untouched.
 
 final result: passed
+
+## 2026-08-02 technical SEO and release-candidate QA
+
+- Backup boundary: no duplicate download was created. Existing local sources `../original`, `old-site-backup-2026-06-14` and the Git history were verified before release work.
+- Pass: six public landing pages each contain one title, one description, one canonical URL, one H1, index/follow directives, Open Graph, Twitter Card and valid Schema.org JSON-LD.
+- Pass: the sitemap contains exactly the six intended indexable URLs; compatibility, privacy and 404 pages are excluded and carry `noindex`.
+- Pass: `robots.txt` identifies the canonical host and sitemap, excludes the same-origin lead API and local archive paths, and normalizes common campaign parameters for Yandex.
+- Pass: the new social link card is `1200 x 630`, uses the exact original blue MBM logo and current 20-year / 365-tonne positioning; the obsolete orange 10-year / 200-tonne artwork is gone.
+- Pass: the inverted live-site favicon geometry remains the browser icon; matching `192 x 192` and `512 x 512` application icons and a Russian-language web manifest are present.
+- Pass: Apache release rules enforce HTTPS and the apex host, collapse `/index.html`, preserve old About/Contacts/Clients routes as 301 section redirects, serve a custom responsive 404 and add compression, caching and safe baseline headers.
+- Pass: the local mobile Lighthouse navigation audit scores `100` for accessibility, best practices, SEO and agentic browsing with zero failed audits.
+- Pass: the local performance trace reports `299 ms` LCP and `0.00` CLS without CPU or network throttling; this is a regression check, not a prediction of the future hosting response time.
+- Pass: final `393 x 852` and `1440 x 900` browser checks show no horizontal overflow, missing images, external script CDN requests or console warnings/errors.
+- Pass: `node tools/verify-release.mjs`, JavaScript syntax checks, PHP lint, XML validation and `git diff --check` all pass.
+- Release boundary: the current live server reports PHP 5.5.5, while the safe same-origin form requires PHP 8.0+. Production replacement therefore remains gated on a Russian PHP 8+ preview host, automatic SSL and one real mail-delivery test.
+
+final result: passed with hosting gate

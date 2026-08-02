@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>МБМ-Транс — социальное превью</title>
+<style>
+  @font-face {
+    font-family: "Onest";
+    src: url("../assets/fonts/onest-cyrillic-wght-normal.woff2") format("woff2");
+    font-weight: 100 900;
+    font-display: block;
+  }
+
+  * { box-sizing: border-box; }
+
+  html,
+  body {
+    width: 1200px;
+    height: 630px;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  body {
+    position: relative;
+    color: #f4f8fb;
+    background: #06131f;
+    font-family: "Onest", Arial, sans-serif;
+  }
+
+  .photo,
+  .shade,
+  .grid {
+    position: absolute;
+    inset: 0;
+  }
+
+  .photo {
+    left: 420px;
+    background: url("../assets/images/fp_slider/slider3_.webp") 53% 50% / cover no-repeat;
+  }
+
+  .shade {
+    background:
+      linear-gradient(90deg, #06131f 0%, #06131f 31%, rgba(6, 19, 31, .92) 47%, rgba(6, 19, 31, .45) 68%, rgba(6, 19, 31, .16) 100%),
+      linear-gradient(0deg, rgba(3, 12, 21, .9), transparent 46%);
+  }
+
+  .grid {
+    opacity: .2;
+    background-image:
+      linear-gradient(rgba(125, 174, 207, .16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(125, 174, 207, .16) 1px, transparent 1px);
+    background-size: 54px 54px;
+    mask-image: linear-gradient(90deg, #000, transparent 72%);
+  }
+
+  .content {
+    position: relative;
+    z-index: 2;
+    width: 750px;
+    height: 100%;
+    padding: 58px 0 52px 72px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .logo {
+    width: 210px;
+    height: auto;
+    display: block;
+    margin-bottom: 74px;
+    filter: drop-shadow(0 8px 24px rgba(0, 0, 0, .34));
+  }
+
+  .eyebrow {
+    margin-bottom: 17px;
+    color: #89b8d5;
+    font-size: 18px;
+    font-weight: 720;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+  }
+
+  h1 {
+    max-width: 700px;
+    margin: 0;
+    font-size: 61px;
+    font-weight: 760;
+    line-height: 1.03;
+    letter-spacing: -.045em;
+  }
+
+  h1 span { color: #86b3cf; }
+
+  .facts {
+    margin-top: auto;
+    display: flex;
+    gap: 34px;
+    align-items: center;
+    color: #dbe6ed;
+    font-size: 19px;
+    font-weight: 580;
+  }
+
+  .facts span + span {
+    position: relative;
+    padding-left: 34px;
+  }
+
+  .facts span + span::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #78a8c6;
+    transform: translateY(-50%);
+  }
+
+  .weight {
+    position: absolute;
+    right: 52px;
+    bottom: 48px;
+    z-index: 2;
+    padding: 18px 24px 17px;
+    border: 1px solid rgba(172, 211, 235, .36);
+    border-radius: 14px;
+    background: rgba(4, 20, 33, .78);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, .3);
+    backdrop-filter: blur(14px);
+  }
+
+  .weight strong {
+    display: block;
+    font-size: 35px;
+    line-height: 1;
+    letter-spacing: -.04em;
+  }
+
+  .weight small {
+    display: block;
+    margin-top: 7px;
+    color: #a8bdca;
+    font-size: 13px;
+    font-weight: 650;
+    letter-spacing: .11em;
+    text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <div class="photo"></div>
+  <div class="shade"></div>
+  <div class="grid"></div>
+  <main class="content">
+    <img class="logo" src="../assets/css/imgs/logo_h-transparent@2x.png" alt="МБМ-Транс">
+    <div class="eyebrow">Проектная логистика</div>
+    <h1>Сложный груз.<br><span>Понятный маршрут.</span></h1>
+    <div class="facts"><span>20 лет опыта</span><span>Собственный автопарк</span></div>
+  </main>
+  <div class="weight"><strong>до 365 т</strong><small>один груз</small></div>
+</body>
+</html>

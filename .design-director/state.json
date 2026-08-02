@@ -2,11 +2,11 @@
   "version": 5,
   "project_title": "MBM Trans Redesign v3",
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
-  "current_stage": "build",
-  "status": "in_progress",
-  "note": "Rebuilding the client carousel as a faithful AET v6 match in both visual system and interaction mechanics after user QA.",
+  "current_stage": "complete",
+  "status": "complete",
+  "note": "Local release candidate is complete. Production cutover is gated on a Russian PHP 8+ host, automatic SSL and a real mail-delivery test.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-02T16:51:50+00:00",
+  "updated_at": "2026-08-02T19:20:20+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -649,6 +649,24 @@
       "stage": "build",
       "status": "in_progress",
       "note": "Rebuilding the client carousel as a faithful AET v6 match in both visual system and interaction mechanics after user QA."
+    },
+    {
+      "at": "2026-08-02T19:20:20+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Release-candidate build complete with technical SEO, social preview assets, manifest, redirects and server rules."
+    },
+    {
+      "at": "2026-08-02T19:20:20+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "Mobile and desktop browser QA passed; Lighthouse accessibility, best practices and SEO are 100 with no console errors."
+    },
+    {
+      "at": "2026-08-02T19:20:20+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Local release candidate is complete. Production cutover is gated on a Russian PHP 8+ host, automatic SSL and a real mail-delivery test."
     }
   ]
 }
