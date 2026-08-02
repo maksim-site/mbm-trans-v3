@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Generate redesigned inner pages with shared header/footer/nav."""
+"""Legacy page generator retained for history.
+
+The active v3 HTML files are maintained directly. Do not run this script before
+deployment: its templates represent the previous design generation.
+"""
 
 import json
 
@@ -547,7 +551,7 @@ contacts_body=f'''<section class="block">
         <div class="row"><span class="ic">{ICON['mail']}</span><div><div class="lbl">E-mail</div><div class="val"><a href="mailto:info@mbm-trans.ru">info@mbm-trans.ru</a></div></div></div>
         <div class="row"><span class="ic">{ICON['clock']}</span><div><div class="lbl">Режим работы</div><div class="val">Пн–Пт 9:00–18:00 · сопровождение 24/7</div></div></div>
       </div>
-      <form class="form reveal" data-lead-form action="https://mbm-trans-leads.5br6b6c4st.workers.dev" method="post">
+      <form class="form reveal" data-lead-form action="/api/leads/" method="post">
         <h3>Оставить заявку</h3>
         <div class="fd">Заполните форму — менеджер свяжется с вами и рассчитает стоимость перевозки.</div>
         <div class="grid2">

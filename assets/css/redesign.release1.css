@@ -270,7 +270,7 @@ footer{background:var(--navy);color:#9db6cc;padding:4rem 0 0}
 .foot-brand .b b{font-family:'Lexend';font-weight:800;font-size:1.25rem;color:#fff}
 .foot-brand .b b i{color:var(--orange);font-style:normal}
 .foot-brand p{font-size:.94rem;line-height:1.6}
-.foot-col h4{color:#fff;font-family:'Lexend';font-size:1rem;font-weight:600;margin-bottom:1.1rem}
+.foot-col h3,.foot-col h4{color:#fff;font-family:'Lexend';font-size:1rem;font-weight:600;margin-bottom:1.1rem}
 .foot-col a,.foot-col p{display:block;font-size:.94rem;padding:.3rem 0;transition:color .2s,padding .2s}
 .foot-col a:hover{color:var(--orange);padding-left:5px}
 .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding:1.5rem 0;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem}

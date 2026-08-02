@@ -195,3 +195,18 @@ final result: passed
 - Pass: JavaScript syntax, `git diff --check`, local favicon responses and asset formats pass.
 
 final result: passed
+
+## 2026-08-02 pre-migration mobile and interaction polish
+
+- Reference behavior: the live AET v6 client rail was inspected in-browser and in its local source. MBM now uses the same two-set continuous loop, `requestAnimationFrame` movement, pointer capture, drag velocity, inertia, loop normalization, visibility reset and reduced-motion fallback.
+- Pass: the lead-consent control is a real `22 x 22 px` checkbox with aligned copy, checked/focus/error states and no inherited `54 px` input height. Local-network form testing reports success without transmitting entered data.
+- Pass: the mobile menu uses one animated three-line control, a compact content-sized panel, short staggered item motion, an animated Services disclosure, overlay/body lock, focus trapping and synchronized `aria-hidden`, `aria-expanded` and `inert` states.
+- Pass: menu geometry was checked at `393`, `670` and `800 px`; full corporate navigation returns at `861 px`. All boundary checks report `0 px` document overflow.
+- Pass: active inner pages use a labelled back arrow instead of `Главная / …` breadcrumbs. The Projects return target settles below the persistent header through the existing Lenis anchor path.
+- Pass: eight content routes across seven widths (`320 / 393 / 670 / 800 / 861 / 1020 / 1280`) produced 56 clean states with no horizontal overflow, broken images or breadcrumb remnants.
+- Pass: semantic `main` landmarks, sequential footer headings and canonical links are present on all active content routes. Mobile Lighthouse on both Home and Projects scores `100` for accessibility, best practices, SEO and agentic browsing; desktop Home scores the same.
+- Pass: the same-origin `/api/leads/` PHP endpoint rejects cross-origin requests, validates form timing and consent, makes no external HTTP request and hands mail to the hosting server. `php -l`, validation-path checks, `node --check`, HTML structural checks and `git diff --check` pass.
+- Pass: the deployment guide contains a narrow production allowlist, explicit exclusions for old archives/build tooling/Cloudflare code, Russian-hosting and mail requirements, and a backup/preview/rollback checklist.
+- Pass: the local server is bound to `0.0.0.0:4173` for phone review. GitHub and the production domain remain untouched.
+
+final result: passed

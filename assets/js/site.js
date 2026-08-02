@@ -3,8 +3,8 @@
   'use strict';
 
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var mobileQuery = window.matchMedia('(max-width: 1020px)');
-  var localPreview = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname);
+  var mobileQuery = window.matchMedia('(max-width: 860px)');
+  var localPreview = /^(?:localhost|\[::1\]|127(?:\.\d{1,3}){3}|0\.0\.0\.0|10(?:\.\d{1,3}){3}|192\.168(?:\.\d{1,3}){2}|172\.(?:1[6-9]|2\d|3[01])(?:\.\d{1,3}){2})$/.test(window.location.hostname);
   var focusableSelector = 'a[href], button:not([disabled]), input:not([disabled]), textarea:not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])';
 
   function toArray(items) {
@@ -163,38 +163,52 @@
     var overlay = document.getElementById('overlay');
     if (!burger || !nav) return;
 
-    var menuIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg>';
-    var closeIcon = '<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>';
     var returnFocus = null;
 
     burger.type = 'button';
     burger.setAttribute('aria-controls', 'nav');
     burger.setAttribute('aria-expanded', 'false');
+    burger.innerHTML = '<span class="burger-lines" aria-hidden="true"><span></span><span></span><span></span></span>';
+    if (overlay) overlay.setAttribute('aria-hidden', 'true');
 
-    function setMenu(open) {
+    function syncMenuAccessibility(open) {
+      if (mobileQuery.matches) {
+        nav.setAttribute('aria-hidden', open ? 'false' : 'true');
+        nav.inert = !open;
+      } else {
+        nav.removeAttribute('aria-hidden');
+        nav.inert = false;
+      }
+      if (overlay) overlay.setAttribute('aria-hidden', open ? 'false' : 'true');
+    }
+
+    function setMenu(open, focusFirst) {
+      var wasOpen = nav.classList.contains('open');
       nav.classList.toggle('open', open);
       if (overlay) overlay.classList.toggle('show', open);
-      burger.innerHTML = open ? closeIcon : menuIcon;
       burger.setAttribute('aria-expanded', open ? 'true' : 'false');
       burger.setAttribute('aria-label', open ? 'Закрыть меню' : 'Открыть меню');
       document.body.classList.toggle('no-scroll', open);
+      syncMenuAccessibility(open);
 
       if (open) {
         returnFocus = document.activeElement;
-        window.setTimeout(function () {
-          var first = nav.querySelector(focusableSelector);
-          if (first) first.focus();
-        }, 30);
+        if (focusFirst) {
+          window.requestAnimationFrame(function () {
+            var first = nav.querySelector(focusableSelector);
+            if (first) first.focus();
+          });
+        }
       } else {
         toArray(nav.querySelectorAll('.has-sub.sub-open')).forEach(function (item) {
           setSubmenu(item, false);
         });
-        if (returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
+        if (wasOpen && returnFocus && typeof returnFocus.focus === 'function') returnFocus.focus();
       }
     }
 
-    burger.addEventListener('click', function () {
-      setMenu(!nav.classList.contains('open'));
+    burger.addEventListener('click', function (event) {
+      setMenu(!nav.classList.contains('open'), event.detail === 0);
     });
 
     if (overlay) {
@@ -205,14 +219,15 @@
       var trigger = item.querySelector(':scope > a');
       var submenu = item.querySelector(':scope > .sub');
       item.classList.toggle('sub-open', open);
-      if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
       if (!submenu) return;
       if (mobileQuery.matches) {
+        if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
         submenu.setAttribute('aria-hidden', open ? 'false' : 'true');
         toArray(submenu.querySelectorAll('a')).forEach(function (link) {
           link.tabIndex = open ? 0 : -1;
         });
       } else {
+        if (trigger) trigger.removeAttribute('aria-expanded');
         submenu.removeAttribute('aria-hidden');
         toArray(submenu.querySelectorAll('a')).forEach(function (link) {
           link.removeAttribute('tabindex');
@@ -266,7 +281,10 @@
       toArray(nav.querySelectorAll('.has-sub')).forEach(function (item) {
         setSubmenu(item, mobileQuery.matches && item.classList.contains('sub-open'));
       });
+      syncMenuAccessibility(mobileQuery.matches && nav.classList.contains('open'));
     });
+
+    syncMenuAccessibility(false);
   }
 
   function countUp(element) {
@@ -364,9 +382,121 @@
 
     track.appendChild(primary);
     track.appendChild(duplicate);
-    window.requestAnimationFrame(function () {
+
+    var viewport = track.closest('.clients-marquee');
+    var canEnhance = viewport
+      && !reduceMotion
+      && typeof window.requestAnimationFrame === 'function'
+      && typeof window.PointerEvent === 'function'
+      && typeof window.performance?.now === 'function'
+      && typeof viewport.setPointerCapture === 'function';
+
+    if (!canEnhance) {
       track.classList.add('is-ready');
+      return;
+    }
+
+    var autoplaySpeed = -36;
+    var position = 0;
+    var velocity = autoplaySpeed;
+    var activePointerId = null;
+    var lastPointerX = 0;
+    var lastPointerTime = performance.now();
+    var lastFrameTime = performance.now();
+    var animationFrame = 0;
+
+    function loopWidth() {
+      return primary.getBoundingClientRect().width;
+    }
+
+    function normalizePosition() {
+      var width = loopWidth();
+      if (!width) return;
+      while (position <= -width) position += width;
+      while (position > 0) position -= width;
+    }
+
+    function render() {
+      normalizePosition();
+      track.style.transform = 'translate3d(' + position + 'px, 0, 0)';
+    }
+
+    function animate(time) {
+      var elapsed = Math.min((time - lastFrameTime) / 1000, .05);
+      lastFrameTime = time;
+      if (activePointerId === null) {
+        position += velocity * elapsed;
+        velocity += (autoplaySpeed - velocity) * (1 - Math.exp(-4.5 * elapsed));
+        render();
+      }
+      animationFrame = window.requestAnimationFrame(animate);
+    }
+
+    function startDrag(event) {
+      if (event.pointerType === 'mouse' && event.button !== 0) return;
+      activePointerId = event.pointerId;
+      lastPointerX = event.clientX;
+      lastPointerTime = performance.now();
+      velocity = 0;
+      viewport.classList.add('is-dragging');
+      try {
+        viewport.setPointerCapture(event.pointerId);
+      } catch (error) {
+        activePointerId = null;
+        velocity = autoplaySpeed;
+        viewport.classList.remove('is-dragging');
+      }
+    }
+
+    function moveDrag(event) {
+      if (event.pointerId !== activePointerId) return;
+      var now = performance.now();
+      var delta = event.clientX - lastPointerX;
+      var elapsed = Math.max(now - lastPointerTime, 8);
+      var instantVelocity = (delta / elapsed) * 1000;
+      position += delta;
+      velocity = velocity * .68 + instantVelocity * .32;
+      lastPointerX = event.clientX;
+      lastPointerTime = now;
+      render();
+    }
+
+    function stopDrag(event) {
+      if (activePointerId === null || (event && event.pointerId !== activePointerId)) return;
+      if (typeof viewport.hasPointerCapture === 'function' && viewport.hasPointerCapture(activePointerId)) {
+        viewport.releasePointerCapture(activePointerId);
+      }
+      velocity = Math.max(-900, Math.min(900, velocity));
+      activePointerId = null;
+      viewport.classList.remove('is-dragging');
+    }
+
+    viewport.addEventListener('pointerdown', startDrag);
+    viewport.addEventListener('pointermove', moveDrag);
+    viewport.addEventListener('pointerup', stopDrag);
+    viewport.addEventListener('pointercancel', stopDrag);
+    viewport.addEventListener('lostpointercapture', stopDrag);
+    viewport.addEventListener('dragstart', function (event) { event.preventDefault(); });
+    window.addEventListener('resize', function () {
+      normalizePosition();
+      render();
+    }, { passive: true });
+    document.addEventListener('visibilitychange', function () {
+      lastFrameTime = performance.now();
+      if (!document.hidden && activePointerId === null) velocity = autoplaySpeed;
     });
+
+    window.requestAnimationFrame(function () {
+      if (!loopWidth()) return;
+      render();
+      track.classList.add('is-ready');
+      viewport.classList.add('is-interactive');
+      animationFrame = window.requestAnimationFrame(animate);
+    });
+
+    window.addEventListener('pagehide', function () {
+      if (animationFrame) window.cancelAnimationFrame(animationFrame);
+    }, { once: true });
   }
 
   function initFaq() {
@@ -740,6 +870,7 @@
       var status = form.querySelector('.form-status');
       var phone = form.querySelector('[name="phone"]');
       var email = form.querySelector('[name="email"]');
+      var consent = form.querySelector('[name="consent"]');
       var started = form.querySelector('[name="lead_started_at"]');
       if (started) started.value = String(Date.now());
 
@@ -762,6 +893,7 @@
       }
 
       if (email) email.addEventListener('input', function () { resetField(email); });
+      if (consent) consent.addEventListener('change', function () { resetField(consent); });
 
       function showSuccess(message) {
         form.reset();
@@ -786,6 +918,11 @@
           email.value = email.value.trim();
           resetField(email);
           if (email.value && !emailPattern.test(email.value)) invalidateField(email, 'Введите корректный e-mail.');
+        }
+
+        if (consent) {
+          resetField(consent);
+          if (!consent.checked) invalidateField(consent, 'Подтвердите согласие на обработку персональных данных.');
         }
 
         if (!form.checkValidity()) {

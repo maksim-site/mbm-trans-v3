@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Exact About anchor correction and live-favicon blue-on-white inversion are complete locally and verified; GitHub publication was not requested in this iteration.",
+  "note": "Local pre-migration polish is complete: AET-style carousel, corrected consent control, compact animated mobile menu, inner-page back navigation, same-origin Russian-hosting lead endpoint and final responsive QA all pass.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-02T13:06:50+00:00",
+  "updated_at": "2026-08-02T16:37:28+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -613,6 +613,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Exact About anchor correction and live-favicon blue-on-white inversion are complete locally and verified; GitHub publication was not requested in this iteration."
+    },
+    {
+      "at": "2026-08-02T15:25:43+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Local pre-migration polish: AET-style carousel, mobile consent and menu motion, inner-page back navigation, and cross-route responsive QA."
+    },
+    {
+      "at": "2026-08-02T16:37:25+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "Mobile consent, compact menu motion, AET-style client rail, page-back navigation, landmarks, canonicals and same-origin PHP lead endpoint are implemented."
+    },
+    {
+      "at": "2026-08-02T16:37:26+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Running final responsive, interaction, accessibility, route, syntax, form-security and deployment-boundary checks."
+    },
+    {
+      "at": "2026-08-02T16:37:27+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "56 route-width states pass with zero overflow or broken media; home and projects Lighthouse audits score 100 in all audited categories; source checks and PHP validation pass."
+    },
+    {
+      "at": "2026-08-02T16:37:28+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Pre-migration polish is complete locally on redesign-v3; phone preview remains available and no GitHub or production publication was performed."
     }
   ]
 }

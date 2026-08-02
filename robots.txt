@@ -6,3 +6,5 @@ Disallow: /old-site-backup-2026-06-14/
 Disallow: /mbm-preview-2026/
 Disallow: /otpravka-pisem.json
 Disallow: /assets/images/photo.jpg
+Disallow: /api/
+Disallow: /cloudflare/
