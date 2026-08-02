@@ -220,15 +220,16 @@
       var submenu = item.querySelector(':scope > .sub');
       item.classList.toggle('sub-open', open);
       if (!submenu) return;
+      if (trigger) {
+        trigger.setAttribute('aria-haspopup', 'true');
+        trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
+      }
+      submenu.setAttribute('aria-hidden', open ? 'false' : 'true');
       if (mobileQuery.matches) {
-        if (trigger) trigger.setAttribute('aria-expanded', open ? 'true' : 'false');
-        submenu.setAttribute('aria-hidden', open ? 'false' : 'true');
         toArray(submenu.querySelectorAll('a')).forEach(function (link) {
           link.tabIndex = open ? 0 : -1;
         });
       } else {
-        if (trigger) trigger.removeAttribute('aria-expanded');
-        submenu.removeAttribute('aria-hidden');
         toArray(submenu.querySelectorAll('a')).forEach(function (link) {
           link.removeAttribute('tabindex');
         });
@@ -240,10 +241,18 @@
       if (!trigger) return;
       setSubmenu(item, false);
       trigger.addEventListener('click', function (event) {
-        if (!mobileQuery.matches) return;
         event.preventDefault();
         var open = !item.classList.contains('sub-open');
+        toArray(nav.querySelectorAll('.has-sub.sub-open')).forEach(function (other) {
+          if (other !== item) setSubmenu(other, false);
+        });
         setSubmenu(item, open);
+      });
+    });
+
+    document.addEventListener('click', function (event) {
+      toArray(nav.querySelectorAll('.has-sub.sub-open')).forEach(function (item) {
+        if (!item.contains(event.target)) setSubmenu(item, false);
       });
     });
 
@@ -256,6 +265,16 @@
     });
 
     document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape') {
+        var openedSubmenu = nav.querySelector('.has-sub.sub-open');
+        if (openedSubmenu) {
+          event.preventDefault();
+          var openedTrigger = openedSubmenu.querySelector(':scope > a');
+          setSubmenu(openedSubmenu, false);
+          if (openedTrigger) openedTrigger.focus();
+          if (!nav.classList.contains('open')) return;
+        }
+      }
       if (!nav.classList.contains('open')) return;
       if (event.key === 'Escape') {
         event.preventDefault();
@@ -360,31 +379,13 @@
     observer.observe(process);
   }
 
-  function initClientMarquee() {
-    var track = document.getElementById('track');
-    if (!track) return;
-    if (track.querySelector('.logo-set')) return;
-
-    var clients = toArray(track.children).filter(function (item) {
-      return item.classList && item.classList.contains('client');
-    });
-    if (!clients.length) return;
-
-    var primary = document.createElement('div');
-    primary.className = 'logo-set';
-    clients.forEach(function (client) { primary.appendChild(client); });
-
-    var duplicate = primary.cloneNode(true);
-    duplicate.setAttribute('aria-hidden', 'true');
-    toArray(duplicate.querySelectorAll('img')).forEach(function (image) {
-      image.alt = '';
-    });
-
-    track.appendChild(primary);
-    track.appendChild(duplicate);
-
-    var viewport = track.closest('.clients-marquee');
+  function initTrustedLogoCarousel() {
+    var viewport = document.querySelector('.trusted-logo-viewport');
+    var track = viewport && viewport.querySelector('.trusted-logo-track');
+    var primary = track && track.querySelector('.trusted-logo-set');
     var canEnhance = viewport
+      && track
+      && primary
       && !reduceMotion
       && typeof window.requestAnimationFrame === 'function'
       && typeof window.PointerEvent === 'function'
@@ -392,7 +393,6 @@
       && typeof viewport.setPointerCapture === 'function';
 
     if (!canEnhance) {
-      track.classList.add('is-ready');
       return;
     }
 
@@ -426,7 +426,8 @@
       lastFrameTime = time;
       if (activePointerId === null) {
         position += velocity * elapsed;
-        velocity += (autoplaySpeed - velocity) * (1 - Math.exp(-4.5 * elapsed));
+        var returnStrength = 1 - Math.exp(-4.5 * elapsed);
+        velocity += (autoplaySpeed - velocity) * returnStrength;
         render();
       }
       animationFrame = window.requestAnimationFrame(animate);
@@ -489,7 +490,6 @@
     window.requestAnimationFrame(function () {
       if (!loopWidth()) return;
       render();
-      track.classList.add('is-ready');
       viewport.classList.add('is-interactive');
       animationFrame = window.requestAnimationFrame(animate);
     });
@@ -620,8 +620,8 @@
 
   function initProjectArchive() {
     var gallery = document.getElementById('projectGallery');
-    var more = document.getElementById('projectMore');
-    if (!gallery || !more) return;
+    var sentinel = document.getElementById('projectAutoLoad');
+    if (!gallery || !sentinel) return;
 
     var cards = toArray(gallery.querySelectorAll('.proj'));
     var filters = toArray(document.querySelectorAll('[data-project-filter]'));
@@ -629,6 +629,7 @@
     var total = document.querySelector('[data-project-total]');
     var active = 'all';
     var limit = 12;
+    var loading = false;
 
     function categoryFor(label) {
       var value = String(label || '').toLowerCase();
@@ -673,7 +674,7 @@
       visible.slice(0, 2).forEach(function (card) {
         card.classList.add('is-featured');
       });
-      more.hidden = visible.length >= matches.length;
+      sentinel.hidden = visible.length >= matches.length;
       if (result) result.textContent = 'Показано ' + visible.length + ' из ' + matches.length;
     }
 
@@ -690,10 +691,26 @@
       });
     });
 
-    more.addEventListener('click', function () {
+    function loadNextBatch() {
+      if (loading || sentinel.hidden) return;
+      loading = true;
       limit += 12;
       render(true);
-    });
+      window.requestAnimationFrame(function () {
+        loading = false;
+      });
+    }
+
+    if ('IntersectionObserver' in window) {
+      var observer = new IntersectionObserver(function (entries) {
+        if (entries.some(function (entry) { return entry.isIntersecting; })) {
+          loadNextBatch();
+        }
+      }, { rootMargin: '600px 0px', threshold: 0 });
+      observer.observe(sentinel);
+    } else {
+      limit = cards.length;
+    }
 
     render(false);
   }
@@ -1027,7 +1044,7 @@
   initProjectArchive();
   initReveals();
   initRoute();
-  initClientMarquee();
+  initTrustedLogoCarousel();
   initFaq();
   initCertificateRail();
   initLightbox();
