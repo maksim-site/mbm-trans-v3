@@ -9,6 +9,7 @@ RewriteEngine On
 RewriteCond %{HTTP_HOST} ^www\.mbm-trans\.ru$ [NC]
 RewriteRule ^ https://mbm-trans.ru%{REQUEST_URI} [R=301,L,NE]
 
+RewriteCond %{HTTP_HOST} ^mbm-trans\.ru(?::\d+)?$ [NC]
 RewriteCond %{HTTPS} !=on
 RewriteCond %{HTTP:X-Forwarded-Proto} !https [NC]
 RewriteRule ^ https://mbm-trans.ru%{REQUEST_URI} [R=301,L,NE]
