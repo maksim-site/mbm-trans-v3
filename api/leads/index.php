@@ -1,5 +1,4 @@
 <?php
-declare(strict_types=1);
 
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-store, max-age=0');
@@ -7,21 +6,24 @@ header('X-Content-Type-Options: nosniff');
 header('X-Robots-Tag: noindex, nofollow, noarchive');
 header('Referrer-Policy: same-origin');
 
-function respond(array $payload, int $status): void
+function respond(array $payload, $status)
 {
     http_response_code($status);
     echo json_encode($payload, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
     exit;
 }
 
-function cut_text($value, int $limit, bool $keepLines = false): string
+function cut_text($value, $limit, $keepLines = false)
 {
     $text = str_replace("\0", '', trim((string) $value));
     if ($keepLines) {
-        $text = preg_replace("/\r\n?|\n/u", "\n", $text) ?? '';
-        $text = preg_replace("/[\t ]+/u", ' ', $text) ?? '';
+        $normalized = preg_replace("/\r\n?|\n/u", "\n", $text);
+        $text = $normalized === null ? '' : $normalized;
+        $normalized = preg_replace("/[\t ]+/u", ' ', $text);
+        $text = $normalized === null ? '' : $normalized;
     } else {
-        $text = preg_replace('/\s+/u', ' ', $text) ?? '';
+        $normalized = preg_replace('/\s+/u', ' ', $text);
+        $text = $normalized === null ? '' : $normalized;
     }
 
     return function_exists('mb_substr')
@@ -29,51 +31,74 @@ function cut_text($value, int $limit, bool $keepLines = false): string
         : substr($text, 0, $limit);
 }
 
-function request_host(): string
+function request_host()
 {
-    $host = strtolower((string) ($_SERVER['HTTP_HOST'] ?? 'mbm-trans.ru'));
-    return preg_replace('/:\d+$/', '', $host) ?: 'mbm-trans.ru';
+    $host = strtolower((string) (isset($_SERVER['HTTP_HOST']) ? $_SERVER['HTTP_HOST'] : 'mbm-trans.ru'));
+    $normalized = preg_replace('/:\d+$/', '', $host);
+    return $normalized ? $normalized : 'mbm-trans.ru';
 }
 
-function mail_domain(string $host): string
+function mail_domain($host)
 {
-    return $host === 'mbm-trans.ru' || str_ends_with($host, '.mbm-trans.ru')
+    $suffix = '.mbm-trans.ru';
+    $hasSuffix = strlen($host) >= strlen($suffix)
+        && substr($host, -strlen($suffix)) === $suffix;
+
+    return $host === 'mbm-trans.ru' || $hasSuffix
         ? 'mbm-trans.ru'
         : $host;
 }
 
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+function same_value($known, $provided)
+{
+    if (function_exists('hash_equals')) {
+        return hash_equals($known, $provided);
+    }
+
+    if (strlen($known) !== strlen($provided)) {
+        return false;
+    }
+
+    $result = 0;
+    for ($i = 0, $length = strlen($known); $i < $length; $i++) {
+        $result |= ord($known[$i]) ^ ord($provided[$i]);
+    }
+
+    return $result === 0;
+}
+
+if ((isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '') !== 'POST') {
     header('Allow: POST');
     respond(['ok' => false, 'error' => 'method_not_allowed'], 405);
 }
 
-$contentLength = (int) ($_SERVER['CONTENT_LENGTH'] ?? 0);
+$contentLength = (int) (isset($_SERVER['CONTENT_LENGTH']) ? $_SERVER['CONTENT_LENGTH'] : 0);
 if ($contentLength > 100000) {
     respond(['ok' => false, 'error' => 'payload_too_large'], 413);
 }
 
 $siteHost = request_host();
-$origin = (string) ($_SERVER['HTTP_ORIGIN'] ?? '');
+$origin = (string) (isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '');
 if ($origin !== '') {
     $originHost = strtolower((string) parse_url($origin, PHP_URL_HOST));
-    if ($originHost === '' || !hash_equals($siteHost, $originHost)) {
+    if ($originHost === '' || !same_value($siteHost, $originHost)) {
         respond(['ok' => false, 'error' => 'origin_not_allowed'], 403);
     }
 }
 
-$fetchSite = strtolower((string) ($_SERVER['HTTP_SEC_FETCH_SITE'] ?? ''));
+$fetchSite = strtolower((string) (isset($_SERVER['HTTP_SEC_FETCH_SITE']) ? $_SERVER['HTTP_SEC_FETCH_SITE'] : ''));
 if ($fetchSite !== '' && !in_array($fetchSite, ['same-origin', 'same-site', 'none'], true)) {
     respond(['ok' => false, 'error' => 'cross_site_request'], 403);
 }
 
-$name = cut_text($_POST['name'] ?? '', 120);
-$phone = cut_text($_POST['phone'] ?? '', 32);
-$email = cut_text($_POST['email'] ?? '', 160);
-$message = cut_text($_POST['message'] ?? '', 2000, true);
-$page = cut_text($_POST['page'] ?? 'Сайт', 160);
-$honeypot = cut_text($_POST['website'] ?? '', 200);
+$name = cut_text(isset($_POST['name']) ? $_POST['name'] : '', 120);
+$phone = cut_text(isset($_POST['phone']) ? $_POST['phone'] : '', 32);
+$email = cut_text(isset($_POST['email']) ? $_POST['email'] : '', 160);
+$message = cut_text(isset($_POST['message']) ? $_POST['message'] : '', 2000, true);
+$page = cut_text(isset($_POST['page']) ? $_POST['page'] : 'Сайт', 160);
+$honeypot = cut_text(isset($_POST['website']) ? $_POST['website'] : '', 200);
 $consent = isset($_POST['consent']) && (string) $_POST['consent'] !== '';
-$startedAt = (int) ($_POST['lead_started_at'] ?? 0);
+$startedAt = (int) (isset($_POST['lead_started_at']) ? $_POST['lead_started_at'] : 0);
 $nowMs = (int) round(microtime(true) * 1000);
 $formAge = $startedAt > 0 ? $nowMs - $startedAt : 0;
 
@@ -85,7 +110,8 @@ if ($startedAt <= 0 || $formAge < 2500 || $formAge > 21600000) {
     respond(['ok' => false, 'error' => 'invalid_form_time'], 422);
 }
 
-$phoneDigits = preg_replace('/\D+/', '', $phone) ?? '';
+$phoneDigits = preg_replace('/\D+/', '', $phone);
+$phoneDigits = $phoneDigits === null ? '' : $phoneDigits;
 if (strlen($phoneDigits) === 11 && $phoneDigits[0] === '8') {
     $phoneDigits = '7' . substr($phoneDigits, 1);
 }
