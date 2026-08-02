@@ -180,3 +180,18 @@ final result: passed
 - Pass: all eight content routes checked at `393 x 852` have `0 px` overflow, no broken images, the new favicon reference and the correct home-about target; final browser console contains no warnings or errors.
 
 final result: passed
+
+## 2026-08-02 exact About anchor and live-favicon inversion
+
+- Source visual: user-approved `Снимок экрана — 2026-08-02 в 15.35.34.png`, normalized from `2880 x 1800` to `1440 x 900`.
+- Implementation screenshot: `.design-director/assets/qa/about-anchor-implementation-1440x900.png`.
+- Comparison image: `.design-director/assets/qa/about-anchor-comparison.png`.
+- P2 fixed: the `О компании` desktop anchor now advances an additional `108 CSS px`, which is the exact `216 physical px` displacement measured between the user's before and approved screenshots.
+- Pass: the visible title starts at approximately `136 px` in the implementation and `136.5 px` in the normalized source; the photo top differs by only a few pixels and the complete composition remains unobscured by the sticky header.
+- Pass: the correction is target-specific and wide-screen-only, so `Контакты`, `Проекты`, `Услуги` and phone navigation retain their existing offsets. At `393 x 852`, `#about` starts below the `75 px` header, the menu closes after navigation and document overflow is `0 px`.
+- Pass: both direct header navigation and the compatibility `o-kompanii.html` redirect settle at the same `#about` coordinate; final browser console is empty.
+- Pass: the favicon geometry was fetched from the current public `mbm-trans.ru/assets/favicon.svg` source. Only its two color roles were exchanged: the original white `МБМ` lettermark is now `#005195`, and the original blue field is now white.
+- Pass: SVG, `32 x 32` PNG, `180 x 180` Apple icon and both ICO copies share the same inverted live-site geometry; all active pages use the refreshed favicon token.
+- Pass: JavaScript syntax, `git diff --check`, local favicon responses and asset formats pass.
+
+final result: passed

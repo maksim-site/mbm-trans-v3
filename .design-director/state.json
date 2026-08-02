@@ -4,9 +4,9 @@
   "project_root": "/Users/makaroshckamail.ru/Downloads/claude/mbm-trans/redesign-v2",
   "current_stage": "complete",
   "status": "complete",
-  "note": "Navigation and content simplification complete and ready for GitHub Pages publication.",
+  "note": "Exact About anchor correction and live-favicon blue-on-white inversion are complete locally and verified; GitHub publication was not requested in this iteration.",
   "created_at": "2026-07-30T20:53:55+00:00",
-  "updated_at": "2026-08-02T12:24:44+00:00",
+  "updated_at": "2026-08-02T13:06:50+00:00",
   "history": [
     {
       "at": "2026-07-30T20:53:55+00:00",
@@ -583,6 +583,36 @@
       "stage": "complete",
       "status": "complete",
       "note": "Navigation and content simplification complete and ready for GitHub Pages publication."
+    },
+    {
+      "at": "2026-08-02T12:41:59+00:00",
+      "stage": "build",
+      "status": "in_progress",
+      "note": "Correcting the About anchor landing position and replacing the favicon with an exact color-inverted copy of the live MBM favicon."
+    },
+    {
+      "at": "2026-08-02T12:46:27+00:00",
+      "stage": "build",
+      "status": "complete",
+      "note": "About gets a 150 px wide-screen anchor correction without affecting other anchors; the live MBM favicon geometry is preserved and color-inverted to blue on white across SVG, PNG, ICO and Apple icon formats."
+    },
+    {
+      "at": "2026-08-02T12:46:28+00:00",
+      "stage": "visual-qa",
+      "status": "in_progress",
+      "note": "Verifying the exact desktop About landing, mobile fallback, favicon asset rendering, route integrity and console state."
+    },
+    {
+      "at": "2026-08-02T13:06:49+00:00",
+      "stage": "visual-qa",
+      "status": "complete",
+      "note": "At the exact 1440 x 900 reference viewport the visible title aligns at 136 px versus 136.5 px in the approved source; desktop and compatibility anchors, 393 px mobile fallback, favicon assets, HTTP responses, overflow and console all pass."
+    },
+    {
+      "at": "2026-08-02T13:06:50+00:00",
+      "stage": "complete",
+      "status": "complete",
+      "note": "Exact About anchor correction and live-favicon blue-on-white inversion are complete locally and verified; GitHub publication was not requested in this iteration."
     }
   ]
 }
