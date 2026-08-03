@@ -1,4 +1,4 @@
-/* MBM Trans v3 — shared progressive enhancement */
+/* MBM Trans v3 — shared progressive enhancement · deploy 2026-08-03 */
 (function () {
   'use strict';
 
